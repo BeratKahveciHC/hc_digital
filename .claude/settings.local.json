@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:voya.digital)",
+      "Bash(curl -s \"https://voya.digital/tr/\")",
+      "Bash(python3:*)",
+      "Read(//style_root__kKC7U/,/**)",
+      "Read(//tmp/**)",
+      "WebSearch",
+      "WebFetch(domain:www.pexels.com)",
+      "WebFetch(domain:mixkit.co)",
+      "WebFetch(domain:hcdijital.com.tr)",
+      "Bash(curl -s \"https://hcdijital.com.tr/referanslarimiz/\")",
+      "Bash(grep -oP '.{0,200}Referanslarimiz[0-9]\\\\.webp.{0,200}' \"C:\\\\Users\\\\pc\\\\.claude\\\\projects\\\\c--Users-pc-Desktop-hc-digital\\\\6228dd69-f21e-4e49-9ac3-7865bd718f62\\\\tool-results\\\\b40ziq8fh.txt\")",
+      "Bash(head -c 10000 \"C:\\\\Users\\\\pc\\\\.claude\\\\projects\\\\c--Users-pc-Desktop-hc-digital\\\\6228dd69-f21e-4e49-9ac3-7865bd718f62\\\\tool-results\\\\b40ziq8fh.txt\")",
+      "Bash(curl -s https://voya.digital/tr/)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\pc\\.claude\\projects\\c--Users-pc-Desktop-hc-digital\\6228dd69-f21e-4e49-9ac3-7865bd718f62\\tool-results"
+    ]
+  }
+}
