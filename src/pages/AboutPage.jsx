@@ -184,9 +184,9 @@ export default function AboutPage() {
           {/* Üst sıra — 3 kişi */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-5">
             {[
-              { name: 'Ersan Biçkioğlu',   role: lang === 'en' ? 'Founder'          : 'Kurucu',            img: '/team/ersan-bickioglu.jpg' },
-              { name: 'Dr. Hasan Oğuz',    role: lang === 'en' ? 'Advisor'          : 'Danışman',          img: '/team/hasan-oguz.jpg' },
-              { name: 'Batuhan Küçükkısa', role: lang === 'en' ? 'Full Stack Developer': 'Full Stack Developer', img: '/team/batuhan-kucukkisa.jpg' },
+              { name: 'Ersan Biçkioğlu',   role: lang === 'en' ? 'Founder'          : 'Kurucu',            img: '/team/ersan-bickioglu.webp' },
+              { name: 'Dr. Hasan Oğuz',    role: lang === 'en' ? 'Advisor'          : 'Danışman',          img: '/team/hasan-oguz.webp' },
+              { name: 'Batuhan Küçükkısa', role: lang === 'en' ? 'Full Stack Developer': 'Full Stack Developer', img: '/team/batuhan-kucukkisa.webp' },
             ].map((p, i) => (
               <motion.div key={i} {...fadeUpView(i * 0.07)} className="flex flex-col gap-4">
                 <div className="aspect-square w-full overflow-hidden rounded-2xl bg-slate-100">
@@ -203,10 +203,10 @@ export default function AboutPage() {
           {/* Alt sıra — 4 kişi */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
             {[
-              { name: 'Deniz Yetim',       role: 'Full Stack Developer',                                   img: '/team/deniz-yetim.jpg' },
-              { name: 'Zeren Korkmaz',     role: lang === 'en' ? 'AI Engineer'      : 'Yapay Zekâ Mühendisi', img: '/team/zeren-korkmaz.jpg' },
-              { name: 'Berat Kaan Seven',  role: lang === 'en' ? 'Product Manager'  : 'Ürün Yöneticisi',      img: '/team/berat-kaan-seven.jpg' },
-              { name: 'Berat Kahveci',     role: 'Full Stack Developer',                                   img: '/team/berat-kahveci.jpg' },
+              { name: 'Deniz Yetim',       role: 'Full Stack Developer',                                   img: '/team/deniz-yetim.webp' },
+              { name: 'Zeren Korkmaz',     role: lang === 'en' ? 'AI Engineer'      : 'Yapay Zekâ Mühendisi', img: '/team/zeren-korkmaz.webp' },
+              { name: 'Berat Kaan Seven',  role: lang === 'en' ? 'Product Manager'  : 'Ürün Yöneticisi',      img: '/team/berat-kaan-seven.webp' },
+              { name: 'Berat Kahveci',     role: 'Full Stack Developer',                                   img: '/team/berat-kahveci.webp' },
             ].map((p, i) => (
               <motion.div key={i} {...fadeUpView(i * 0.07 + 0.15)} className="flex flex-col gap-4">
                 <div className="aspect-square w-full overflow-hidden rounded-2xl bg-slate-100">

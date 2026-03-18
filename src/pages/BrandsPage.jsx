@@ -22,74 +22,74 @@ const brands = {
   tr: [
     {
       name: 'İstinye Üniversitesi',
-      src: '/brands/istinye.png',
+      src: '/brands/istinye.webp',
       description: 'İstanbul merkezli vakıf üniversitesi. Tıp fakültesi ve sağlık bilimleri programlarıyla HC Dijital çözümlerini akademik ve klinik süreçlerinde kullanmaktadır.',
     },
     {
       name: 'LIV Hospital',
-      src: '/brands/liv-hospital.png',
+      src: '/brands/liv-hospital.webp',
       description: 'JCI akreditasyonlu özel hastane grubu. Veri analitiği ve raporlama sistemleri alanında HC Dijital ile iş birliği yapmaktadır.',
     },
     {
       name: 'Medical Park',
-      src: '/brands/medical-park.png',
+      src: '/brands/medical-park.webp',
       description: 'Türkiye\'nin önde gelen özel hastane zincirlerinden biri. Klinik süreç yönetimi ve dijital dönüşüm projelerinde HC Dijital\'i tercih etmektedir.',
     },
     {
       name: 'MLP Care',
-      src: '/brands/mlpcare.jpg',
+      src: '/brands/mlpcare.webp',
       description: 'Geniş hastane ağıyla faaliyet gösteren sağlık grubu. Operasyonel verimlilik ve merkezi raporlama ihtiyaçları için HC Dijital platformlarını kullanmaktadır.',
     },
     {
       name: '5E Tasarım',
-      src: '/brands/5e-tasarim.jpg',
+      src: '/brands/5e-tasarim.webp',
       description: 'Teknoloji odaklı tasarım ajansı. HC Dijital ile ortak projelerde kullanıcı deneyimi ve arayüz tasarımı konularında iş birliği yapmaktadır.',
     },
     {
       name: 'Cafrost',
-      src: '/brands/cafrost.jpg',
+      src: '/brands/cafrost.webp',
       description: 'Soğuk zincir çözümleri alanında faaliyet gösteren sektör kuruluşu. Spiral Freezer teknolojisi ve SCADA entegrasyonu için HC Dijital ile çalışmaktadır.',
     },
     {
       name: 'Brainco',
-      src: '/brands/brainco.png',
+      src: '/brands/brainco.webp',
       description: 'Beyin-bilgisayar arayüzü ve nöroteknoloji alanında ürünler geliştiren inovasyon şirketi. Yapay zekâ entegrasyonu süreçlerinde HC Dijital ile iş ortaklığı yürütmektedir.',
     },
   ],
   en: [
     {
       name: 'İstinye University',
-      src: '/brands/istinye.png',
+      src: '/brands/istinye.webp',
       description: 'Istanbul-based private university with a medical faculty and health sciences programs, using HC Digital solutions in academic and clinical processes.',
     },
     {
       name: 'LIV Hospital',
-      src: '/brands/liv-hospital.png',
+      src: '/brands/liv-hospital.webp',
       description: 'JCI-accredited private hospital group collaborating with HC Digital on data analytics and reporting systems.',
     },
     {
       name: 'Medical Park',
-      src: '/brands/medical-park.png',
+      src: '/brands/medical-park.webp',
       description: 'One of Turkey\'s leading private hospital chains, partnering with HC Digital for clinical process management and digital transformation projects.',
     },
     {
       name: 'MLP Care',
-      src: '/brands/mlp-care.png',
+      src: '/brands/mlp-care.webp',
       description: 'A healthcare group operating a wide hospital network, using HC Digital platforms for operational efficiency and centralized reporting needs.',
     },
     {
       name: '5E Design',
-      src: '/brands/5e-tasarim.jpg',
+      src: '/brands/5e-tasarim.webp',
       description: 'Technology-focused design agency collaborating with HC Digital on joint projects covering user experience and interface design.',
     },
     {
       name: 'Cafrost',
-      src: '/brands/cafrost.jpg',
+      src: '/brands/cafrost.webp',
       description: 'A sector company specializing in cold chain solutions, working with HC Digital on Spiral Freezer technology and SCADA integration.',
     },
     {
       name: 'Brainco',
-      src: '/brands/brainco.png',
+      src: '/brands/brainco.webp',
       description: 'An innovation company developing brain-computer interface and neurotechnology products, partnering with HC Digital on AI integration processes.',
     },
   ],

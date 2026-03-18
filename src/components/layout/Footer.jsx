@@ -36,7 +36,7 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
 
           <div>
-            <img src="/logos/logo.png" alt="HC Dijital" className="h-32 w-auto object-contain brightness-0 invert -ml-3" />
+            <img src="/logos/logo.webp" alt="HC Dijital" className="h-32 w-auto object-contain brightness-0 invert -ml-3" />
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] tracking-tight max-w-2xl">
               {t.taglineLine1} <br />
               <span className="text-white/30">{t.taglineLine2}</span> <br />
@@ -60,7 +60,7 @@ export default function Footer() {
         {/* Logo & Açıklama */}
         <div className="lg:col-span-1">
           <a href="/" className="inline-flex mb-4 -ml-3">
-            <img src="/logos/logo.png" alt="HC Dijital" className="h-32 w-auto object-contain brightness-0 invert" />
+            <img src="/logos/logo.webp" alt="HC Dijital" className="h-32 w-auto object-contain brightness-0 invert" />
           </a>
           <p className="text-sm text-white/35 leading-relaxed">
             {t.description}

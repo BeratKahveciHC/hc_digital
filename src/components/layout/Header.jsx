@@ -51,7 +51,7 @@ export default function Header({ white = false }) {
             {/* ── Logo ── */}
             <Link to="/" className="shrink-0">
               <img
-                src="/logos/logo.png"
+                src="/logos/logo.webp"
                 alt="HC Dijital"
                 className={`h-35 w-auto object-contain transition-all duration-300 ${white ? '' : 'brightness-0 invert'}`}
               />
@@ -166,7 +166,7 @@ export default function Header({ white = false }) {
             >
               {/* Panel başlık */}
               <div className="flex items-center justify-between px-6 h-20 border-b border-white/8">
-                <img src="/logos/logo.png" alt="HC Dijital" className="h-24 w-auto object-contain brightness-0 invert" />
+                <img src="/logos/logo.webp" alt="HC Dijital" className="h-24 w-auto object-contain brightness-0 invert" />
                 <button
                   onClick={() => setMobileOpen(false)}
                   className="w-9 h-9 flex items-center justify-center rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-colors"

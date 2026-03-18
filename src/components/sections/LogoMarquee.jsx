@@ -3,13 +3,13 @@ import { useLang } from '../../context/LanguageContext'
 import { i18n } from '../../data/i18n'
 
 const logos = [
-  { name: 'İstinye Üniversitesi', src: '/brands/istinye.png' },
-  { name: 'LIV Hospital',         src: '/brands/liv-hospital.png' },
-  { name: 'Medical Park',         src: '/brands/medical-park.png' },
-  { name: 'MLP Care',             src: '/brands/mlpcare.jpg' },
-  { name: '5E Tasarım',           src: '/brands/5e-tasarim.jpg' },
-  { name: 'Cafrost',              src: '/brands/cafrost.jpg' },
-  { name: 'Brainco',              src: '/brands/brainco.png' },
+  { name: 'İstinye Üniversitesi', src: '/brands/istinye.webp' },
+  { name: 'LIV Hospital',         src: '/brands/liv-hospital.webp' },
+  { name: 'Medical Park',         src: '/brands/medical-park.webp' },
+  { name: 'MLP Care',             src: '/brands/mlpcare.webp' },
+  { name: '5E Tasarım',           src: '/brands/5e-tasarim.webp' },
+  { name: 'Cafrost',              src: '/brands/cafrost.webp' },
+  { name: 'Brainco',              src: '/brands/brainco.webp' },
 ]
 
 export default function LogoMarquee() {
