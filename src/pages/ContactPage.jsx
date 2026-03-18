@@ -110,7 +110,7 @@ export default function ContactPage() {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:3001/api/contact', {
+      const res = await fetch('http://localhost:5000/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
