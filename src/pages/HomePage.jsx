@@ -12,8 +12,8 @@ export default function HomePage() {
       <Header />
       <Hero />
       <LogoMarquee />
-      <Services />
       <Products />
+      <Services />
       <CTA />
       <Footer />
     </div>

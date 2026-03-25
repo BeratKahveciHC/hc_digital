@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Mail, MapPin, ArrowUpRight, Linkedin, Instagram } from 'lucide-react'
+import { Mail, MapPin, ArrowUpRight, Linkedin, ChevronDown, Check } from 'lucide-react'
 import { useLang } from '../context/LanguageContext'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
@@ -19,17 +19,71 @@ const fadeUpView = (delay = 0) => ({
   transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
 })
 
+function Dropdown({ options, value, onChange, placeholder }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        className={`w-full px-4 py-3.5 rounded-xl border text-sm text-left flex items-center justify-between transition-all duration-200 bg-white focus:outline-none ${
+          open ? 'border-primary ring-2 ring-primary/10' : 'border-slate-200 hover:border-slate-300'
+        } ${value ? 'text-dark' : 'text-slate-300'}`}
+      >
+        <span>{value || placeholder}</span>
+        <ChevronDown size={16} className={`text-slate-400 transition-transform duration-200 shrink-0 ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15 }}
+            className="absolute z-50 mt-2 w-full bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden"
+          >
+            {options.map((opt) => (
+              <li key={opt}>
+                <button
+                  type="button"
+                  onClick={() => { onChange(opt); setOpen(false) }}
+                  className={`w-full px-4 py-3 text-sm text-left flex items-center justify-between transition-colors duration-150 ${
+                    value === opt ? 'bg-primary/5 text-primary font-semibold' : 'text-dark hover:bg-slate-50'
+                  }`}
+                >
+                  {opt}
+                  {value === opt && <Check size={14} className="text-primary shrink-0" />}
+                </button>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
 const content = {
   tr: {
     breadcrumb: 'İletişim',
-    overline: 'Bize Ulaşın',
-    h1a: 'Projeniz hakkında',
-    h1b: 'konuşalım.',
-    heroParagraph: 'Sorularınız, iş birliği teklifleriniz veya demo talepleriniz için bize yazın. Ortalama yanıt süremiz 24 saattir.',
+    overline: '',
+    h1a: 'Bize',
+    h1b: 'Ulaşın.',
+    heroParagraph: 'Sorularınız, iş birliği teklifleriniz veya demo talepleriniz için bize yazın.',
     formHeading: 'Mesaj Gönderin',
     fields: {
       name: 'Ad Soyad',
       email: 'E-posta',
+      phone: 'Telefon',
       subject: 'Konu',
       message: 'Mesajınız',
       send: 'Gönder',
@@ -37,6 +91,7 @@ const content = {
       placeholder: {
         name: 'Adınızı ve soyadınızı girin',
         email: 'ornek@sirket.com',
+        phone: '+90 5XX XXX XX XX',
         subject: 'Nasıl yardımcı olabiliriz?',
         message: 'Projeniz veya talebiniz hakkında bize bilgi verin...',
       },
@@ -47,25 +102,27 @@ const content = {
     address: 'Ayazağa, Vadis Istanbul Park Etabı\nKemerburgaz Cad. D:7A Blok\n34396 Sarıyer/İstanbul',
     addressLabel: 'Merkez Ofis',
     socialLabel: 'Sosyal Medya',
-    subjectsHeading: 'Ne hakkında konuşmak istersiniz?',
     subjects: [
       'Demo Talebi',
       'Fiyat Bilgisi',
       'Teknik Destek',
       'İş Birliği',
       'Kariyer',
+      'Diğer',
     ],
+    otherOption: 'Diğer',
   },
   en: {
     breadcrumb: 'Contact',
-    overline: 'Get in Touch',
-    h1a: "Let's talk about",
-    h1b: 'your project.',
-    heroParagraph: 'Write to us for your questions, partnership proposals, or demo requests. Our average response time is 24 hours.',
+    overline: '',
+    h1a: 'Get in',
+    h1b: 'Touch.',
+    heroParagraph: 'Write to us for your questions, partnership proposals, or demo requests.',
     formHeading: 'Send a Message',
     fields: {
       name: 'Full Name',
       email: 'Email',
+      phone: 'Phone',
       subject: 'Subject',
       message: 'Your Message',
       send: 'Send',
@@ -73,6 +130,7 @@ const content = {
       placeholder: {
         name: 'Enter your full name',
         email: 'example@company.com',
+        phone: '+90 5XX XXX XX XX',
         subject: 'How can we help you?',
         message: 'Tell us about your project or request...',
       },
@@ -83,14 +141,15 @@ const content = {
     address: 'Ayazağa, Vadis Istanbul Park Etabı\nKemerburgaz Cad. D:7A Blok\n34396 Sarıyer/İstanbul',
     addressLabel: 'Headquarters',
     socialLabel: 'Social Media',
-    subjectsHeading: 'What would you like to talk about?',
     subjects: [
       'Demo Request',
       'Pricing',
       'Technical Support',
       'Partnership',
       'Career',
+      'Other',
     ],
+    otherOption: 'Other',
   },
 }
 
@@ -98,9 +157,17 @@ export default function ContactPage() {
   const { lang } = useLang()
   const c = content[lang]
 
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
+  const [subjectSelect, setSubjectSelect] = useState('')
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  function handleSubjectSelect(e) {
+    const val = e.target.value
+    setSubjectSelect(val)
+    if (val !== c.otherOption) setForm(f => ({ ...f, subject: val }))
+    else setForm(f => ({ ...f, subject: '' }))
+  }
 
   function handleChange(e) {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }))
@@ -145,12 +212,8 @@ export default function ContactPage() {
 
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <div>
-              <motion.p {...fadeUp(0)} className="text-xs font-semibold tracking-[0.25em] uppercase text-white/30 mb-4">
-                {c.overline}
-              </motion.p>
-              <motion.h1 {...fadeUp(0.08)} className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight">
-                {c.h1a}<br />
-                <span className="text-white/30">{c.h1b}</span>
+              <motion.h1 {...fadeUp(0)} className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight">
+                {c.h1a} <span className="text-white/30">{c.h1b}</span>
               </motion.h1>
             </div>
             <motion.p {...fadeUp(0.18)} className="text-sm text-white/40 leading-relaxed max-w-xs lg:text-right lg:pb-2">
@@ -168,27 +231,6 @@ export default function ContactPage() {
             {/* Form */}
             <motion.div {...fadeUpView(0)}>
               <h2 className="text-2xl font-bold text-dark mb-10">{c.formHeading}</h2>
-
-              {/* Hızlı konu seçimi */}
-              <div className="mb-8">
-                <p className="text-xs font-bold tracking-[0.15em] uppercase text-slate-400 mb-4">{c.subjectsHeading}</p>
-                <div className="flex flex-wrap gap-2">
-                  {c.subjects.map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => setForm(f => ({ ...f, subject: s }))}
-                      className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${
-                        form.subject === s
-                          ? 'bg-dark text-white border-dark'
-                          : 'bg-white text-slate-500 border-slate-200 hover:border-slate-400 hover:text-dark'
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  ))}
-                </div>
-              </div>
 
               {sent ? (
                 <motion.div
@@ -229,18 +271,37 @@ export default function ContactPage() {
                         className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm text-dark placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-200"
                       />
                     </div>
+                    <div className="flex flex-col gap-2">
+                      <label className="text-xs font-semibold text-slate-500 tracking-wide">{c.fields.phone}</label>
+                      <input
+                        name="phone"
+                        type="tel"
+                        value={form.phone}
+                        onChange={handleChange}
+                        placeholder={c.fields.placeholder.phone}
+                        className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm text-dark placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-200"
+                      />
+                    </div>
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <label className="text-xs font-semibold text-slate-500 tracking-wide">{c.fields.subject}</label>
-                    <input
-                      name="subject"
-                      value={form.subject}
-                      onChange={handleChange}
-                      required
+                    <Dropdown
+                      options={c.subjects}
+                      value={subjectSelect}
+                      onChange={(val) => handleSubjectSelect({ target: { value: val } })}
                       placeholder={c.fields.placeholder.subject}
-                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm text-dark placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-200"
                     />
+                    {subjectSelect === c.otherOption && (
+                      <input
+                        name="subject"
+                        value={form.subject}
+                        onChange={handleChange}
+                        required
+                        placeholder={lang === 'en' ? 'Please specify...' : 'Lütfen belirtin...'}
+                        className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm text-dark placeholder:text-slate-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all duration-200"
+                      />
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-2">
@@ -309,14 +370,6 @@ export default function ContactPage() {
                       <Linkedin size={15} />
                     </div>
                     LinkedIn
-                    <ArrowUpRight size={13} className="text-slate-300 group-hover:text-dark transition-colors duration-200" />
-                  </a>
-                  <a href="https://instagram.com/hcdijital" target="_blank" rel="noopener noreferrer"
-                    className="group flex items-center gap-3 text-sm font-semibold text-slate-600 hover:text-dark transition-colors duration-200">
-                    <div className="w-9 h-9 rounded-xl border border-slate-200 flex items-center justify-center group-hover:border-slate-400 transition-colors duration-200">
-                      <Instagram size={15} />
-                    </div>
-                    Instagram
                     <ArrowUpRight size={13} className="text-slate-300 group-hover:text-dark transition-colors duration-200" />
                   </a>
                 </div>

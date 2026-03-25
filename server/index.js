@@ -21,25 +21,25 @@ const transporter = nodemailer.createTransport({
 })
 
 app.post('/api/contact', async (req, res) => {
-  const { name, email, subject, message } = req.body
+  const { name, email, phone, message } = req.body
 
-  if (!name || !email || !subject || !message) {
+  if (!name || !email || !message) {
     return res.status(400).json({ error: 'Tüm alanlar zorunludur.' })
   }
 
   try {
     await transporter.sendMail({
       from: `"${name}" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER,
+      to: 'info@hcdijital.com.tr',
       replyTo: email,
-      subject: `[HC Dijital] ${subject}`,
+      subject: `[HC Dijital] Yeni İletişim Formu - ${name}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
           <h2 style="color:#0c122d;">Yeni İletişim Formu Mesajı</h2>
           <table style="width:100%;border-collapse:collapse;">
             <tr><td style="padding:8px 0;color:#666;width:120px;">Ad Soyad:</td><td style="padding:8px 0;font-weight:600;">${name}</td></tr>
             <tr><td style="padding:8px 0;color:#666;">E-posta:</td><td style="padding:8px 0;font-weight:600;">${email}</td></tr>
-            <tr><td style="padding:8px 0;color:#666;">Konu:</td><td style="padding:8px 0;font-weight:600;">${subject}</td></tr>
+            <tr><td style="padding:8px 0;color:#666;">Telefon:</td><td style="padding:8px 0;font-weight:600;">${phone || '-'}</td></tr>
           </table>
           <hr style="margin:16px 0;border:none;border-top:1px solid #eee;" />
           <p style="color:#333;line-height:1.7;white-space:pre-wrap;">${message}</p>

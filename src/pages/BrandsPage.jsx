@@ -1,6 +1,7 @@
+import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLang } from '../context/LanguageContext'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
@@ -23,36 +24,43 @@ const brands = {
     {
       name: 'İstinye Üniversitesi',
       src: '/brands/istinye.webp',
+      url: 'https://www.istinye.edu.tr',
       description: 'İstanbul merkezli vakıf üniversitesi. Tıp fakültesi ve sağlık bilimleri programlarıyla HC Dijital çözümlerini akademik ve klinik süreçlerinde kullanmaktadır.',
     },
     {
       name: 'LIV Hospital',
       src: '/brands/liv-hospital.webp',
+      url: 'https://www.livhospital.com',
       description: 'JCI akreditasyonlu özel hastane grubu. Veri analitiği ve raporlama sistemleri alanında HC Dijital ile iş birliği yapmaktadır.',
     },
     {
       name: 'Medical Park',
       src: '/brands/medical-park.webp',
+      url: 'https://www.medicalpark.com.tr',
       description: 'Türkiye\'nin önde gelen özel hastane zincirlerinden biri. Klinik süreç yönetimi ve dijital dönüşüm projelerinde HC Dijital\'i tercih etmektedir.',
     },
     {
       name: 'MLP Care',
       src: '/brands/mlpcare.webp',
+      url: 'https://www.mlpcare.com',
       description: 'Geniş hastane ağıyla faaliyet gösteren sağlık grubu. Operasyonel verimlilik ve merkezi raporlama ihtiyaçları için HC Dijital platformlarını kullanmaktadır.',
     },
     {
       name: '5E Tasarım',
       src: '/brands/5e-tasarim.webp',
+      url: 'https://www.5etasarim.com.tr',
       description: 'Teknoloji odaklı tasarım ajansı. HC Dijital ile ortak projelerde kullanıcı deneyimi ve arayüz tasarımı konularında iş birliği yapmaktadır.',
     },
     {
       name: 'Cafrost',
       src: '/brands/cafrost.webp',
+      url: 'https://cafrost.de',
       description: 'Soğuk zincir çözümleri alanında faaliyet gösteren sektör kuruluşu. Spiral Freezer teknolojisi ve SCADA entegrasyonu için HC Dijital ile çalışmaktadır.',
     },
     {
       name: 'Brainco',
       src: '/brands/brainco.webp',
+      url: 'https://brainco.com.tr',
       description: 'Beyin-bilgisayar arayüzü ve nöroteknoloji alanında ürünler geliştiren inovasyon şirketi. Yapay zekâ entegrasyonu süreçlerinde HC Dijital ile iş ortaklığı yürütmektedir.',
     },
   ],
@@ -60,50 +68,133 @@ const brands = {
     {
       name: 'İstinye University',
       src: '/brands/istinye.webp',
+      url: 'https://www.istinye.edu.tr',
       description: 'Istanbul-based private university with a medical faculty and health sciences programs, using HC Digital solutions in academic and clinical processes.',
     },
     {
       name: 'LIV Hospital',
       src: '/brands/liv-hospital.webp',
+      url: 'https://www.livhospital.com',
       description: 'JCI-accredited private hospital group collaborating with HC Digital on data analytics and reporting systems.',
     },
     {
       name: 'Medical Park',
       src: '/brands/medical-park.webp',
+      url: 'https://www.medicalpark.com.tr',
       description: 'One of Turkey\'s leading private hospital chains, partnering with HC Digital for clinical process management and digital transformation projects.',
     },
     {
       name: 'MLP Care',
       src: '/brands/mlp-care.webp',
+      url: 'https://www.mlpcare.com',
       description: 'A healthcare group operating a wide hospital network, using HC Digital platforms for operational efficiency and centralized reporting needs.',
     },
     {
       name: '5E Design',
       src: '/brands/5e-tasarim.webp',
+      url: 'https://www.5etasarim.com.tr',
       description: 'Technology-focused design agency collaborating with HC Digital on joint projects covering user experience and interface design.',
     },
     {
       name: 'Cafrost',
       src: '/brands/cafrost.webp',
+      url: 'https://cafrost.de',
       description: 'A sector company specializing in cold chain solutions, working with HC Digital on Spiral Freezer technology and SCADA integration.',
     },
     {
       name: 'Brainco',
       src: '/brands/brainco.webp',
+      url: 'https://brainco.com.tr',
       description: 'An innovation company developing brain-computer interface and neurotechnology products, partnering with HC Digital on AI integration processes.',
     },
   ],
 }
 
+function BrandsMarquee({ brandList }) {
+  const trackRef = useRef(null)
+  const [paused, setPaused] = useState(false)
+  const speed = 0.6 // px per frame
+  const posRef = useRef(0)
+  const rafRef = useRef(null)
+
+  const CARD_WIDTH = 320 + 24 // w-80 + gap-6
+
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+    const half = track.scrollWidth / 2
+
+    const tick = () => {
+      if (!paused) {
+        posRef.current += speed
+        if (posRef.current >= half) posRef.current = 0
+        track.style.transform = `translateX(-${posRef.current}px)`
+      }
+      rafRef.current = requestAnimationFrame(tick)
+    }
+    rafRef.current = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [paused])
+
+  const shift = (dir) => {
+    posRef.current = Math.max(0, posRef.current + dir * CARD_WIDTH)
+  }
+
+  return (
+    <div className="relative">
+      {/* Sol fade */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
+      {/* Sağ fade */}
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
+
+      <div className="overflow-hidden" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+        <div ref={trackRef} className="flex gap-6 will-change-transform">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex gap-6 shrink-0" aria-hidden={copy === 1 || undefined}>
+              {brandList.map((brand, i) => (
+                <div key={i} className="shrink-0 w-80 bg-white border border-slate-200 rounded-2xl p-7 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col gap-5">
+                  <img src={brand.src} alt={brand.name} className="h-12 w-auto object-contain object-left" />
+                  <p className="text-sm text-slate-500 leading-relaxed">{brand.description}</p>
+                  {brand.url && (
+                    <a
+                      href={brand.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-dark transition-colors duration-200 mt-auto"
+                    >
+                      {brand.url.replace(/^https?:\/\/(www\.)?/, '')}
+                      <ArrowUpRight size={12} />
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Oklar */}
+      <div className="flex items-center justify-center gap-4 mt-10">
+        <button
+          onClick={() => shift(-1)}
+          className="btn-neon w-11 h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-dark hover:text-white hover:border-dark transition-all duration-200"
+        >
+          <ChevronLeft size={18} />
+        </button>
+        <button
+          onClick={() => shift(1)}
+          className="btn-neon w-11 h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-dark hover:text-white hover:border-dark transition-all duration-200"
+        >
+          <ChevronRight size={18} />
+        </button>
+      </div>
+    </div>
+  )
+}
+
 export default function BrandsPage() {
   const { lang } = useLang()
   const brandList = brands[lang]
-
-  // 4'lü satırlara böl
-  const rows = []
-  for (let i = 0; i < brandList.length; i += 4) {
-    rows.push(brandList.slice(i, i + 4))
-  }
 
   return (
     <div className="bg-white text-dark">
@@ -121,85 +212,38 @@ export default function BrandsPage() {
               {lang === 'en' ? 'Home' : 'Ana Sayfa'}
             </Link>
             <span>/</span>
-            <span className="text-white/60">{lang === 'en' ? 'Brands' : 'Markalar'}</span>
+            <span className="text-white/60">{lang === 'en' ? 'References' : 'Referanslar'}</span>
           </div>
 
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <div>
-              <motion.p {...fadeUp(0)} className="text-xs font-semibold tracking-[0.25em] uppercase text-white/30 mb-4">
-                {lang === 'en' ? 'Our Partners & References' : 'İş Ortaklarımız & Referanslarımız'}
-              </motion.p>
-              <motion.h1 {...fadeUp(0.08)} className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight">
+              <motion.h1 {...fadeUp(0)} className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight">
                 {lang === 'en' ? 'Brands We' : 'Birlikte'}<br />
                 <span className="text-white/30">{lang === 'en' ? 'Work With' : 'Çalıştığımız'}</span>
               </motion.h1>
             </div>
             <motion.p {...fadeUp(0.18)} className="text-sm text-white/40 leading-relaxed max-w-xs lg:text-right lg:pb-2">
               {lang === 'en'
-                ? 'Healthcare groups, hospitals, universities and technology companies that trust HC Digital.'
-                : 'HC Dijital\'e güvenen sağlık grupları, hastaneler, üniversiteler ve teknoloji şirketleri.'}
+                ? 'Companies, hospitals, health groups and universities that trust HC Digital.'
+                : 'HC Dijital\'e güvenen şirketler, hastaneler, sağlık grupları ve üniversiteler.'}
             </motion.p>
           </div>
         </div>
       </section>
 
       {/* ── Brands ── */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          {rows.map((row, ri) => (
-            <div key={ri}>
-              {/* Ayırıcı — ilk satırdan önce yok */}
-              {ri > 0 && <div className="my-16 md:my-20" />}
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12">
-                {row.map((brand, bi) => (
-                  <motion.div key={bi} {...fadeUpView(bi * 0.08 + ri * 0.05)} className="flex flex-col gap-5">
-                    {/* Logo */}
-                    <img
-                      src={brand.src}
-                      alt={brand.name}
-                      className="h-16 w-auto object-contain object-left"
-                    />
-                    {/* Açıklama */}
-                    <p className="text-sm text-slate-500 leading-relaxed">{brand.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+      <section className="py-20 md:py-28 overflow-hidden">
+        <BrandsMarquee brandList={brandList} />
       </section>
 
-      {/* ── CTA ── */}
+      {/* ── Bottom ── */}
       <section className="bg-slate-50 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">
-                {lang === 'en' ? 'Join the Ecosystem' : 'Ekosisteme Katılın'}
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-dark leading-snug max-w-lg">
-                {lang === 'en'
-                  ? 'Want to become one of our partners?'
-                  : 'Referanslarımız arasına katılmak ister misiniz?'}
-              </h2>
-              <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-md">
-                {lang === 'en'
-                  ? 'Let\'s schedule a meeting to explore how we can create value for your institution together.'
-                  : 'Kurumunuza nasıl değer katabileceğimizi keşfetmek için bir görüşme planlayalım.'}
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <Link to="/iletisim"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-dark text-white text-sm font-semibold hover:bg-primary transition-colors duration-300">
-                {lang === 'en' ? 'Get in Touch' : 'İletişime Geçin'} <ArrowUpRight size={15} />
-              </Link>
-              <Link to="/urunler"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-slate-300 text-dark text-sm font-semibold hover:border-dark transition-colors duration-200">
-                {lang === 'en' ? 'View Products' : 'Ürünleri İncele'}
-              </Link>
-            </div>
-          </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 flex justify-center">
+          <Link to="/"
+            className="btn-neon inline-flex items-center gap-2 px-8 py-4 rounded-full bg-dark text-white text-sm font-semibold hover:bg-primary transition-colors duration-300">
+            {lang === 'en' ? 'Back to Home' : 'Ana Sayfaya Dön'}
+            <ArrowUpRight size={15} />
+          </Link>
         </div>
       </section>
 

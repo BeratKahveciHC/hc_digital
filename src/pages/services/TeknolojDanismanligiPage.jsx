@@ -81,7 +81,7 @@ export default function TeknolojDanismanligiPage() {
 
   return (
     <div className="bg-white text-dark">
-      <Header white />
+      <Header solid />
 
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">

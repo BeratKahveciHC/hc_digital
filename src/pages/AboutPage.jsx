@@ -1,9 +1,68 @@
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import { useLang } from '../context/LanguageContext'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+
+function TypewriterNeon({ words }) {
+  const [display, setDisplay] = useState('')
+  const [wordIdx, setWordIdx] = useState(0)
+  const [typing, setTyping] = useState(true)
+
+  useEffect(() => {
+    const word = words[wordIdx]
+    let timeout
+    if (typing) {
+      if (display.length < word.length) {
+        timeout = setTimeout(() => setDisplay(word.slice(0, display.length + 1)), 80)
+      } else {
+        timeout = setTimeout(() => setTyping(false), 1600)
+      }
+    } else {
+      if (display.length > 0) {
+        timeout = setTimeout(() => setDisplay(display.slice(0, -1)), 45)
+      } else {
+        setWordIdx((i) => (i + 1) % words.length)
+        setTyping(true)
+      }
+    }
+    return () => clearTimeout(timeout)
+  }, [display, typing, wordIdx, words])
+
+  return (
+    <span style={{
+      color: '#4EA8FF',
+      textShadow: '0 0 12px rgba(78,168,255,0.9), 0 0 30px rgba(78,168,255,0.6), 0 0 60px rgba(78,168,255,0.3)',
+    }}>
+      {display}<span className="animate-pulse">|</span>
+    </span>
+  )
+}
+
+function CountUp({ target, suffix, format, delay = 0, active = true }) {
+  const [value, setValue] = useState(0)
+  const started = useRef(false)
+  useEffect(() => {
+    if (!active || started.current) return
+    started.current = true
+    const timer = setTimeout(() => {
+      const duration = 1800
+      const start = performance.now()
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1)
+        const eased = 1 - Math.pow(1 - progress, 3)
+        setValue(eased * target)
+        if (progress < 1) requestAnimationFrame(tick)
+        else setValue(target)
+      }
+      requestAnimationFrame(tick)
+    }, delay)
+    return () => clearTimeout(timer)
+  }, [target, delay, active])
+  return <>{format(value)}{suffix}</>
+}
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -23,7 +82,8 @@ const content = {
     breadcrumb: 'Hakkımızda',
     overline: 'HC Dijital',
     h1a: 'Her sektör için',
-    h1b: 'teknoloji üretiyoruz.',
+    h1typewriter: ['değer katan', 'fark yaratan', 'dönüştüren', 'güçlendiren'],
+    h1b: 'teknolojiler üretiyoruz.',
     heroParagraph: 'İşletmelerin ve kurumların daha verimli çalışmasını, daha iyi kararlar almasını ve rekabette öne geçmesini sağlayan dijital ürünler geliştiriyoruz.',
 
     philosophyOverline: 'Felsefemiz',
@@ -64,8 +124,9 @@ const content = {
   en: {
     breadcrumb: 'About',
     overline: 'HC Digital',
-    h1a: 'We build technology',
-    h1b: 'for every sector.',
+    h1a: 'For every sector,',
+    h1typewriter: ['value-creating', 'transformative', 'empowering', 'impactful'],
+    h1b: 'technologies we build.',
     heroParagraph: 'We develop digital products that help businesses and institutions work more efficiently, make better decisions, and stay ahead of the competition.',
 
     philosophyOverline: 'Our Philosophy',
@@ -105,9 +166,27 @@ const content = {
   },
 }
 
+const aboutStatsData = [
+  { target: 40,  suffix: '+',  format: (n) => String(Math.floor(n)) },
+  { target: 8,   suffix: '+',  format: (n) => String(Math.floor(n)) },
+  { target: 15,  suffix: 'K+', format: (n) => String(Math.floor(n)) },
+  { target: 80,  suffix: '%',  format: (n) => String(Math.floor(n)) },
+]
+
 export default function AboutPage() {
   const { lang } = useLang()
   const c = content[lang]
+  const statsRef = useRef(null)
+  const [statsVisible, setStatsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setStatsVisible(true) },
+      { threshold: 0.3 }
+    )
+    if (statsRef.current) observer.observe(statsRef.current)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div className="bg-white text-dark">
@@ -130,11 +209,9 @@ export default function AboutPage() {
 
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <div>
-              <motion.p {...fadeUp(0)} className="text-xs font-semibold tracking-[0.25em] uppercase text-white/30 mb-4">
-                {c.overline}
-              </motion.p>
-              <motion.h1 {...fadeUp(0.08)} className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight">
+              <motion.h1 {...fadeUp(0)} className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-snug tracking-tight">
                 {c.h1a}<br />
+                <TypewriterNeon words={c.h1typewriter} /><br />
                 <span className="text-white/30">{c.h1b}</span>
               </motion.h1>
             </div>
@@ -181,14 +258,10 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          {/* Üst sıra — 3 kişi */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-5">
-            {[
-              { name: 'Ersan Biçkioğlu',   role: lang === 'en' ? 'Founder'          : 'Kurucu',            img: '/team/ersan-bickioglu.webp' },
-              { name: 'Dr. Hasan Oğuz',    role: lang === 'en' ? 'Advisor'          : 'Danışman',          img: '/team/hasan-oguz.webp' },
-              { name: 'Batuhan Küçükkısa', role: lang === 'en' ? 'Full Stack Developer': 'Full Stack Developer', img: '/team/batuhan-kucukkisa.webp' },
-            ].map((p, i) => (
-              <motion.div key={i} {...fadeUpView(i * 0.07)} className="flex flex-col gap-4">
+          {/* Sıra 1 — Ersan */}
+          <div className="flex justify-center mb-5">
+            {[{ name: 'Ersan Biçkioğlu', role: 'Kurucu / Founder', img: '/team/ersan-bickioglu.webp' }].map((p, i) => (
+              <motion.div key={i} {...fadeUpView(0)} className="flex flex-col gap-4 w-80">
                 <div className="aspect-square w-full overflow-hidden rounded-2xl bg-slate-100">
                   <img src={p.img} alt={p.name} className="w-full h-full object-cover object-top" />
                 </div>
@@ -200,15 +273,31 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Alt sıra — 4 kişi */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
+          {/* Sıra 2 — Hasan */}
+          <div className="flex justify-center mb-5">
+            {[{ name: 'Dr. Hasan Oğuz', role: 'Danışman / Advisor', img: '/team/hasan-oguz.webp' }].map((p, i) => (
+              <motion.div key={i} {...fadeUpView(0.07)} className="flex flex-col gap-4 w-80">
+                <div className="aspect-square w-full overflow-hidden rounded-2xl bg-slate-100">
+                  <img src={p.img} alt={p.name} className="w-full h-full object-cover object-top" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-dark leading-snug">{p.name}</p>
+                  <p className="text-xs text-slate-400 mt-1">{p.role}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Sıra 3 — 5 kişi */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
             {[
-              { name: 'Deniz Yetim',       role: 'Full Stack Developer',                                   img: '/team/deniz-yetim.webp' },
-              { name: 'Zeren Korkmaz',     role: lang === 'en' ? 'AI Engineer'      : 'Yapay Zekâ Mühendisi', img: '/team/zeren-korkmaz.webp' },
-              { name: 'Berat Kaan Seven',  role: lang === 'en' ? 'Product Manager'  : 'Ürün Yöneticisi',      img: '/team/berat-kaan-seven.webp' },
-              { name: 'Berat Kahveci',     role: 'Full Stack Developer',                                   img: '/team/berat-kahveci.webp' },
+              { name: 'Batuhan Küçükkısa', role: 'Yazılım Geliştirme Uzmanı / Full Stack Developer', img: '/team/batuhan-kucukkisa.webp' },
+              { name: 'Deniz Yetim',       role: 'Yazılım Geliştirme Uzmanı / Full Stack Developer', img: '/team/deniz-yetim.webp' },
+              { name: 'Zeren Korkmaz',     role: 'Yazılım Geliştirme Uzmanı / Artificial Intelligence Developer',          img: '/team/zeren-korkmaz.webp' },
+              { name: 'Berat Kaan Seven',  role: 'Ürün ve Proje Müdürü / Product Manager',           img: '/team/berat-kaan-seven.webp' },
+              { name: 'Berat Kahveci',     role: 'Yazılım Geliştirme Uzmanı / Full Stack Developer', img: '/team/berat-kahveci.webp' },
             ].map((p, i) => (
-              <motion.div key={i} {...fadeUpView(i * 0.07 + 0.15)} className="flex flex-col gap-4">
+              <motion.div key={i} {...fadeUpView(i * 0.07 + 0.14)} className="flex flex-col gap-4">
                 <div className="aspect-square w-full overflow-hidden rounded-2xl bg-slate-100">
                   <img src={p.img} alt={p.name} className="w-full h-full object-cover object-top" />
                 </div>
@@ -224,30 +313,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── Full-width Statement ── */}
-      <section className="bg-dark py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.p
-            {...fadeUpView()}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-snug tracking-tight max-w-4xl"
-          >
-            {c.statementBg}
-          </motion.p>
-        </div>
-      </section>
-
       {/* ── Misyon & Vizyon ── */}
       <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div {...fadeUpView()} className="mb-16">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">{c.missionOverline}</p>
-          </motion.div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-slate-100">
             {/* Misyon */}
             <motion.div {...fadeUpView(0)} className="bg-white pr-0 lg:pr-16 pb-16 lg:pb-0 flex flex-col gap-6">
-              <span className="text-8xl font-black text-slate-100 leading-none select-none">01</span>
               <div className="flex flex-col gap-4">
-                <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary">{c.mission.label}</p>
+                <p className="text-2xl font-bold text-primary">{c.mission.label}</p>
                 <h2 className="text-2xl md:text-3xl font-bold text-dark leading-snug">{c.mission.heading}</h2>
                 <p className="text-base text-slate-500 leading-relaxed">{c.mission.text}</p>
               </div>
@@ -255,9 +328,8 @@ export default function AboutPage() {
 
             {/* Vizyon */}
             <motion.div {...fadeUpView(0.1)} className="bg-white pl-0 lg:pl-16 pt-16 lg:pt-0 flex flex-col gap-6">
-              <span className="text-8xl font-black text-slate-100 leading-none select-none">02</span>
               <div className="flex flex-col gap-4">
-                <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary">{c.vision.label}</p>
+                <p className="text-2xl font-bold text-primary">{c.vision.label}</p>
                 <h2 className="text-2xl md:text-3xl font-bold text-dark leading-snug">{c.vision.heading}</h2>
                 <p className="text-base text-slate-500 leading-relaxed">{c.vision.text}</p>
               </div>
@@ -267,7 +339,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── İstatistikler ── */}
-      <section className="bg-slate-50 border-t border-slate-100 py-20 md:py-28">
+      <section ref={statsRef} className="bg-slate-50 py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.p {...fadeUpView()} className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-12">
             {c.statsOverline}
@@ -275,43 +347,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {c.stats.map((s, i) => (
               <motion.div key={i} {...fadeUpView(i * 0.08)}>
-                <p className="text-5xl md:text-6xl font-black text-dark tracking-tight leading-none mb-3">{s.value}</p>
+                <p className="text-5xl md:text-6xl font-black text-dark tracking-tight leading-none mb-3">
+                  <CountUp {...aboutStatsData[i]} delay={i * 150} active={statsVisible} />
+                </p>
                 <p className="text-sm text-slate-500 font-medium">{s.label}</p>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className="py-24 md:py-32 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
-            <div>
-              <motion.p {...fadeUpView()} className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-5">
-                {c.ctaOverline}
-              </motion.p>
-              <motion.h2 {...fadeUpView(0.06)} className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-tight tracking-tight whitespace-pre-line">
-                {c.ctaHeading}
-              </motion.h2>
-              <motion.p {...fadeUpView(0.12)} className="mt-6 text-base text-slate-500 leading-relaxed max-w-lg">
-                {c.ctaText}
-              </motion.p>
-            </div>
-            <motion.div {...fadeUpView(0.16)} className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <Link
-                to="/iletisim"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-dark text-white text-sm font-semibold hover:bg-primary transition-colors duration-300"
-              >
-                {c.ctaBtn1} <ArrowUpRight size={15} />
-              </Link>
-              <Link
-                to="/urunler"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-slate-300 text-dark text-sm font-semibold hover:border-dark transition-colors duration-200"
-              >
-                {c.ctaBtn2}
-              </Link>
-            </motion.div>
           </div>
         </div>
       </section>

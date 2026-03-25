@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { products } from '../../data/products'
 import { useLang } from '../../context/LanguageContext'
 import { i18n } from '../../data/i18n'
@@ -8,116 +9,161 @@ import { i18n } from '../../data/i18n'
 export default function Products() {
   const { lang } = useLang()
   const t = i18n[lang].productsSection
+  const [active, setActive] = useState(0)
+
+  const prev = () => setActive((i) => (i - 1 + products.length) % products.length)
+  const next = () => setActive((i) => (i + 1) % products.length)
+
+  const getPos = (i) => {
+    let diff = i - active
+    if (diff > products.length / 2) diff -= products.length
+    if (diff < -products.length / 2) diff += products.length
+    if (diff === 0)  return 'center'
+    if (diff === 1)  return 'right'
+    if (diff === 2)  return 'far-right'
+    if (diff === -1) return 'left'
+    if (diff === -2) return 'far-left'
+    return 'hidden'
+  }
 
   return (
-    <section className="relative bg-white py-24" id="urunler">
+    <section className="relative bg-white py-24 overflow-hidden" id="urunler">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* ── Başlık ── */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">
-              {t.overline}
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-dark leading-[1.1] tracking-tight max-w-lg">
-              {t.h2Line1} <br /> {t.h2Line2}
-            </h2>
-          </div>
+        <div className="flex flex-col items-center text-center mb-16">
+          <h2
+            className="text-5xl md:text-9xl font-black leading-tight mb-4 pt-2"
+            style={{
+              background: 'linear-gradient(to right, #0c122d 0%, #1b5fc1 40%, #4EA8FF 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            {t.overline}
+          </h2>
+          <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
+            {t.h2Line1} {t.h2Line2}
+          </p>
           <Link
             to="/urunler"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 border-b border-slate-300 pb-0.5 hover:text-dark hover:border-dark transition-colors duration-200 self-start md:self-auto"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 border-b border-slate-300 pb-0.5 hover:text-dark hover:border-dark transition-colors duration-200"
           >
             {t.allProducts}
             <ArrowUpRight size={14} />
           </Link>
         </div>
 
-        {/* ── Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product, i) => (
-            <ProductCard key={product.id} product={product} index={i} lang={lang} viewLabel={t.viewProduct} />
-          ))}
-        </div>
+        {/* ── Kart Fanı ── */}
+        <div className="relative flex items-center justify-center" style={{ height: '680px' }}>
 
-      </div>
+          {products.map((product, i) => {
+            const pos = getPos(i)
+            if (pos === 'hidden') return null
+            const p = lang === 'en' && product.en ? { ...product, ...product.en } : product
 
-      {/* Alt geçiş — Products (white) → CTA (slate-100) */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-slate-100 to-transparent pointer-events-none" />
-    </section>
-  )
-}
+            const variants = {
+              'center':     { x: '0%',   rotate: 0,   scale: 1,    filter: 'blur(0px)',   opacity: 1,    zIndex: 20 },
+              'left':       { x: '-58%', rotate: -12, scale: 0.87, filter: 'none', opacity: 0.85, zIndex: 15 },
+              'far-left':   { x: '-95%', rotate: -22, scale: 0.74, filter: 'none', opacity: 0.65, zIndex: 10 },
+              'right':      { x: '58%',  rotate: 12,  scale: 0.87, filter: 'none', opacity: 0.85, zIndex: 15 },
+              'far-right':  { x: '95%',  rotate: 22,  scale: 0.74, filter: 'none', opacity: 0.65, zIndex: 10 },
+            }
 
-function ProductCard({ product, index, lang, viewLabel }) {
-  const p = lang === 'en' && product.en ? { ...product, ...product.en } : product
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.35, delay: index * 0.04, ease: 'easeOut' }}
-    >
-      <Link
-        to={`/urunler/${product.slug}`}
-        className="group flex flex-col rounded-3xl overflow-hidden border border-slate-200 hover:border-slate-300 bg-white hover:shadow-xl hover:shadow-slate-200/70 transition-all duration-300 h-full"
-      >
-        {/* Görsel */}
-        <div className="relative w-full aspect-video overflow-hidden bg-slate-100">
-          {product.image ? (
-            <img
-              src={product.image}
-              alt={p.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          ) : (
-            <div className="w-full h-full bg-slate-100 flex items-center justify-center">
-              <span className="text-slate-300 text-6xl font-black select-none">
-                {p.title.slice(0, 2).toUpperCase()}
-              </span>
-            </div>
-          )}
-
-          {/* Kategori etiketi */}
-          <div className="absolute top-4 left-4">
-            <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[10px] font-bold tracking-widest text-dark uppercase shadow-sm">
-              {p.category}
-            </span>
-          </div>
-
-          {/* Ok ikonu */}
-          <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-2 group-hover:translate-x-0 shadow-sm">
-            <ArrowUpRight size={14} className="text-dark" />
-          </div>
-        </div>
-
-        {/* İçerik */}
-        <div className="flex flex-col flex-1 p-7">
-          <h3 className="text-lg font-bold text-dark mb-2.5 group-hover:text-primary transition-colors duration-200">
-            {p.title}
-          </h3>
-          <p className="text-sm text-slate-500 leading-relaxed flex-1">
-            {p.description}
-          </p>
-
-          {/* Etiketler */}
-          <div className="flex flex-wrap gap-2 mt-5">
-            {p.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-medium text-slate-500"
+            return (
+              <motion.div
+                key={product.id}
+                animate={variants[pos]}
+                transition={{ duration: 0.25, ease: 'easeInOut' }}
+                className="absolute w-80 md:w-130 cursor-pointer"
+                onClick={() => pos !== 'center' && setActive(i)}
+                style={{ transformOrigin: 'bottom center' }}
               >
-                {tag}
-              </span>
+                <Link
+                  to={pos === 'center' ? `/urunler/${product.slug}` : '#'}
+                  onClick={(e) => pos !== 'center' && e.preventDefault()}
+                  className="group block rounded-3xl overflow-hidden bg-white"
+                  style={pos === 'center' ? {
+                    boxShadow: '0 0 0 1.5px rgba(78,168,255,0.5), 0 20px 60px rgba(0,0,0,0.15), 0 0 60px rgba(78,168,255,0.35), 0 0 120px rgba(78,168,255,0.15)'
+                  } : {
+                    boxShadow: '0 8px 30px rgba(0,0,0,0.12)'
+                  }}
+                >
+                  {/* Görsel */}
+                  <div className="relative w-full aspect-video overflow-hidden bg-slate-800">
+                    {product.image ? (
+                      <img
+                        src={product.image}
+                        alt={p.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="text-white/20 text-6xl font-black select-none">
+                          {p.title.slice(0, 2).toUpperCase()}
+                        </span>
+                      </div>
+                    )}
+                    <div className="absolute top-4 left-4">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[10px] font-bold tracking-widest text-dark uppercase shadow-sm">
+                        {p.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* İçerik */}
+                  <div className="p-7">
+                    <h3 className="text-lg font-bold text-dark mb-2">
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">
+                      {p.tagline}
+                    </p>
+                    {pos === 'center' && (
+                      <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                        {t.viewProduct}
+                        <ArrowUpRight size={14} />
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* ── Navigasyon ── */}
+        <div className="flex items-center justify-center gap-6 mt-10">
+          <button
+            onClick={prev}
+            className="btn-neon w-11 h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-dark hover:text-white hover:border-dark transition-all duration-200"
+          >
+            <ChevronLeft size={18} />
+          </button>
+
+          <div className="flex items-center gap-2">
+            {products.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === active ? 'w-6 h-2 bg-primary' : 'w-2 h-2 bg-slate-200 hover:bg-slate-300'
+                }`}
+                style={i === active ? { boxShadow: '0 0 8px rgba(78,168,255,0.8), 0 0 20px rgba(78,168,255,0.4)' } : {}}
+              />
             ))}
           </div>
 
-          {/* Alt link */}
-          <div className="mt-5 pt-5 border-t border-slate-100 flex items-center gap-2 text-sm font-semibold text-slate-400 group-hover:text-primary transition-colors duration-200">
-            {viewLabel}
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
-          </div>
+          <button
+            onClick={next}
+            className="btn-neon w-11 h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-dark hover:text-white hover:border-dark transition-all duration-200"
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
-      </Link>
-    </motion.div>
+
+      </div>
+    </section>
   )
 }

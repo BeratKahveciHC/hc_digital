@@ -77,7 +77,7 @@ export default function AirxIkysPage() {
 
   return (
     <div className="bg-white text-dark">
-      <Header white />
+      <Header solid />
 
       {/* ── Intro ── */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-20">

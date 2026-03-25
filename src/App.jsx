@@ -33,7 +33,7 @@ function App() {
             <Route path="/urunler/:slug" element={<ProductDetailPage />} />
             <Route path="/servisler" element={<ServicesPage />} />
             <Route path="/servisler/:slug" element={<ServiceDetailPage />} />
-            <Route path="/markalar" element={<BrandsPage />} />
+            <Route path="/referanslar" element={<BrandsPage />} />
             <Route path="/hakkimizda" element={<AboutPage />} />
             <Route path="/iletisim" element={<ContactPage />} />
             <Route path="/kvkk" element={<KvkkPage />} />

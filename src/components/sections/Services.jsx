@@ -43,22 +43,28 @@ export default function Services() {
   }
 
   return (
-    <section className="bg-white py-24 overflow-hidden" id="servisler">
+    <section className="bg-white py-24" id="servisler">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* ── Başlık ── */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-          <div>
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">
-              {t.overline}
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-dark leading-[1.1] tracking-tight max-w-lg">
-              {t.h2}
-            </h2>
-          </div>
+        <div className="flex flex-col items-center text-center">
+          <h2
+            className="text-5xl md:text-9xl font-black leading-tight mb-4 pt-2"
+            style={{
+              background: 'linear-gradient(to right, #0c122d 0%, #1b5fc1 40%, #4EA8FF 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            {t.overline}
+          </h2>
+          <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
+            {t.h2}
+          </p>
 
           {/* Ok butonlar */}
-          <div className="hidden md:flex items-center gap-2 shrink-0">
+          <div className="hidden md:flex items-center gap-2 mt-8">
             <button
               onClick={() => scroll(-1)}
               className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all duration-200 ${
@@ -87,38 +93,30 @@ export default function Services() {
       {/* ── Kayan Kartlar ── */}
       <div
         ref={trackRef}
-        className="flex gap-5 overflow-x-auto pb-4"
-        style={{
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-          scrollBehavior: 'smooth',
-          paddingLeft: 'max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem))',
-          paddingRight: '1.5rem',
-        }}
+        className="flex gap-4 overflow-x-auto pb-4 mt-14"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'smooth', paddingLeft: '24px' }}
       >
         {t.items.map((service, i) => {
           const Icon = serviceIcons[i]
           return (
             <div
               key={i}
-              className="group shrink-0 w-96 bg-slate-50 hover:bg-white border border-slate-200 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-200/80 rounded-3xl p-9 flex flex-col justify-between transition-all duration-300 select-none"
+              className="group shrink-0 w-80 lg:w-[calc((100vw-96px)/4)] bg-dark hover:bg-primary/90 border border-white/8 hover:border-primary rounded-3xl p-8 lg:p-10 flex flex-col justify-between transition-all duration-300 select-none"
             >
               <div>
-                {/* İkon */}
-                <div className="w-12 h-12 rounded-2xl bg-primary/8 border border-primary/12 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-white/8 border border-white/12 flex items-center justify-center text-sky mb-6 group-hover:bg-white/15 group-hover:border-white/20 transition-all duration-300">
                   <Icon size={20} />
                 </div>
-
-                <h3 className="text-xl font-bold text-dark mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  {service.description}
-                </p>
+                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{service.description}</p>
               </div>
-
-              {/* Dekoratif numara */}
-              <div className="mt-10 text-6xl font-black text-slate-100 leading-none select-none group-hover:text-slate-200 transition-colors duration-300">
+              <div
+                className="mt-10 text-6xl font-black leading-none select-none transition-all duration-300"
+                style={{
+                  color: 'rgba(255,255,255,1)',
+                  textShadow: '0 0 12px rgba(78,168,255,0.9), 0 0 30px rgba(78,168,255,0.5), 0 0 60px rgba(78,168,255,0.3)',
+                }}
+              >
                 0{i + 1}
               </div>
             </div>
@@ -128,35 +126,28 @@ export default function Services() {
         {/* Discovery kartı */}
         <Link
           to="/servisler"
-          className="group shrink-0 w-80 bg-dark hover:bg-primary rounded-3xl p-9 flex flex-col justify-between transition-colors duration-300"
+          className="group shrink-0 w-80 lg:w-[calc((100vw-96px)/4)] bg-primary hover:bg-sky rounded-3xl p-8 lg:p-10 flex flex-col justify-between transition-colors duration-300"
         >
           <div>
             <h3 className="text-2xl font-bold text-white leading-snug mb-5" style={{ whiteSpace: 'pre-line' }}>
               {t.discoveryTitle}
             </h3>
-            <p className="text-sm text-white/50 leading-relaxed">
-              {t.discoveryDesc}
-            </p>
+            <p className="text-sm text-white/60 leading-relaxed">{t.discoveryDesc}</p>
           </div>
-          <div className="mt-10 flex items-center gap-2 text-sm font-semibold text-white/60 group-hover:text-white transition-colors duration-200">
+          <div className="mt-10 flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-white transition-colors duration-200">
             <span>{t.discoveryLink}</span>
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
           </div>
         </Link>
-
-        {/* Sağ boşluk */}
-        <div className="shrink-0 w-6 lg:w-12" />
+        <div className="shrink-0 w-6" />
       </div>
 
       {/* ── Scroll çizgisi ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 mt-8">
+      <div className="mt-8 px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="relative h-0.5 bg-slate-100 rounded-full overflow-hidden">
           <div
             className="absolute inset-y-0 left-0 right-0 bg-primary rounded-full origin-left"
-            style={{
-              transform: `scaleX(${scrollProgress})`,
-              willChange: 'transform',
-            }}
+            style={{ transform: `scaleX(${scrollProgress})`, willChange: 'transform' }}
           />
         </div>
       </div>

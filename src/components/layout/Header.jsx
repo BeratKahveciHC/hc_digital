@@ -1,11 +1,34 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Globe } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useLang } from '../../context/LanguageContext'
 import { i18n } from '../../data/i18n'
 
-export default function Header({ white = false }) {
+function FlagTR({ size = 20 }) {
+  return (
+    <svg width={size} height={size * 0.667} viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2 }}>
+      <rect width="30" height="20" fill="#E30A17" />
+      <circle cx="12" cy="10" r="5.5" fill="white" />
+      <circle cx="13.5" cy="10" r="4.3" fill="#E30A17" />
+      <polygon points="19,10 21.5,6.8 21.5,13.2" fill="white" transform="rotate(-20,19,10)" />
+    </svg>
+  )
+}
+
+function FlagGB({ size = 20 }) {
+  return (
+    <svg width={size} height={size * 0.667} viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2 }}>
+      <rect width="60" height="40" fill="#012169" />
+      <path d="M0,0 L60,40 M60,0 L0,40" stroke="white" strokeWidth="8" />
+      <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" strokeWidth="4" />
+      <path d="M30,0 V40 M0,20 H60" stroke="white" strokeWidth="12" />
+      <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" strokeWidth="7" />
+    </svg>
+  )
+}
+
+export default function Header({ solid = false }) {
   const { pathname } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -14,7 +37,6 @@ export default function Header({ white = false }) {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80)
-    // Mobil tarayıcıların yükleme sırasında fırlattığı sahte scroll event'lerini atlamak için kısa gecikme
     const timer = setTimeout(() => {
       window.addEventListener('scroll', handleScroll, { passive: true })
     }, 350)
@@ -36,29 +58,23 @@ export default function Header({ white = false }) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          white
-            ? scrolled
-              ? 'bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm'
-              : 'bg-white border-b border-slate-100'
-            : scrolled
-              ? 'bg-dark/80 backdrop-blur-md border-b border-white/10'
-              : 'bg-transparent'
+          solid || scrolled ? 'bg-dark border-b border-white/10' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 md:h-28">
 
             {/* ── Logo ── */}
             <Link to="/" className="shrink-0">
               <img
                 src="/logos/logo.webp"
                 alt="HC Dijital"
-                className={`h-35 w-auto object-contain transition-all duration-300 ${white ? '' : 'brightness-0 invert'}`}
+                className="h-10 md:h-16 w-auto object-contain brightness-0 invert transition-all duration-300"
               />
             </Link>
 
             {/* ── Sağ Alan: Nav + Language + CTA ── */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
 
               {/* Nav */}
               <nav className="hidden md:flex items-center gap-1">
@@ -68,69 +84,62 @@ export default function Header({ white = false }) {
                     <Link
                       key={link.href}
                       to={link.href}
-                      className={`relative px-4 py-2.5 rounded-lg text-[14px] font-medium transition-all duration-200 group ${
-                        white
-                          ? active ? 'text-dark' : 'text-slate-500 hover:text-dark hover:bg-slate-50'
-                          : active ? 'text-white' : 'text-white/70 hover:text-white hover:bg-white/8'
+                      className={`relative px-5 py-3 rounded-lg text-[16px] font-medium transition-all duration-200 group ${
+                        active ? 'text-white' : 'text-white/70 hover:text-white hover:bg-white/8'
                       }`}
                     >
                       {link.label}
-                      <span className={`absolute bottom-1.5 left-4 right-4 h-[1.5px] transition-transform duration-300 origin-left rounded-full ${white ? 'bg-dark/40' : 'bg-white/50'} ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                      <span className={`absolute bottom-1.5 left-5 right-5 h-[1.5px] transition-transform duration-300 origin-left rounded-full bg-white/50 ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
                     </Link>
                   ) : (
                     <a
                       key={link.href}
                       href={link.href}
-                      className={`relative px-4 py-2.5 rounded-lg text-[14px] font-medium transition-all duration-200 group ${
-                        white ? 'text-slate-500 hover:text-dark hover:bg-slate-50' : 'text-white/70 hover:text-white hover:bg-white/8'
-                      }`}
+                      className="relative px-5 py-3 rounded-lg text-[16px] font-medium transition-all duration-200 group text-white/70 hover:text-white hover:bg-white/8"
                     >
                       {link.label}
-                      <span className={`absolute bottom-1.5 left-4 right-4 h-[1.5px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full ${white ? 'bg-dark/40' : 'bg-white/50'}`} />
+                      <span className="absolute bottom-1.5 left-5 right-5 h-[1.5px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full bg-white/50" />
                     </a>
                   )
                 })}
               </nav>
 
               {/* Dikey ayırıcı */}
-              <div className={`hidden md:block w-px h-5 mx-1 ${white ? 'bg-slate-200' : 'bg-white/15'}`} />
+              <div className="hidden md:block w-px h-6 mx-2 bg-white/15" />
 
               {/* Dil seçici */}
               <button
                 onClick={() => setLang(lang === 'tr' ? 'en' : 'tr')}
-                className={`hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-bold tracking-wider uppercase transition-colors ${
-                  white ? 'text-dark hover:bg-slate-100' : 'text-white/70 hover:text-white hover:bg-white/10'
-                }`}
+                className="hidden md:flex items-center gap-2 px-3 py-2 rounded-lg text-[14px] font-bold tracking-wider uppercase transition-colors text-white/70 hover:text-white hover:bg-white/10"
                 aria-label="Dil değiştir"
               >
-                <Globe size={15} />
+                {lang === 'tr' ? <FlagTR size={22} /> : <FlagGB size={22} />}
                 {lang}
               </button>
 
               {/* CTA Butonu */}
               <Link
                 to="/iletisim"
-                className={`hidden md:inline-flex items-center px-6 py-2.5 rounded-full text-[14px] font-semibold shadow-sm transition-all duration-200 hover:-translate-y-0.5 ${
-                  white ? 'bg-dark text-white hover:bg-primary' : 'bg-white text-dark hover:bg-white/90'
-                }`}
+                className="btn-neon hidden md:inline-flex items-center px-7 py-3 rounded-full text-[16px] font-semibold transition-all duration-200 hover:-translate-y-0.5 bg-white text-dark hover:bg-white/90"
+                style={{ boxShadow: '0 0 20px rgba(78,168,255,0.8), 0 0 60px rgba(78,168,255,0.5), 0 0 100px rgba(78,168,255,0.25)' }}
               >
                 {t.headerCta}
               </Link>
 
-              {/* Mobil dil değiştirici — Globe ikonu */}
+              {/* Mobil dil değiştirici */}
               <button
                 onClick={() => setLang(lang === 'tr' ? 'en' : 'tr')}
-                className={`md:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-bold tracking-wider uppercase transition-colors ${white ? 'text-dark hover:bg-slate-100' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+                className="md:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-bold tracking-wider uppercase transition-colors text-white/70 hover:text-white hover:bg-white/10"
                 aria-label="Dil değiştir"
               >
-                <Globe size={15} />
+                {lang === 'tr' ? <FlagTR size={18} /> : <FlagGB size={18} />}
                 {lang}
               </button>
 
               {/* Mobil hamburger */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className={`md:hidden w-10 h-10 flex items-center justify-center rounded-xl transition-colors ${white ? 'text-dark hover:bg-slate-100' : 'text-white hover:bg-white/10'}`}
+                className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl transition-colors text-white hover:bg-white/10"
                 aria-label="Menüyü aç"
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -155,7 +164,6 @@ export default function Header({ white = false }) {
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Tam ekran menü paneli */}
             <motion.div
               key="panel"
               initial={{ opacity: 0, y: -24 }}
@@ -164,7 +172,6 @@ export default function Header({ white = false }) {
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="fixed inset-0 z-50 bg-dark flex flex-col md:hidden"
             >
-              {/* Panel başlık */}
               <div className="flex items-center justify-between px-6 h-20 border-b border-white/8">
                 <img src="/logos/logo.webp" alt="HC Dijital" className="h-24 w-auto object-contain brightness-0 invert" />
                 <button
@@ -175,9 +182,8 @@ export default function Header({ white = false }) {
                 </button>
               </div>
 
-              {/* Linkler */}
               <nav className="flex flex-col px-6 gap-1 flex-1 justify-end pb-10">
-                {t.nav.map((link, i) => {
+                {t.nav.map((link) => {
                   const active = link.internal && pathname === link.href
                   return link.internal ? (
                     <Link
@@ -201,7 +207,6 @@ export default function Header({ white = false }) {
                 })}
               </nav>
 
-              {/* Alt CTA */}
               <div className="px-5 pb-8 pt-4 border-t border-white/8">
                 <Link
                   to="/iletisim"

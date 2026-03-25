@@ -69,7 +69,9 @@ export default function ProductsPage() {
                 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight"
               >
                 {tp.h1Line1}<br />
-                <span className="text-white/30">{tp.h1Line2}</span>
+                <span style={{ color: '#4EA8FF', textShadow: '0 0 20px rgba(78,168,255,0.8), 0 0 50px rgba(78,168,255,0.4)' }}>
+                  {tp.h1Line2}
+                </span>
               </motion.h1>
             </div>
 
@@ -98,8 +100,9 @@ export default function ProductsPage() {
                 className={`px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 ${
                   activeIndex === idx
                     ? 'bg-dark text-white border-dark'
-                    : 'bg-white text-slate-500 border-slate-200 hover:border-slate-300 hover:text-dark'
+                    : 'bg-white text-slate-500 border-slate-200 hover:border-sky hover:text-dark'
                 }`}
+                style={activeIndex === idx ? { boxShadow: '0 0 12px rgba(78,168,255,0.5), 0 0 30px rgba(78,168,255,0.2)' } : {}}
               >
                 {cat}
                 {idx === 0 && (
@@ -125,7 +128,7 @@ export default function ProductsPage() {
                 return (
                   <Link
                     to={`/urunler/${featured.slug}`}
-                    className="group flex flex-col lg:flex-row rounded-3xl overflow-hidden border border-slate-200 hover:border-slate-300 hover:shadow-2xl hover:shadow-slate-200/60 transition-all duration-300 mb-6 bg-white"
+                    className="card-neon group flex flex-col lg:flex-row rounded-3xl overflow-hidden border border-slate-200 mb-6 bg-white"
                   >
                     {/* Image */}
                     <div className="relative lg:w-[55%] aspect-video lg:aspect-auto overflow-hidden bg-slate-100 shrink-0">
@@ -189,7 +192,7 @@ export default function ProductsPage() {
                       >
                         <Link
                           to={`/urunler/${product.slug}`}
-                          className="group flex flex-col rounded-3xl overflow-hidden border border-slate-200 hover:border-slate-300 bg-white hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300 h-full"
+                          className="card-neon group flex flex-col rounded-3xl overflow-hidden border border-slate-200 bg-white h-full"
                         >
                           {/* Image */}
                           <div className="relative w-full aspect-video overflow-hidden bg-slate-100">

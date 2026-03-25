@@ -4,7 +4,7 @@ export const i18n = {
     nav: [
       { label: 'Ürünler',    href: '/urunler',     internal: true },
       { label: 'Servisler',  href: '/servisler',  internal: true },
-      { label: 'Markalar',   href: '/markalar',   internal: true },
+      { label: 'Referanslar', href: '/referanslar', internal: true },
       { label: 'Hakkımızda', href: '/hakkimizda',  internal: true },
       { label: 'İletişim',   href: '/iletisim',   internal: true },
     ],
@@ -19,8 +19,8 @@ export const i18n = {
     hero: {
       badge: 'Dijital Dönüşüm',
       h1Line1: 'İşletmeniz için',
-      h1Line2: 'dijital',
-      h1Line3: 'dönüşüm',
+      h1Line2: ['Dijital', 'Akıllı', 'Hızlı', 'Güçlü'],
+      h1Line3: 'Dönüşüm',
       paragraph: 'Yapay zekâ destekli yazılım ürünleri ve dijital dönüşüm çözümleriyle kurumların daha verimli ve akıllı çalışmasını sağlıyoruz.',
       ctaPrimary: 'Görüşme Planlayın',
       ctaSecondary: 'Ürünlerimiz',
@@ -51,16 +51,8 @@ export const i18n = {
       discoveryLink: 'Keşfet',
       items: [
         {
-          title: 'Veri Analitiği',
-          description: 'Kurumsal verileri anlamlı içgörülere dönüştürüyor; raporlama sistemleri ve gerçek zamanlı panolarla yöneticilere stratejik görünürlük sağlıyoruz.',
-        },
-        {
           title: 'Yazılım Geliştirme',
           description: 'Süreç yönetim sistemlerinden karar destek yazılımlarına kadar sektöre özel, ölçeklenebilir ve güvenli yazılımlar geliştiriyoruz.',
-        },
-        {
-          title: 'Yapay Zekâ',
-          description: 'Yapay zekâ destekli otomasyon sistemleri, veri analitiği ve süreç optimizasyonuyla kurumların karar alma kapasitesini artırıyoruz.',
         },
         {
           title: 'Raporlama Sistemleri',
@@ -71,8 +63,16 @@ export const i18n = {
           description: 'Dijital dönüşüm yol haritası, süreç analizi ve teknoloji seçiminde kurumlara özel danışmanlık sunarak en doğru yatırım kararlarını almanıza yardımcı oluyoruz.',
         },
         {
+          title: 'Yapay Zekâ',
+          description: 'Yapay zekâ destekli otomasyon sistemleri, veri analitiği ve süreç optimizasyonuyla kurumların karar alma kapasitesini artırıyoruz.',
+        },
+        {
           title: 'Veri Bilimi Hizmeti',
           description: 'Makine öğrenmesi modelleri ve istatistiksel analizlerle kurumsal verilerden tahmin gücü elde ediyor, operasyonel verimliliği artırıyoruz.',
+        },
+        {
+          title: 'Veri Analitiği',
+          description: 'Kurumsal verileri anlamlı içgörülere dönüştürüyor; raporlama sistemleri ve gerçek zamanlı panolarla yöneticilere stratejik görünürlük sağlıyoruz.',
         },
       ],
     },
@@ -114,7 +114,7 @@ export const i18n = {
       navLinks: [
         { label: 'Ürünler',     href: '/urunler' },
         { label: 'Servisler',   href: '/#servisler' },
-        { label: 'Markalar',    href: '/markalar' },
+        { label: 'Referanslar', href: '/referanslar' },
         { label: 'Hakkımızda', href: '/hakkimizda' },
         { label: 'İletişim',   href: '/iletisim',   internal: true },
       ],
@@ -179,8 +179,8 @@ export const i18n = {
     servicesPage: {
       breadcrumb: 'Servisler',
       overline: 'Servislerimiz',
-      h1Line1: 'Uçtan uca',
-      h1Line2: 'dijital dönüşüm servisleri',
+      h1Line1: 'Dijital dönüşüm',
+      h1Line2: 'servisleri',
       paragraph: 'Yazılım geliştirmeden yapay zekâya, veri analitiğinden teknoloji danışmanlığına kadar her ihtiyacınız için yanınızdayız.',
       featuredBadge: 'Öne Çıkan',
       ctaOverline: 'Özel Proje',
@@ -207,7 +207,7 @@ export const i18n = {
     nav: [
       { label: 'Products',  href: '/urunler',     internal: true },
       { label: 'Services',  href: '/servisler',  internal: true },
-      { label: 'Brands',    href: '/markalar',   internal: true },
+      { label: 'References', href: '/referanslar', internal: true },
       { label: 'About',     href: '/hakkimizda',  internal: true },
       { label: 'Contact',   href: '/iletisim',   internal: true },
     ],
@@ -222,7 +222,7 @@ export const i18n = {
     hero: {
       badge: 'Digital Transformation',
       h1Line1: 'For your business,',
-      h1Line2: 'digital',
+      h1Line2: ['Digital', 'Smart', 'Fast', 'Powerful'],
       h1Line3: 'transformation',
       paragraph: 'We deliver AI-powered software products and digital transformation solutions that help institutions work smarter and more efficiently.',
       ctaPrimary: 'Schedule a Meeting',
@@ -254,16 +254,8 @@ export const i18n = {
       discoveryLink: 'Explore',
       items: [
         {
-          title: 'Data Analytics',
-          description: 'We transform institutional data into meaningful insights, providing strategic visibility to managers through reporting systems and real-time dashboards.',
-        },
-        {
           title: 'Software Development',
           description: 'From process management systems to decision support software, we develop scalable and secure solutions tailored to your industry.',
-        },
-        {
-          title: 'Artificial Intelligence',
-          description: 'We enhance institutions\' decision-making capacity with AI-powered automation systems, data analytics, and process optimization.',
         },
         {
           title: 'Reporting Systems',
@@ -274,8 +266,16 @@ export const i18n = {
           description: 'We help you make the right investment decisions with custom consulting in digital transformation roadmaps, process analysis, and technology selection.',
         },
         {
+          title: 'Artificial Intelligence',
+          description: 'We enhance institutions\' decision-making capacity with AI-powered automation systems, data analytics, and process optimization.',
+        },
+        {
           title: 'Data Science Services',
           description: 'We extract predictive power from institutional data with machine learning models and statistical analyses, improving operational efficiency.',
+        },
+        {
+          title: 'Data Analytics',
+          description: 'We transform institutional data into meaningful insights, providing strategic visibility to managers through reporting systems and real-time dashboards.',
         },
       ],
     },
@@ -317,7 +317,7 @@ export const i18n = {
       navLinks: [
         { label: 'Products', href: '/urunler' },
         { label: 'Services', href: '/#servisler' },
-        { label: 'Brands',   href: '/markalar' },
+        { label: 'References', href: '/referanslar' },
         { label: 'About',    href: '/hakkimizda' },
         { label: 'Contact',  href: '/iletisim' },
       ],
@@ -335,8 +335,8 @@ export const i18n = {
     servicesPage: {
       breadcrumb: 'Services',
       overline: 'Our Services',
-      h1Line1: 'End-to-end',
-      h1Line2: 'digital transformation services',
+      h1Line1: 'Digital transformation',
+      h1Line2: 'services',
       paragraph: 'From software development to AI, from data analytics to technology consulting — we\'re here for every need.',
       featuredBadge: 'Featured',
       ctaOverline: 'Custom Project',

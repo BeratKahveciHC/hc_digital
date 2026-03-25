@@ -25,6 +25,28 @@
     animation: marquee 28s linear infinite;
     will-change: transform;
   }
+
+  .btn-neon {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  .btn-neon:hover {
+    box-shadow:
+      0 0 8px rgba(78, 168, 255, 0.9),
+      0 0 20px rgba(78, 168, 255, 0.7),
+      0 0 45px rgba(78, 168, 255, 0.4),
+      0 0 80px rgba(78, 168, 255, 0.2);
+  }
+
+  .card-neon {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  }
+  .card-neon:hover {
+    box-shadow:
+      0 0 0 1px rgba(78, 168, 255, 0.4),
+      0 0 20px rgba(78, 168, 255, 0.2),
+      0 0 50px rgba(78, 168, 255, 0.08);
+    transform: translateY(-2px);
+  }
 }
 
 @layer base {
