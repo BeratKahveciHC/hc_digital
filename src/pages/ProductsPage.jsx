@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, ArrowRight } from 'lucide-react'
@@ -7,6 +7,39 @@ import { useLang } from '../context/LanguageContext'
 import { i18n } from '../data/i18n'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+
+function TypewriterNeon({ words }) {
+  const [displayed, setDisplayed] = useState('')
+  const [wordIndex, setWordIndex] = useState(0)
+  const [typing, setTyping] = useState(true)
+
+  useEffect(() => {
+    const current = words[wordIndex]
+    let timeout
+    if (typing) {
+      if (displayed.length < current.length) {
+        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 90)
+      } else {
+        timeout = setTimeout(() => setTyping(false), 1800)
+      }
+    } else {
+      if (displayed.length > 0) {
+        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 55)
+      } else {
+        setWordIndex((i) => (i + 1) % words.length)
+        setTyping(true)
+      }
+    }
+    return () => clearTimeout(timeout)
+  }, [displayed, typing, wordIndex, words])
+
+  return (
+    <span style={{ color: '#4EA8FF', textShadow: '0 0 12px rgba(78,168,255,0.9), 0 0 30px rgba(78,168,255,0.6), 0 0 60px rgba(78,168,255,0.3)' }}>
+      {displayed}
+      <span className="animate-pulse" style={{ display: 'inline-block', width: '3px', marginLeft: '4px', background: '#4EA8FF', boxShadow: '0 0 8px #4EA8FF', verticalAlign: 'baseline', height: '0.85em' }} />
+    </span>
+  )
+}
 
 export default function ProductsPage() {
   const { lang } = useLang()
@@ -69,9 +102,7 @@ export default function ProductsPage() {
                 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight"
               >
                 {tp.h1Line1}<br />
-                <span style={{ color: '#4EA8FF', textShadow: '0 0 20px rgba(78,168,255,0.8), 0 0 50px rgba(78,168,255,0.4)' }}>
-                  {tp.h1Line2}
-                </span>
+                <TypewriterNeon words={tp.h1Line2} />
               </motion.h1>
             </div>
 
@@ -246,38 +277,6 @@ export default function ProductsPage() {
               )}
             </motion.div>
           </AnimatePresence>
-        </div>
-      </section>
-
-      {/* ── Bottom CTA ── */}
-      <section className="bg-slate-50 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">{tp.ctaOverline}</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-dark leading-snug max-w-lg">
-                {tp.ctaH2}
-              </h2>
-              <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-md">
-                {tp.ctaP}
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <Link
-                to="/iletisim"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-dark text-white text-sm font-semibold hover:bg-primary transition-colors duration-300"
-              >
-                {tp.ctaBtn1}
-                <ArrowUpRight size={15} />
-              </Link>
-              <Link
-                to="/"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-slate-300 text-dark text-sm font-semibold hover:border-dark transition-colors duration-200"
-              >
-                {tp.ctaBtn2}
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 
