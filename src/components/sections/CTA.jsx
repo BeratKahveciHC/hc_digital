@@ -20,7 +20,7 @@ export default function CTA() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/contact.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
