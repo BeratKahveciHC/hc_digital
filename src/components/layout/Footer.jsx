@@ -49,7 +49,7 @@ export default function Footer() {
         {/* Logo & Açıklama */}
         <div className="lg:col-span-1">
           <a href="/" className="inline-flex mb-4 -ml-3">
-            <img src="/logos/logo.webp" alt="HC Dijital" className="h-10 md:h-20 w-auto object-contain brightness-0 invert" />
+            <img src="/logos/logo.webp" alt="HC Dijital" className="h-10 md:h-14 w-auto object-contain brightness-0 invert" />
           </a>
           <p className="text-sm text-white/35 leading-relaxed">
             {t.description}

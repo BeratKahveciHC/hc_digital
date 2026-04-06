@@ -62,14 +62,14 @@ export default function Header({ solid = false }) {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20 md:h-28">
+          <div className="flex items-center justify-between h-18 sm:h-20 lg:h-28">
 
             {/* ── Logo ── */}
             <Link to="/" className="shrink-0">
               <img
                 src="/logos/logo.webp"
                 alt="HC Dijital"
-                className="h-10 md:h-16 w-auto object-contain brightness-0 invert transition-all duration-300"
+                className="h-9 sm:h-10 lg:h-16 w-auto object-contain brightness-0 invert transition-all duration-300"
               />
             </Link>
 
@@ -84,7 +84,7 @@ export default function Header({ solid = false }) {
                     <Link
                       key={link.href}
                       to={link.href}
-                      className={`relative px-5 py-3 rounded-lg text-[16px] font-medium transition-all duration-200 group ${
+                      className={`relative px-3 py-2.5 rounded-lg text-[13px] lg:px-5 lg:py-3 lg:text-[16px] font-medium transition-all duration-200 group ${
                         active ? 'text-white' : 'text-white/70 hover:text-white hover:bg-white/8'
                       }`}
                     >
@@ -95,7 +95,7 @@ export default function Header({ solid = false }) {
                     <a
                       key={link.href}
                       href={link.href}
-                      className="relative px-5 py-3 rounded-lg text-[16px] font-medium transition-all duration-200 group text-white/70 hover:text-white hover:bg-white/8"
+                      className="relative px-3 py-2.5 rounded-lg text-[13px] lg:px-5 lg:py-3 lg:text-[16px] font-medium transition-all duration-200 group text-white/70 hover:text-white hover:bg-white/8"
                     >
                       {link.label}
                       <span className="absolute bottom-1.5 left-5 right-5 h-[1.5px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full bg-white/50" />
@@ -120,7 +120,7 @@ export default function Header({ solid = false }) {
               {/* CTA Butonu */}
               <Link
                 to="/iletisim"
-                className="btn-neon hidden md:inline-flex items-center px-7 py-3 rounded-full text-[16px] font-semibold transition-all duration-200 hover:-translate-y-0.5 bg-white text-dark hover:bg-white/90"
+                className="btn-neon hidden md:inline-flex items-center px-4 py-2.5 rounded-full text-[13px] lg:px-7 lg:py-3 lg:text-[16px] font-semibold transition-all duration-200 hover:-translate-y-0.5 bg-white text-dark hover:bg-white/90"
                 style={{ boxShadow: '0 0 20px rgba(78,168,255,0.8), 0 0 60px rgba(78,168,255,0.5), 0 0 100px rgba(78,168,255,0.25)' }}
               >
                 {t.headerCta}
@@ -173,7 +173,7 @@ export default function Header({ solid = false }) {
               className="fixed inset-0 z-50 bg-dark flex flex-col md:hidden"
             >
               <div className="flex items-center justify-between px-6 h-20 border-b border-white/8">
-                <img src="/logos/logo.webp" alt="HC Dijital" className="h-24 w-auto object-contain brightness-0 invert" />
+                <img src="/logos/logo.webp" alt="HC Dijital" className="h-10 w-auto object-contain brightness-0 invert" />
                 <button
                   onClick={() => setMobileOpen(false)}
                   className="w-9 h-9 flex items-center justify-center rounded-xl text-white/70 hover:text-white hover:bg-white/10 transition-colors"

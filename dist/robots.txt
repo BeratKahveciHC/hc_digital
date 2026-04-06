@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Yasal sayfalar indekslenmeyecek
+Disallow: /kvkk
+Disallow: /gizlilik
+Disallow: /cerez
+
+# Sitemap
+Sitemap: https://www.hcdijital.com.tr/sitemap.xml

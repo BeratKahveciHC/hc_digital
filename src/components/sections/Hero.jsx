@@ -171,9 +171,9 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl font-bold leading-[1.05] tracking-tight text-white"
         >
-          <span className="mb-4 block text-xl font-bold text-white md:text-2xl">{t.h1Line1}</span>
-          <span className="block text-5xl whitespace-nowrap md:text-7xl lg:text-8xl"><TypewriterNeon words={t.h1Line2} /></span>
-          <span className="block text-5xl md:text-7xl lg:text-8xl">{t.h1Line3}</span>
+          <span className="mb-4 block text-lg font-bold text-white sm:text-xl md:text-2xl">{t.h1Line1}</span>
+          <span className="block text-[8.5vw] whitespace-nowrap sm:text-5xl md:text-7xl lg:text-8xl"><TypewriterNeon words={t.h1Line2} /></span>
+          <span className="block text-[8.5vw] sm:text-5xl md:text-7xl lg:text-8xl">{t.h1Line3}</span>
         </motion.h1>
 
         <motion.p
@@ -212,7 +212,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.05 }}
-          className="mt-16 flex items-center justify-center gap-14 border-t border-white/8 pt-8"
+          className="mt-12 flex items-center justify-center gap-6 sm:gap-10 md:gap-14 border-t border-white/8 pt-8"
         >
           {statsData.map((stat, i) => (
             <div key={i} className="text-center">

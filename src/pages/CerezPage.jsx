@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+import SEO from '../components/SEO'
 
 const sections = [
   {
@@ -113,6 +114,7 @@ function Accordion({ title, content }) {
 export default function CerezPage() {
   return (
     <div className="bg-white text-dark">
+      <SEO title="Çerez Politikası | HC Dijital" description="HC Dijital çerez politikası ve çerez kullanım koşulları." canonical="/cerez" noindex />
       <Header solid />
 
       <main className="max-w-3xl mx-auto px-6 lg:px-12 pt-36 pb-24">

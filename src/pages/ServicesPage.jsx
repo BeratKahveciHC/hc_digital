@@ -7,6 +7,20 @@ import { i18n } from '../data/i18n'
 import { services } from '../data/services'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+import SEO, { breadcrumbJsonLd } from '../components/SEO'
+
+const seoData = {
+  tr: {
+    title: 'Hizmetlerimiz – Yazılım Geliştirme, AI, Veri Analitiği | HC Dijital',
+    description: 'HC Dijital hizmetleri: Özel yazılım geliştirme, yapay zeka entegrasyonu, veri analitiği, raporlama sistemleri ve teknoloji danışmanlığı. Kurumunuza özel dijital çözümler.',
+    keywords: 'yazılım geliştirme İstanbul, yapay zeka entegrasyonu, veri analitiği hizmeti, raporlama sistemleri, teknoloji danışmanlığı, HC Dijital hizmetler',
+  },
+  en: {
+    title: 'Our Services – Software Development, AI, Data Analytics | HC Digital',
+    description: 'HC Digital services: Custom software development, AI integration, data analytics, reporting systems and technology consulting. Digital solutions tailored for your institution.',
+    keywords: 'software development Istanbul, AI integration, data analytics service, reporting systems, technology consulting, HC Digital services',
+  },
+}
 
 const serviceIcons = [Code2, FileBarChart, Lightbulb, Brain, FlaskConical, BarChart2]
 
@@ -58,7 +72,7 @@ function ServiceFan({ serviceItems, lang }) {
   return (
     <div className="flex flex-col items-center gap-8">
       {/* Fan container */}
-      <div className="relative flex items-center justify-center w-full" style={{ height: '520px' }}>
+      <div className="relative flex items-center justify-center w-full h-100 md:h-120 lg:h-130">
         {serviceItems.map((service, i) => {
           const pos = getPos(i)
           if (pos === 'hidden') return null
@@ -70,7 +84,7 @@ function ServiceFan({ serviceItems, lang }) {
               key={i}
               animate={variants[pos]}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="absolute w-85 md:w-220 cursor-pointer"
+              className="absolute w-80 md:w-130 lg:w-175 xl:w-220 cursor-pointer"
               onClick={() => pos !== 'center' && setActive(i)}
               style={{ transformOrigin: 'center center' }}
             >
@@ -156,8 +170,21 @@ export default function ServicesPage() {
   const tp = t.servicesPage
   const serviceItems = t.services.items
 
+  const seo = seoData[lang]
+
   return (
     <div className="bg-white text-dark">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical="/servisler"
+        lang={lang}
+        jsonLd={breadcrumbJsonLd([
+          { name: lang === 'tr' ? 'Ana Sayfa' : 'Home', url: '/' },
+          { name: lang === 'tr' ? 'Hizmetler' : 'Services', url: '/servisler' },
+        ])}
+      />
       <Header />
 
       {/* ── Page Hero ── */}

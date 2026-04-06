@@ -7,6 +7,20 @@ import { useLang } from '../context/LanguageContext'
 import { i18n } from '../data/i18n'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+import SEO, { breadcrumbJsonLd } from '../components/SEO'
+
+const seoData = {
+  tr: {
+    title: 'Ürünlerimiz – AirX IKYS, Tercümed, Kumanda Merkezi | HC Dijital',
+    description: 'HC Dijital ürün ailesi: AirX IKYS ile personel yönetimi, Tercümed ile tıbbi çeviri, Kumanda Merkezi ile operasyonel görünürlük, Yön Assist yapay zeka asistan ve daha fazlası.',
+    keywords: 'HC Dijital ürünleri, AirX IKYS, Tercümed, Kumanda Merkezi, Yön Assist, hastane bütçe yönetim sistemi, spiral freezer, sağlık yazılımları',
+  },
+  en: {
+    title: 'Our Products – AirX IKYS, Tercümed, Kumanda Merkezi | HC Digital',
+    description: 'HC Digital product family: AirX IKYS for HR management, Tercümed for medical translation, Kumanda Merkezi for operational visibility, Yön Assist AI assistant and more.',
+    keywords: 'HC Digital products, AirX IKYS, Tercümed, Kumanda Merkezi, Yön Assist, hospital budget management system, spiral freezer, health software',
+  },
+}
 
 function TypewriterNeon({ words }) {
   const [displayed, setDisplayed] = useState('')
@@ -58,9 +72,21 @@ export default function ProductsPage() {
 
   const featured = filtered.find((p) => p.featured)
   const rest = filtered.filter((p) => !p.featured)
+  const seo = seoData[lang]
 
   return (
     <div className="bg-white text-dark">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical="/urunler"
+        lang={lang}
+        jsonLd={breadcrumbJsonLd([
+          { name: lang === 'tr' ? 'Ana Sayfa' : 'Home', url: '/' },
+          { name: lang === 'tr' ? 'Ürünler' : 'Products', url: '/urunler' },
+        ])}
+      />
       <Header />
 
       {/* ── Page Hero ── */}

@@ -5,6 +5,22 @@ import { ArrowUpRight } from 'lucide-react'
 import { useLang } from '../context/LanguageContext'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+import SEO, { breadcrumbJsonLd } from '../components/SEO'
+
+const seoData = {
+  tr: {
+    title: 'Hakkımızda – HC Dijital | Dijital Dönüşüm Partneri',
+    description: 'HC Dijital hakkında: 8+ yıllık deneyim, 40+ aktif kurum ve 15.000+ kullanıcıyla Türkiye\'nin dijital dönüşümüne öncülük ediyoruz. Ekibimiz, misyon ve vizyonumuzu keşfedin.',
+    keywords: 'HC Dijital hakkında, dijital dönüşüm şirketi, sağlık teknolojisi şirketi, yazılım geliştirme şirketi İstanbul, HC Dijital ekibi',
+    canonical: '/hakkimizda',
+  },
+  en: {
+    title: 'About Us – HC Digital | Digital Transformation Partner',
+    description: 'About HC Digital: 8+ years of experience, 40+ active institutions and 15,000+ users. Pioneering digital transformation in Turkey. Discover our team, mission and vision.',
+    keywords: 'HC Digital about, digital transformation company, health technology company, software development company Istanbul, HC Digital team',
+    canonical: '/hakkimizda',
+  },
+}
 
 function TypewriterNeon({ words }) {
   const [display, setDisplay] = useState('')
@@ -188,8 +204,21 @@ export default function AboutPage() {
     return () => observer.disconnect()
   }, [])
 
+  const seo = seoData[lang]
+
   return (
     <div className="bg-white text-dark">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical={seo.canonical}
+        lang={lang}
+        jsonLd={breadcrumbJsonLd([
+          { name: lang === 'tr' ? 'Ana Sayfa' : 'Home', url: '/' },
+          { name: lang === 'tr' ? 'Hakkımızda' : 'About', url: '/hakkimizda' },
+        ])}
+      />
       <Header />
 
       {/* ── Hero ── */}

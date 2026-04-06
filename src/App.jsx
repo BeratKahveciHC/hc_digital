@@ -1,5 +1,6 @@
 import { useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import { LanguageProvider } from './context/LanguageContext'
 import './index.css'
 
@@ -23,6 +24,7 @@ function ScrollToTop() {
 
 function App() {
   return (
+    <HelmetProvider>
     <LanguageProvider>
       <BrowserRouter>
         <ScrollToTop />
@@ -43,6 +45,7 @@ function App() {
         </Suspense>
       </BrowserRouter>
     </LanguageProvider>
+    </HelmetProvider>
   )
 }
 

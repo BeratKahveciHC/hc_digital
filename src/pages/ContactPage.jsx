@@ -5,6 +5,20 @@ import { Mail, MapPin, ArrowUpRight, Linkedin, ChevronDown, Check } from 'lucide
 import { useLang } from '../context/LanguageContext'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+import SEO, { breadcrumbJsonLd } from '../components/SEO'
+
+const seoData = {
+  tr: {
+    title: 'İletişim – HC Dijital | Demo Talebi ve Destek',
+    description: 'HC Dijital ile iletişime geçin. Demo talebi, fiyat bilgisi veya teknik destek için bize ulaşın. İstanbul Sarıyer ofisimiz: info@hcdijital.com.tr',
+    keywords: 'HC Dijital iletişim, demo talebi, yazılım fiyat, teknik destek, HC Dijital İstanbul',
+  },
+  en: {
+    title: 'Contact – HC Digital | Demo Request & Support',
+    description: 'Contact HC Digital. Request a demo, get pricing information, or reach our technical support team. Istanbul Sarıyer office: info@hcdijital.com.tr',
+    keywords: 'HC Digital contact, demo request, software pricing, technical support, HC Digital Istanbul',
+  },
+}
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -191,8 +205,21 @@ export default function ContactPage() {
     }
   }
 
+  const seo = seoData[lang]
+
   return (
     <div className="bg-white text-dark">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical="/iletisim"
+        lang={lang}
+        jsonLd={breadcrumbJsonLd([
+          { name: lang === 'tr' ? 'Ana Sayfa' : 'Home', url: '/' },
+          { name: lang === 'tr' ? 'İletişim' : 'Contact', url: '/iletisim' },
+        ])}
+      />
       <Header />
 
       {/* ── Hero ── */}

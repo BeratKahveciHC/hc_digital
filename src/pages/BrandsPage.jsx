@@ -5,6 +5,20 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLang } from '../context/LanguageContext'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+import SEO, { breadcrumbJsonLd } from '../components/SEO'
+
+const seoData = {
+  tr: {
+    title: 'Referanslarımız – HC Dijital | Güvenen Kurumlar',
+    description: 'HC Dijital\'e güvenen kurumlar: İstinye Üniversitesi, LIV Hospital, Medical Park, MLP Care, Brainco, Cafrost ve 5E Tasarım. Sağlık ve teknoloji sektörünün öncü isimleri.',
+    keywords: 'HC Dijital referanslar, hastane yazılım müşterileri, sağlık teknoloji referansları, İstinye Üniversitesi, LIV Hospital, Medical Park, MLP Care',
+  },
+  en: {
+    title: 'References – HC Digital | Trusted Institutions',
+    description: 'Institutions that trust HC Digital: İstinye University, LIV Hospital, Medical Park, MLP Care, Brainco, Cafrost and 5E Design. Leading names in healthcare and technology.',
+    keywords: 'HC Digital references, hospital software clients, health technology references, İstinye University, LIV Hospital, Medical Park, MLP Care',
+  },
+}
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -195,9 +209,21 @@ function BrandsMarquee({ brandList }) {
 export default function BrandsPage() {
   const { lang } = useLang()
   const brandList = brands[lang]
+  const seo = seoData[lang]
 
   return (
     <div className="bg-white text-dark">
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonical="/referanslar"
+        lang={lang}
+        jsonLd={breadcrumbJsonLd([
+          { name: lang === 'tr' ? 'Ana Sayfa' : 'Home', url: '/' },
+          { name: lang === 'tr' ? 'Referanslar' : 'References', url: '/referanslar' },
+        ])}
+      />
       <Header />
 
       {/* ── Page Hero ── */}
