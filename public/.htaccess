@@ -1,0 +1,16 @@
+# HTML sayfaları — her zaman kontrol et
+<FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header set ETag ""
+</FilesMatch>
+
+# Görseller — ETag ile yeniden doğrulama (dosya değişince tarayıcı günceller)
+<FilesMatch "\.(webp|png|jpg|jpeg|svg|gif|ico)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    FileETag All
+</FilesMatch>
+
+# JS/CSS — isim hash içerdiği için uzun cache güvenli
+<FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>

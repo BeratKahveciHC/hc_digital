@@ -1,0 +1,611 @@
+import _airxHero         from '../assets/images/products/airx-hero.webp'
+import _airx2            from '../assets/images/products/airx-2.webp'
+import _airx3            from '../assets/images/products/airx-3.webp'
+import _airx4            from '../assets/images/products/airx-4.webp'
+import _airxSetup        from '../assets/images/products/airx-setup.webp'
+import _airxMobile       from '../assets/images/products/airx-mobile.webp'
+import _airxReport       from '../assets/images/products/airx-report.webp'
+import _tercumedHero     from '../assets/images/products/tercumed-hero.webp'
+import _tercumed2        from '../assets/images/products/tercumed-2.webp'
+import _tercumed3        from '../assets/images/products/tercumed-3.webp'
+import _tercumed4        from '../assets/images/products/tercumed-4.webp'
+import _tercumedTerminology from '../assets/images/products/tercumed-terminology.webp'
+import _tercumedPdf      from '../assets/images/products/tercumed-pdf.webp'
+import _tercumedSteps    from '../assets/images/products/tercumed-steps.webp'
+import _kumandaHero      from '../assets/images/products/kumanda-hero.webp'
+import _kumanda2         from '../assets/images/products/kumanda-2.webp'
+import _yonHero          from '../assets/images/products/yon-hero.webp'
+import _yon2             from '../assets/images/products/yon-2.webp'
+import _yon3             from '../assets/images/products/yon-3.webp'
+import _yon4             from '../assets/images/products/yon-4.webp'
+import _yonVoice         from '../assets/images/products/yon-voice.webp'
+import _yonMeeting       from '../assets/images/products/yon-meeting.webp'
+import _yonSecurity      from '../assets/images/products/yon-security.webp'
+import _butce2           from '../assets/images/products/butce-2.webp'
+import _butce3           from '../assets/images/products/butce-3.webp'
+import _spiralHero       from '../assets/images/products/spiral-hero.webp'
+import _spiral2          from '../assets/images/products/spiral-2.webp'
+
+const s = (x) => x?.src ?? x
+const airxHero          = s(_airxHero)
+const airx2             = s(_airx2)
+const airx3             = s(_airx3)
+const airx4             = s(_airx4)
+const airxSetup         = s(_airxSetup)
+const airxMobile        = s(_airxMobile)
+const airxReport        = s(_airxReport)
+const tercumedHero      = s(_tercumedHero)
+const tercumed2         = s(_tercumed2)
+const tercumed3         = s(_tercumed3)
+const tercumed4         = s(_tercumed4)
+const tercumedTerminology = s(_tercumedTerminology)
+const tercumedPdf       = s(_tercumedPdf)
+const tercumedSteps     = s(_tercumedSteps)
+const kumandaHero       = s(_kumandaHero)
+const kumanda2          = s(_kumanda2)
+const yonHero           = s(_yonHero)
+const yon2              = s(_yon2)
+const yon3              = s(_yon3)
+const yon4              = s(_yon4)
+const yonVoice          = s(_yonVoice)
+const yonMeeting        = s(_yonMeeting)
+const yonSecurity       = s(_yonSecurity)
+const butce2            = s(_butce2)
+const butce3            = s(_butce3)
+const spiralHero        = s(_spiralHero)
+const spiral2           = s(_spiral2)
+
+export const products = [
+  {
+    id: 'airx-ikys',
+    slug: 'airx-ikys',
+    category: 'İK & Zaman Yönetimi',
+    title: 'AirX IKYS',
+    tagline: 'Zaman takibini düzene otur ve ekibini tek ekrandan yönet.',
+    description: 'Personel giriş-çıkış takibi, vardiya planlaması ve izin yönetimini tek platformda birleştiren iş gücü yönetim sistemi.',
+    longDescription: [
+      'AirX, çalışan giriş ve çıkışlarını, vardiya düzenini ve izin süreçlerini tek yerde toplamanızı sağlar. Karmaşayı azaltır, hataları düşürür, yöneticilere kesin kontrol sağlar.',
+      'Mobil ve web üzerinden erişilebilen platform, rol bazlı yetkilendirme yapısıyla her kademeye uygun görünürlük sunar. Düzenli raporlar ve veri dışa aktarma özellikleriyle operasyonel kararlar daha hızlı alınır.',
+      'Kolay kurulum ve hızlı kullanım odaklı tasarımı sayesinde teknik altyapı gerektirmeden hayata geçirilir; ekibiniz aynı gün kullanmaya başlayabilir.',
+    ],
+    stats: [
+      { value: '%40', label: 'Daha az idari iş yükü' },
+      { value: '1 Gün', label: 'Kurulum ve canlıya geçiş süresi' },
+      { value: '7/24', label: 'Mobil erişim imkânı' },
+    ],
+    benefits: [
+      { icon: 'Zap', title: 'Anında Kurulum', description: 'Teknik altyapı gerektirmez; ekibiniz aynı gün sistemi kullanmaya başlar.' },
+      { icon: 'Smartphone', title: 'Çok Cihaz Desteği', description: 'Masaüstü, tablet ve mobilde kesintisiz erişim sağlanır.' },
+      { icon: 'BarChart3', title: 'Otomatik Raporlama', description: 'Devam ve mesai verileri Excel/PDF formatında otomatik çıktı üretir.' },
+      { icon: 'ShieldCheck', title: 'Rol Bazlı Yetkilendirme', description: 'Her kademeye uygun görünürlük; yalnızca doğru kişi doğru veriye erişir.' },
+      { icon: 'Users', title: 'Ekip Yönetimi', description: 'Vardiya planlama ve izin süreçleri tek panelden yönetilir.' },
+      { icon: 'Plug', title: 'Kolay Entegrasyon', description: 'Mevcut bordro ve HBYS sistemleriyle API üzerinden sorunsuz bağlanır.' },
+    ],
+    howItWorks: [
+      { step: 1, title: 'Kurulumu Başlatın', description: 'Web tarayıcınız üzerinden hesabınızı oluşturun; sunucu veya teknik ekip gerektirmez.' },
+      { step: 2, title: 'Ekibinizi Tanımlayın', description: 'Çalışanları, departmanları ve vardiya planını sisteme ekleyin.' },
+      { step: 3, title: 'Takibi Başlatın', description: 'Giriş-çıkış, izin ve mesai verileri otomatik olarak işlenmeye başlar.' },
+      { step: 4, title: 'Raporlarınızı Alın', description: 'Haftalık ve aylık raporları tek tıkla oluşturun; bordro sürecinize doğrudan entegre edin.' },
+    ],
+    faqs: [
+      { question: 'Kurulum ne kadar sürer?', answer: 'Standart bir kurum için kurulum ve ön yapılandırma ortalama yarım gün içinde tamamlanır. Ekibiniz aynı gün sistemi kullanmaya başlayabilir.' },
+      { question: 'Mobil uygulama var mı?', answer: 'Evet. iOS ve Android için optimize edilmiş mobil arayüz, çalışanların giriş-çıkış ve izin işlemlerini her cihazdan yapmasına olanak tanır.' },
+      { question: 'Mevcut bordro yazılımımla çalışır mı?', answer: 'AirX, yaygın bordro ve İK sistemleriyle API entegrasyonu sunar. Özel entegrasyon ihtiyaçları için teknik ekibimiz destek sağlar.' },
+      { question: 'Veri güvenliği nasıl sağlanıyor?', answer: 'Tüm veriler şifreli kanallar üzerinden iletilir ve rol bazlı erişim kontrolüyle korunur. Günlük otomatik yedekleme standarttır.' },
+    ],
+    tags: ['İK Yönetimi', 'Zaman Takibi', 'Yazılım', 'Vardiya Planlama'],
+    website: 'https://airx.com.tr',
+    image: airxHero,
+    heroImage: airxHero,
+    gallery: [airxHero, airx2, airx3, airx4],
+    features: [
+      { number: '01', title: 'Kolay Kurulum ve Hızlı Kullanım', description: 'Teknik altyapı gerektirmeyen kurulum süreci sayesinde ekibiniz aynı gün sistemi kullanmaya başlar. Sezgisel arayüz, eğitim süresini minimize eder.', image: airxSetup },
+      { number: '02', title: 'Mobil & Web Üzerinden Erişim', description: 'Çalışanlar giriş-çıkış kaydı, izin talebi ve vardiya bilgilerine her cihazdan ulaşır. Yöneticiler anlık durumu web panelinden veya mobil uygulamadan takip eder.', image: airxMobile },
+      { number: '03', title: 'Düzenli Raporlar ve Dışa Aktarma', description: 'Devam, devamsızlık, mesai ve izin verileri otomatik olarak raporlanır. Excel ve PDF formatında dışa aktarılarak bordro ve denetim süreçlerine doğrudan entegre edilir.', image: airxReport },
+    ],
+    featured: true,
+    color: 'bg-primary/8 text-primary border-primary/15',
+    dot: 'bg-primary',
+    en: {
+      category: 'HR & Time Management',
+      tagline: 'Organize time tracking and manage your team from a single screen.',
+      description: 'A workforce management platform that brings together employee attendance, shift scheduling, and leave management in one place.',
+      longDescription: [
+        'AirX consolidates employee check-ins, shift arrangements, and leave processes in a single platform — reducing complexity, minimizing errors, and giving managers full control.',
+        'Accessible on mobile and web, the platform provides role-based visibility at every level. Automated reports and data export features enable faster operational decisions.',
+        'Designed for easy setup and immediate use, AirX goes live without any technical infrastructure — your team can start using it the same day.',
+      ],
+      tags: ['HR Management', 'Time Tracking', 'Software', 'Shift Planning'],
+      stats: [
+        { value: '40%', label: 'Less administrative workload' },
+        { value: '1 Day', label: 'Setup and go-live' },
+        { value: '24/7', label: 'Mobile access' },
+      ],
+      benefits: [
+        { icon: 'Zap', title: 'Instant Setup', description: 'No technical infrastructure needed — your team can start using the system the same day.' },
+        { icon: 'Smartphone', title: 'Multi-Device Support', description: 'Seamless access on desktop, tablet, and mobile.' },
+        { icon: 'BarChart3', title: 'Automated Reporting', description: 'Attendance and overtime data automatically generates Excel/PDF reports.' },
+        { icon: 'ShieldCheck', title: 'Role-Based Access', description: 'Each level sees only the relevant data; only the right person accesses the right information.' },
+        { icon: 'Users', title: 'Team Management', description: 'Shift planning and leave processes managed from a single control panel.' },
+        { icon: 'Plug', title: 'Easy Integration', description: 'Connects seamlessly with existing payroll and HIS systems via API.' },
+      ],
+      features: [
+        { number: '01', title: 'Easy Setup & Fast Onboarding', description: 'Cloud-based setup requires no technical infrastructure. Your team can start using the platform the same day with an intuitive interface that minimizes training time.', image: airxSetup },
+        { number: '02', title: 'Mobile & Web Access', description: 'Employees access check-in records, leave requests, and shift information from any device. Managers monitor real-time status from the web panel or mobile app.', image: airxMobile },
+        { number: '03', title: 'Automated Reports & Data Export', description: 'Attendance, absence, overtime, and leave data are automatically reported. Excel and PDF exports integrate directly with payroll and audit processes.', image: airxReport },
+      ],
+      howItWorks: [
+        { step: 1, title: 'Get Started', description: 'Create your account through a web browser — no server or technical team required.' },
+        { step: 2, title: 'Define Your Team', description: 'Add employees, departments, and shift plans to the system.' },
+        { step: 3, title: 'Start Tracking', description: 'Check-ins, leave, and overtime data begins processing automatically.' },
+        { step: 4, title: 'Get Your Reports', description: 'Generate weekly and monthly reports with one click; integrate directly with payroll.' },
+      ],
+      faqs: [
+        { question: 'How long does setup take?', answer: 'Setup and initial configuration for a standard organization is completed within half a day. Your team can start using the system the same day.' },
+        { question: 'Is there a mobile app?', answer: 'Yes. An iOS and Android optimized mobile interface allows employees to perform check-in/out and leave operations from any device.' },
+        { question: 'Does it work with our existing payroll software?', answer: 'AirX offers API integration with popular payroll and HR systems. Our technical team provides support for custom integration needs.' },
+        { question: 'How is data security ensured?', answer: 'All data is transmitted via encrypted channels and protected with role-based access control. Daily automatic backups are standard.' },
+      ],
+    },
+  },
+  {
+    id: 'tercumed',
+    slug: 'tercumed',
+    category: 'Yapay Zekâ / Sağlık',
+    title: 'Tercümed',
+    tagline: 'Tıbbi belgeleri saniyeler içinde anlaşılır dile çevir.',
+    description: 'Taburculuk belgesi ve onam formu gibi tıbbi belgelerdeki dil engelini kaldıran, hızlı ve anlamlı çıktılar üreten yapay zekâ destekli çeviri çözümü.',
+    longDescription: [
+      'Tercümed, taburculuk belgesi ve onam formu gibi tıbbi belgelerdeki dil engelini kaldırmak için tasarlanmış yapay zekâ destekli bir çözümdür. Hızlı, anlamlı ve pratik çıktılar üretir.',
+      'Tıbbi terminolojiye duyarlı çeviri yaklaşımı sayesinde genel amaçlı çeviri araçlarının hata yapabileceği klinik terimleri doğru şekilde işler. PDF ve Word çıktı seçenekleriyle mevcut iş akışına sorunsuz entegre olur.',
+      'Süreç üç adımda tamamlanır: Dosyayı yükle → Hedef dili seç → Çevrilmiş çıktıyı indir. Hasta kabul biriminden klinisyenlere kadar her kullanıcı için sezgisel ve pratik bir deneyim sunar.',
+    ],
+    stats: [
+      { value: '30+', label: 'Desteklenen dil' },
+      { value: '3 Adım', label: 'Tüm süreç bu kadar' },
+      { value: '%95+', label: 'Terminoloji doğruluğu' },
+    ],
+    benefits: [
+      { icon: 'Zap', title: 'Saniyeler İçinde Çeviri', description: 'Belgeler yüklenir yüklenmez yapay zekâ motoru çeviriyi başlatır; bekleme süresi yok.' },
+      { icon: 'ShieldCheck', title: 'Klinik Doğruluk', description: 'Tıbbi terminolojiye özel eğitilmiş model; genel çeviri hatalarını ortadan kaldırır.' },
+      { icon: 'BarChart3', title: 'PDF & Word Çıktı', description: 'Orijinal belge düzeni korunarak doğrudan kullanıma hazır dosya elde edilir.' },
+      { icon: 'Users', title: 'Çok Kullanıcılı Erişim', description: 'Hasta kabul, klinik ve idari birimler aynı platformu eş zamanlı kullanır.' },
+      { icon: 'Plug', title: 'HBS Entegrasyonu', description: 'Mevcut hastane bilgi sisteminize API bağlantısıyla sorunsuz entegre olur.' },
+      { icon: 'Headphones', title: '7/24 Teknik Destek', description: 'Mesai saati dışında da erişilebilir destek hattı ve öncelikli ticket sistemi.' },
+    ],
+    howItWorks: [
+      { step: 1, title: 'Belgeyi Yükleyin', description: 'PDF, Word veya görüntü formatında tıbbi belgenizi platforma yükleyin.' },
+      { step: 2, title: 'Hedef Dili Seçin', description: '30\'dan fazla dil arasından çeviri yapılacak dili seçin.' },
+      { step: 3, title: 'Yapay Zekâ İşliyor', description: 'Tıbbi terminolojiye duyarlı model belgeyi analiz edip çeviriyi üretir.' },
+      { step: 4, title: 'İndirin ve Kullanın', description: 'PDF veya Word formatındaki çevrilmiş belgeyi indirin, hasta dosyasına ekleyin.' },
+    ],
+    faqs: [
+      { question: 'Hangi belge türlerini destekliyor?', answer: 'Taburculuk belgeleri, onam formları, epikriz, laboratuvar raporları ve radyoloji raporları başta olmak üzere tüm klinik belge türleri desteklenmektedir.' },
+      { question: 'Çeviri ne kadar sürede tamamlanır?', answer: 'Standart bir sayfa için çeviri süresi 10-30 saniye arasındadır. Yoğun dönemlerde bile gecikme yaşanmaz.' },
+      { question: 'Genel çeviri araçlarından farkı nedir?', answer: 'Tercümed, genel amaçlı değil tıbbi terminoloji üzerinde özel olarak eğitilmiştir. Bu sayede ilaç adları, tanı kodları ve prosedür terimleri doğru çevrilir.' },
+      { question: 'KVKK ve hasta gizliliği uyumlu mu?', answer: 'Evet. Yüklenen belgeler yalnızca çeviri sürecinde işlenir, depolanmaz. Tüm aktarımlar şifreli bağlantı üzerinden gerçekleşir.' },
+    ],
+    tags: ['Yapay Zekâ', 'NLP', 'Sağlık', 'Çeviri'],
+    image: tercumedHero,
+    heroImage: tercumedHero,
+    gallery: [tercumedHero, tercumed2, tercumed3, tercumed4],
+    features: [
+      { number: '01', title: 'Tıbbi Terminolojiye Duyarlı Çeviri', description: 'Genel amaçlı çeviri araçlarının aksine Tercümed, tıbbi terminoloji üzerinde özel olarak eğitilmiştir. Tanı, ilaç adları ve klinik prosedür terimleri yüksek doğrulukla çevrilir.', image: tercumedTerminology },
+      { number: '02', title: 'PDF ve Word Çıktı Seçenekleri', description: 'Çevrilen belgeler PDF veya Word formatında indirilebilir. Orijinal belge düzeni korunarak çıktı doğrudan hasta dosyasına eklenmeye hazır hâle gelir.', image: tercumedPdf },
+      { number: '03', title: 'Üç Adımda Tamamlanan Süreç', description: 'Dosyayı yükle, hedef dili seç, çevrilmiş çıktıyı indir. Karmaşık kurulum ya da eğitim gerektirmez; hasta kabul biriminden klinisyene kadar herkes anında kullanabilir.', image: tercumedSteps },
+    ],
+    featured: false,
+    color: 'bg-accent/8 text-accent-dark border-accent/15',
+    dot: 'bg-accent',
+    en: {
+      category: 'AI / Healthcare',
+      tagline: 'Translate medical documents into clear language within seconds.',
+      description: 'An AI-powered translation solution that removes language barriers in medical documents such as discharge summaries and consent forms.',
+      longDescription: [
+        'Tercümed is an AI-powered solution designed to remove language barriers in medical documents such as discharge summaries and consent forms. It produces fast, meaningful, and practical outputs.',
+        'Thanks to its medically-aware translation approach, it correctly processes clinical terms where general-purpose tools may fail. PDF and Word output options integrate seamlessly into existing workflows.',
+        'The process is completed in three steps: Upload the file → Select the target language → Download the translated output. An intuitive experience for every user, from patient admission to clinicians.',
+      ],
+      tags: ['Artificial Intelligence', 'NLP', 'Healthcare', 'Translation'],
+      stats: [
+        { value: '30+', label: 'Supported languages' },
+        { value: '3 Steps', label: 'The entire process' },
+        { value: '95%+', label: 'Terminology accuracy' },
+      ],
+      benefits: [
+        { icon: 'Zap', title: 'Translation in Seconds', description: 'As soon as documents are uploaded, the AI engine starts translating — no waiting.' },
+        { icon: 'ShieldCheck', title: 'Clinical Accuracy', description: 'Model trained specifically on medical terminology eliminates general translation errors.' },
+        { icon: 'BarChart3', title: 'PDF & Word Output', description: 'Download files ready to use immediately, with original document layout preserved.' },
+        { icon: 'Users', title: 'Multi-User Access', description: 'Patient admission, clinical, and administrative units use the same platform simultaneously.' },
+        { icon: 'Plug', title: 'HIS Integration', description: 'Integrates seamlessly with your existing hospital information system via API.' },
+        { icon: 'Headphones', title: '24/7 Technical Support', description: 'Support line accessible outside business hours with priority ticket system.' },
+      ],
+      features: [
+        { number: '01', title: 'Medically-Aware Translation', description: 'Unlike general-purpose tools, Tercümed is specially trained on medical terminology. Diagnoses, drug names, and clinical procedure terms are translated with high accuracy.', image: tercumedTerminology },
+        { number: '02', title: 'PDF and Word Output Options', description: 'Translated documents can be downloaded in PDF or Word format. Output is ready to be added directly to patient files with original layout preserved.', image: tercumedPdf },
+        { number: '03', title: 'Three-Step Process', description: 'Upload the file, select the target language, download the translated output. No complex setup required — usable instantly by anyone from patient admission to clinician.', image: tercumedSteps },
+      ],
+      howItWorks: [
+        { step: 1, title: 'Upload the Document', description: 'Upload your medical document in PDF, Word, or image format to the platform.' },
+        { step: 2, title: 'Select Target Language', description: 'Choose the translation language from 30+ options.' },
+        { step: 3, title: 'AI Processing', description: 'The medically-aware model analyzes the document and generates the translation.' },
+        { step: 4, title: 'Download and Use', description: 'Download the translated document in PDF or Word format, ready to add to patient records.' },
+      ],
+      faqs: [
+        { question: 'What document types are supported?', answer: 'Discharge summaries, consent forms, epicrises, laboratory and radiology reports, along with all clinical document types, are supported.' },
+        { question: 'How quickly is translation completed?', answer: 'Translation time for a standard page is between 10-30 seconds. No delays even during peak periods.' },
+        { question: 'What makes it different from general translation tools?', answer: 'Tercümed is trained specifically on medical terminology. This ensures drug names, diagnosis codes, and procedure terms are translated correctly.' },
+        { question: 'Is it GDPR compliant?', answer: 'Yes. Uploaded documents are processed only during translation and are not stored. All transfers occur over encrypted connections.' },
+      ],
+    },
+  },
+  {
+    id: 'kumanda-merkezi',
+    slug: 'kumanda-merkezi',
+    category: 'Kontrol & İzleme',
+    title: 'Kumanda Merkezi',
+    tagline: 'Tüm sistemlerinizi tek ekran üzerinden merkezi olarak izleyin ve kontrol edin.',
+    description: 'Gerçek zamanlı veri akışı, alarm yönetimi ve kapsamlı raporlama özellikleriyle operasyonel görünürlüğü artıran ve hizmet sürekliliğini garanti altına alan platform.',
+    longDescription: [
+      'HC Dijital\'in Kumanda Merkezi, tüm sistemlerinizi tek ekran üzerinden merkezi olarak izler ve kontrol eder. Gerçek zamanlı veri akışı ve alarm yönetimiyle kritik olaylara anında müdahale imkânı sağlar.',
+      'Operasyonel görünürlüğü artıran platform, verimliliği maksimize ederken hizmet sürekliliğini garanti altına alır. Kapsamlı raporlama özellikleri sayesinde yöneticiler anlık durumu ve tarihsel eğilimleri tek panelden takip eder.',
+      'Farklı sistemlerden gelen verileri normalize eden yapısı, mevcut altyapınıza ek yük bindirmeden devreye alınır. Özelleştirilebilir alarm eşikleri ile doğru kişi doğru anda bilgilendirilir.',
+    ],
+    stats: [
+      { value: '<%2sn', label: 'Alarm gecikme süresi' },
+      { value: '360°', label: 'Tam sistem görünürlüğü' },
+      { value: '%99.9', label: 'Platform çalışma süresi' },
+    ],
+    benefits: [
+      { icon: 'TrendingUp', title: 'Gerçek Zamanlı İzleme', description: 'Tüm sistem verileri tek panelde anlık olarak görselleştirilir; gecikmesiz.' },
+      { icon: 'ShieldCheck', title: 'Akıllı Alarm Yönetimi', description: 'Öncelikli alarm yapısı, gereksiz bildirim gürültüsünü filtreler; doğru kişiyi tetikler.' },
+      { icon: 'BarChart3', title: 'Tarihsel Analiz', description: 'Geçmişe dönük karşılaştırmalı raporlar SLA takibini ve kapasite planlamasını kolaylaştırır.' },
+      { icon: 'Plug', title: 'Çoklu Sistem Entegrasyonu', description: 'Farklı kaynaklardan gelen veriler normalize edilerek tek çatıda toplanır.' },
+      { icon: 'Users', title: 'Özelleştirilebilir Paneller', description: 'Her birime özel dashboard görünümleri ve kişiselleştirilebilir widget\'lar.' },
+      { icon: 'Zap', title: 'Anlık Bildirimler', description: 'SMS, e-posta ve uygulama içi bildirimlerle kritik olaylardan haberdar olun.' },
+    ],
+    howItWorks: [
+      { step: 1, title: 'Sistemleri Bağlayın', description: 'Mevcut altyapınızı API veya standart protokollerle platforma entegre edin.' },
+      { step: 2, title: 'Dashboard\'u Yapılandırın', description: 'Birime özel görünümler, alarm eşikleri ve bildirim kurallarını tanımlayın.' },
+      { step: 3, title: 'Canlı İzlemeyi Başlatın', description: 'Tüm sistemlerinizden akan veriler gerçek zamanlı olarak panelde görünür.' },
+      { step: 4, title: 'Olaylara Müdahale Edin', description: 'Otomatik alarmlar ilgili ekibi tetikler; müdahale süreci kayıt altına alınır.' },
+    ],
+    faqs: [
+      { question: 'Kaç farklı sistemi aynı anda izleyebilir?', answer: 'Platform, kaynak sayısı kısıtlaması olmaksızın farklı sistemlerden veri alabilir. Kapasite ihtiyacınıza göre ölçeklenir.' },
+      { question: 'Alarmların yanlış pozitif oranı nedir?', answer: 'Önceliklendirme algoritması sayesinde yanlış pozitif oranı %2\'nin altında tutulmaktadır. Eşikler kuruma özel özelleştirilebilir.' },
+      { question: 'Mevcut SCADA veya BMS sistemlerimle uyumlu mu?', answer: 'Evet. OPC-UA, MQTT ve REST API üzerinden yaygın endüstriyel protokollere bağlantı desteği sunulmaktadır.' },
+      { question: 'Bulut mu yoksa yerinde kurulum mu?', answer: 'Her iki seçenek de mevcuttur. Kurumun altyapı tercihine ve veri egemenliği politikasına göre yapılandırılır.' },
+    ],
+    tags: ['Monitoring', 'Gerçek Zamanlı', 'Yönetim', 'Dashboard'],
+    image: kumandaHero,
+    heroImage: kumandaHero,
+    gallery: [kumandaHero, kumanda2, kumanda2, tercumedSteps],
+    features: [
+      { number: '01', title: 'Gerçek Zamanlı Veri Akışı', description: 'Tüm sistemlerden akan veriler anlık olarak işlenir ve tek panelde görselleştirilir.', image: kumandaHero },
+      { number: '02', title: 'Alarm Yönetimi', description: 'Kritik eşiklerin aşılması durumunda ilgili ekipler SMS, e-posta veya uygulama bildirimi alır.', image: airxSetup },
+      { number: '03', title: 'Kapsamlı Raporlama', description: 'Anlık durum raporlarının yanı sıra geçmişe dönük karşılaştırmalı analizler üretilir.', image: kumanda2 },
+    ],
+    featured: false,
+    color: 'bg-sky/8 text-sky border-sky/15',
+    dot: 'bg-sky',
+    en: {
+      category: 'Control & Monitoring',
+      tagline: 'Monitor and control all your systems centrally from a single screen.',
+      description: 'A platform that enhances operational visibility and guarantees service continuity with real-time data flow, alarm management, and comprehensive reporting.',
+      longDescription: [
+        'HC Digital\'s Control Center monitors and controls all your systems centrally from a single screen. Real-time data flow and alarm management provide instant response capability to critical events.',
+        'The platform maximizes efficiency while guaranteeing service continuity. Comprehensive reporting features allow managers to track current status and historical trends from a single panel.',
+        'Its data-normalizing architecture goes live without adding overhead to your existing infrastructure. Customizable alarm thresholds ensure the right person is notified at the right time.',
+      ],
+      tags: ['Monitoring', 'Real-Time', 'Management', 'Dashboard'],
+      stats: [
+        { value: '<2s', label: 'Alarm delay time' },
+        { value: '360°', label: 'Full system visibility' },
+        { value: '99.9%', label: 'Platform uptime' },
+      ],
+      benefits: [
+        { icon: 'TrendingUp', title: 'Real-Time Monitoring', description: 'All system data is visualized instantly in a single panel; no delays.' },
+        { icon: 'ShieldCheck', title: 'Smart Alarm Management', description: 'Priority alarm structure filters unnecessary notification noise; triggers the right person.' },
+        { icon: 'BarChart3', title: 'Historical Analysis', description: 'Retrospective comparative reports simplify SLA tracking and capacity planning.' },
+        { icon: 'Plug', title: 'Multi-System Integration', description: 'Data from different sources is normalized and consolidated under one roof.' },
+        { icon: 'Users', title: 'Customizable Dashboards', description: 'Department-specific dashboard views and personalizable widgets.' },
+        { icon: 'Zap', title: 'Instant Notifications', description: 'Stay informed about critical events via SMS, email, and in-app notifications.' },
+      ],
+      features: [
+        { number: '01', title: 'Real-Time Data Flow', description: 'Data flowing from all systems is processed instantly and visualized in a single panel.', image: kumandaHero },
+        { number: '02', title: 'Alarm Management', description: 'When critical thresholds are exceeded, relevant teams receive SMS, email, or app notifications.', image: airxSetup },
+        { number: '03', title: 'Comprehensive Reporting', description: 'In addition to real-time status reports, retrospective comparative analyses are generated.', image: kumanda2 },
+      ],
+      howItWorks: [
+        { step: 1, title: 'Connect Systems', description: 'Integrate your existing infrastructure with the platform using API or standard protocols.' },
+        { step: 2, title: 'Configure Dashboard', description: 'Define department-specific views, alarm thresholds, and notification rules.' },
+        { step: 3, title: 'Start Live Monitoring', description: 'Data flowing from all your systems becomes visible in real time on the panel.' },
+        { step: 4, title: 'Respond to Events', description: 'Automatic alarms trigger the relevant team; the response process is recorded.' },
+      ],
+      faqs: [
+        { question: 'How many different systems can be monitored simultaneously?', answer: 'The platform can receive data from different systems without source number restrictions. It scales according to your capacity needs.' },
+        { question: 'What is the false positive rate for alarms?', answer: 'Thanks to the prioritization algorithm, the false positive rate is kept below 2%. Thresholds are customizable per organization.' },
+        { question: 'Is it compatible with our existing SCADA or BMS systems?', answer: 'Yes. Connection support is provided for common industrial protocols via OPC-UA, MQTT, and REST API.' },
+        { question: 'Cloud or on-premise installation?', answer: 'Both options are available. Configured according to the organization\'s infrastructure preference and data sovereignty policy.' },
+      ],
+    },
+  },
+  {
+    id: 'yon-assist',
+    slug: 'yon-assist',
+    category: 'Yapay Zekâ / Otomasyon',
+    title: 'Yön Assist',
+    tagline: 'Yapay zekâ destekli dijital asistanınız her an yanınızda.',
+    description: 'Doğal dil işleme altyapısı sayesinde sesli ve yazılı komutları anlayarak toplantı özetleri çıkaran, görevleri yöneten ve zaman planlamasını optimize eden yapay zekâ asistanı.',
+    longDescription: [
+      'Yön Assist, doğal dil işleme (NLP) altyapısı sayesinde sesli ve yazılı komutları anlayarak toplantı özetleri çıkarır, görevleri yönetir ve zaman planlamasını optimize eder.',
+      'Çok sektörlü kullanım imkânı sunan platform, 7/24 erişilebilirlik ve yüksek veri güvenliğiyle üst düzey bir dijital asistan deneyimi sağlar.',
+      'Kurumunuzun mevcut araç ekosistemiyle entegre çalışan Yön Assist, toplantı notlarını otomatik olarak düzenler, eylem maddelerini ilgili kişilere atar ve takip sürecini başlatır.',
+    ],
+    stats: [
+      { value: '%60', label: 'Toplantı süresi tasarrufu' },
+      { value: '7/24', label: 'Kesintisiz erişim' },
+      { value: '50+', label: 'Entegre edilebilir araç' },
+    ],
+    benefits: [
+      { icon: 'Zap', title: 'Anında Yanıt', description: 'Sesli veya yazılı komutlara milisaniyeler içinde yanıt verir.' },
+      { icon: 'Users', title: 'Ekip Görev Yönetimi', description: 'Toplantı eylem maddeleri otomatik olarak ilgili kişilere atanır ve takibe alınır.' },
+      { icon: 'BarChart3', title: 'Akıllı Özetler', description: 'Toplantı transkriptlerinden eyleme dönüşebilir özetler otomatik oluşturulur.' },
+      { icon: 'ShieldCheck', title: 'Kurumsal Güvenlik', description: 'Tüm veri işlemleri şifreli altyapıda, KVKK uyumlu şekilde yürütülür.' },
+      { icon: 'Plug', title: 'Araç Entegrasyonu', description: 'Takvim, e-posta ve proje yönetim araçlarıyla sorunsuz çalışır.' },
+      { icon: 'TrendingUp', title: 'Sürekli Öğrenme', description: 'Kullanıldıkça kurumunuza özgü terimlere ve iş akışlarına adapte olur.' },
+    ],
+    howItWorks: [
+      { step: 1, title: 'Bağlantıyı Kurun', description: 'Mevcut takvim, e-posta ve iletişim araçlarınızı platforma bağlayın.' },
+      { step: 2, title: 'Toplantıyı Kaydedin', description: 'Asistan toplantıya katılır, sesi transkribe eder ve anahtar noktaları belirler.' },
+      { step: 3, title: 'Özet ve Görevleri Alın', description: 'Toplantı biter bitmez özet ve eylem maddeleri otomatik olarak iletilir.' },
+      { step: 4, title: 'Takip Sürecini Başlatın', description: 'Görevler ilgili kişilere atanır; tamamlanma durumu otomatik izlenir.' },
+    ],
+    faqs: [
+      { question: 'Hangi dilleri destekliyor?', answer: 'Türkçe ve İngilizce birincil dil desteğiyle sunulmaktadır. Ek dil desteği kurumsal paketlerde mevcuttur.' },
+      { question: 'Var olan toplantı araçlarımla çalışır mı?', answer: 'Evet. Microsoft Teams, Zoom, Google Meet ve diğer yaygın platformlarla entegrasyon desteklenmektedir.' },
+      { question: 'Transkript doğruluğu nasıl?', answer: 'Standart Türkçe konuşma için %92 üzeri doğruluk oranı elde edilmektedir.' },
+      { question: 'Veri nerede saklanıyor?', answer: 'Türkiye lokasyonlu sunucularda, KVKK gerekliliklerine tam uyumlu şekilde saklanmaktadır.' },
+    ],
+    tags: ['Yapay Zekâ', 'Otomasyon', 'NLP', 'Asistan'],
+    image: yonHero,
+    heroImage: yonHero,
+    gallery: [yonHero, yon2, yon3, yon4],
+    features: [
+      { number: '01', title: 'Sesli ve Yazılı Komut Anlama', description: 'NLP altyapısı sayesinde hem sesli hem yazılı komutları doğal dilde algılar.', image: yonVoice },
+      { number: '02', title: 'Toplantı Özetleri ve Görev Yönetimi', description: 'Toplantılar otomatik olarak transkribe edilir, eylem maddeleri tespit edilir ve ilgili kişilere görev olarak atanır.', image: yonMeeting },
+      { number: '03', title: '7/24 Erişilebilirlik ve Yüksek Güvenlik', description: 'Platform kesintisiz çalışır ve tüm veri işlemleri yüksek güvenlik standartları kapsamında yürütülür.', image: yonSecurity },
+    ],
+    featured: false,
+    color: 'bg-accent/8 text-accent-dark border-accent/15',
+    dot: 'bg-accent',
+    en: {
+      category: 'AI / Automation',
+      tagline: 'Your AI-powered digital assistant is always by your side.',
+      description: 'An AI assistant that understands voice and text commands through NLP, extracts meeting summaries, manages tasks, and optimizes time planning.',
+      longDescription: [
+        'Yön Assist understands voice and text commands through its NLP infrastructure, extracting meeting summaries, managing tasks, and optimizing time planning.',
+        'The multi-sector platform provides a premium digital assistant experience with 24/7 accessibility and high data security.',
+        'Integrated with your organization\'s existing tool ecosystem, Yön Assist automatically organizes meeting notes, assigns action items to relevant people, and initiates the follow-up process.',
+      ],
+      tags: ['Artificial Intelligence', 'Automation', 'NLP', 'Assistant'],
+      stats: [
+        { value: '60%', label: 'Meeting time savings' },
+        { value: '24/7', label: 'Uninterrupted access' },
+        { value: '50+', label: 'Integrable tools' },
+      ],
+      benefits: [
+        { icon: 'Zap', title: 'Instant Response', description: 'Responds to voice or text commands in milliseconds.' },
+        { icon: 'Users', title: 'Team Task Management', description: 'Meeting action items are automatically assigned to relevant people and tracked.' },
+        { icon: 'BarChart3', title: 'Smart Summaries', description: 'Actionable summaries are automatically generated from meeting transcripts.' },
+        { icon: 'ShieldCheck', title: 'Enterprise Security', description: 'All data operations are conducted on encrypted infrastructure, GDPR compliant.' },
+        { icon: 'Plug', title: 'Tool Integration', description: 'Works seamlessly with calendar, email, and project management tools.' },
+        { icon: 'TrendingUp', title: 'Continuous Learning', description: 'Adapts to your organization\'s specific terminology and workflows over time.' },
+      ],
+      features: [
+        { number: '01', title: 'Voice and Text Command Understanding', description: 'Detects both voice and text commands in natural language through NLP.', image: yonVoice },
+        { number: '02', title: 'Meeting Summaries and Task Management', description: 'Meetings are automatically transcribed, action items are identified, and assigned as tasks to relevant people.', image: yonMeeting },
+        { number: '03', title: '24/7 Accessibility and High Security', description: 'The platform operates continuously and all data operations are conducted under high security standards.', image: yonSecurity },
+      ],
+      howItWorks: [
+        { step: 1, title: 'Establish Connection', description: 'Connect your existing calendar, email, and communication tools to the platform.' },
+        { step: 2, title: 'Record the Meeting', description: 'The assistant joins the meeting, transcribes speech, and identifies key points.' },
+        { step: 3, title: 'Receive Summaries and Tasks', description: 'As soon as the meeting ends, summary and action items are automatically delivered.' },
+        { step: 4, title: 'Start the Follow-Up Process', description: 'Tasks are assigned to relevant people; completion status is automatically tracked.' },
+      ],
+      faqs: [
+        { question: 'Which languages are supported?', answer: 'Offered primarily with Turkish and English support. Additional language support is available in enterprise packages.' },
+        { question: 'Does it work with existing meeting tools?', answer: 'Yes. Integration with Microsoft Teams, Zoom, Google Meet, and other popular platforms is supported.' },
+        { question: 'How accurate is the transcription?', answer: 'Accuracy rate above 92% is achieved for standard Turkish speech.' },
+        { question: 'Where is data stored?', answer: 'Stored on Turkey-based servers, fully compliant with local data protection requirements.' },
+      ],
+    },
+  },
+  {
+    id: 'butce-yonetim',
+    slug: 'butce-yonetim',
+    category: 'Finans / Sağlık',
+    title: 'Hastane Bütçe Yönetim Sistemi',
+    tagline: 'Bütçe yönetiminde yeni nesil.',
+    description: 'Otomatik gider–gelir takibi, gerçek zamanlı öngörüler ve yapay zekâ destekli raporlarla stratejik kararlar almanızı sağlayan, ölçeklenebilir ve güvenli bütçe yönetim platformu.',
+    longDescription: [
+      'Hastane Bütçe Yönetim Sistemi, ekip yönetimi ve iş süreçlerini tek kontrol panelinde birleştirir. Otomatik gider–gelir takibi, gerçek zamanlı öngörüler ve yapay zekâ destekli raporlarla stratejik kararlar almanızı sağlar.',
+      'Ölçeklenebilir ve güvenli altyapısıyla küçük kliniklerden büyük hastane zincirlerine kadar her ölçekte kuruma uyum sağlar.',
+      'Bütçe aşımları oluşmadan önce yapay zekâ tabanlı uyarı mekanizması devreye girer.',
+    ],
+    stats: [
+      { value: '%100', label: 'Otomatik gider-gelir takibi' },
+      { value: '1 Tık', label: 'Yönetim kurulu raporu' },
+      { value: 'ERP Uyumlu', label: 'Sistem entegrasyonu' },
+    ],
+    benefits: [
+      { icon: 'BarChart3', title: 'Otomatik Takip', description: 'Gelir ve gider kalemleri sınıflandırılır; manuel giriş ihtiyacı tamamen ortadan kalkar.' },
+      { icon: 'TrendingUp', title: 'AI Öngörü Motoru', description: 'Gelecek dönem bütçe sapmaları oluşmadan önce tespit edilir ve yönetici uyarılır.' },
+      { icon: 'ShieldCheck', title: 'Güvenli Altyapı', description: 'Rol bazlı erişim ve veri şifreleme ile hassas finansal veriler her zaman korunaklıdır.' },
+      { icon: 'Plug', title: 'ERP & HBYS Entegrasyonu', description: 'Mevcut sistemlerinizle veri silolarını ortadan kaldırır; tek doğru kaynak oluşturur.' },
+      { icon: 'Users', title: 'Birim Bazlı Analiz', description: 'Her klinikteki maliyet merkezi ayrı ayrı izlenir ve karşılaştırmalı analize açılır.' },
+      { icon: 'Zap', title: 'Anlık Uyarılar', description: 'Bütçe aşımı riski oluştuğunda ilgili yöneticilere otomatik bildirim gider.' },
+    ],
+    howItWorks: [
+      { step: 1, title: 'Entegrasyonu Kurun', description: 'Mevcut ERP, HBYS ve muhasebe sistemlerinizi platforma bağlayın.' },
+      { step: 2, title: 'Bütçe Hedeflerini Girin', description: 'Birim ve dönem bazlı bütçe limitlerini ve gider kalemlerini tanımlayın.' },
+      { step: 3, title: 'Otomatik Takip Başlar', description: 'Tüm gelir ve giderler gerçek zamanlı olarak işlenir ve görselleştirilir.' },
+      { step: 4, title: 'Raporlarla Karar Alın', description: 'Yapay zekâ destekli raporlar ve tahminlerle stratejik bütçe kararları verin.' },
+    ],
+    faqs: [
+      { question: 'Hangi ERP sistemleriyle entegre olur?', answer: 'SAP, Oracle ve yerli HBYS çözümleriyle entegrasyon desteklenmektedir.' },
+      { question: 'Küçük bir klinik için uygun mu?', answer: 'Evet. Platform, tek birimli kliniklerden çok şubeli hastane zincirlerine kadar ölçeklenebilir modüler yapıya sahiptir.' },
+      { question: 'Yapay zekâ tahminleri ne kadar güvenilir?', answer: 'Ortalama hata payı %5\'in altındadır.' },
+      { question: 'Muhasebe ekibim ek eğitim alması gerekiyor mu?', answer: 'Sezgisel arayüz tasarımı sayesinde temel eğitim 2 saatte tamamlanmaktadır.' },
+    ],
+    tags: ['Finans', 'AI Raporlama', 'Sağlık', 'Analitik'],
+    image: butce2,
+    heroImage: butce2,
+    gallery: [butce2, butce3, butce2, butce3],
+    features: [
+      { number: '01', title: 'Otomatik Gider–Gelir Takibi', description: 'Tüm gelir ve gider kalemleri otomatik olarak sınıflandırılır ve izlenir.', image: butce2 },
+      { number: '02', title: 'Yapay Zekâ Destekli Raporlar', description: 'Geçmiş verileri analiz eden yapay zekâ motoru, gelecek dönem bütçe tahminleri ve sapma uyarıları üretir.', image: butce2 },
+      { number: '03', title: 'Ölçeklenebilir ve Güvenli Altyapı', description: 'Bulut tabanlı güvenli altyapı, kurumunuzun büyümesiyle birlikte ölçeklenir.', image: butce3 },
+    ],
+    featured: false,
+    color: 'bg-primary/8 text-primary border-primary/15',
+    dot: 'bg-primary',
+    en: {
+      category: 'Finance / Healthcare',
+      tagline: 'Next generation in budget management.',
+      description: 'A scalable and secure budget management platform enabling strategic decisions with automated expense-income tracking, real-time insights, and AI-powered reports.',
+      longDescription: [
+        'The Hospital Budget Management System consolidates team management and business processes in a single control panel.',
+        'With its scalable and secure infrastructure, it adapts to any size institution from small clinics to large hospital chains.',
+        'The AI-based warning mechanism activates before budget overruns occur.',
+      ],
+      tags: ['Finance', 'AI Reporting', 'Healthcare', 'Analytics'],
+      stats: [
+        { value: '100%', label: 'Automated expense-income tracking' },
+        { value: '1 Click', label: 'Board report generation' },
+        { value: 'ERP Ready', label: 'System integration' },
+      ],
+      benefits: [
+        { icon: 'BarChart3', title: 'Automated Tracking', description: 'Revenue and expense items are classified; the need for manual entry is completely eliminated.' },
+        { icon: 'TrendingUp', title: 'AI Forecasting Engine', description: 'Future budget deviations are detected before they occur and the manager is alerted.' },
+        { icon: 'ShieldCheck', title: 'Secure Infrastructure', description: 'Role-based access and data encryption keep sensitive financial data always protected.' },
+        { icon: 'Plug', title: 'ERP & HIS Integration', description: 'Eliminates data silos with existing systems; creates a single source of truth.' },
+        { icon: 'Users', title: 'Unit-Based Analysis', description: 'Cost centers in each clinic are monitored separately and open for comparative analysis.' },
+        { icon: 'Zap', title: 'Instant Alerts', description: 'Automatic notifications are sent to relevant managers when budget overrun risk arises.' },
+      ],
+      features: [
+        { number: '01', title: 'Automated Expense-Income Tracking', description: 'All revenue and expense items are automatically classified and monitored.', image: butce2 },
+        { number: '02', title: 'AI-Powered Reports', description: 'The AI engine analyzing historical data generates future period budget forecasts and deviation warnings.', image: butce2 },
+        { number: '03', title: 'Scalable and Secure Infrastructure', description: 'The cloud-based secure infrastructure scales with your organization\'s growth.', image: butce3 },
+      ],
+      howItWorks: [
+        { step: 1, title: 'Set Up Integration', description: 'Connect your existing ERP, HIS, and accounting systems to the platform.' },
+        { step: 2, title: 'Enter Budget Targets', description: 'Define unit and period-based budget limits and expense items.' },
+        { step: 3, title: 'Automated Tracking Begins', description: 'All revenues and expenses are processed in real time and visualized.' },
+        { step: 4, title: 'Decide with Reports', description: 'Make strategic budget decisions with AI-powered reports and forecasts.' },
+      ],
+      faqs: [
+        { question: 'Which ERP systems does it integrate with?', answer: 'Integration with SAP, Oracle, and local HIS solutions is supported.' },
+        { question: 'Is it suitable for a small clinic?', answer: 'Yes. The platform has a scalable modular structure from single-unit clinics to multi-branch hospital chains.' },
+        { question: 'How reliable are the AI forecasts?', answer: 'The average margin of error is below 5%.' },
+        { question: 'Does my accounting team need additional training?', answer: 'Basic training is completed in 2 hours thanks to the intuitive interface design.' },
+      ],
+    },
+  },
+  {
+    id: 'spiral-freezer',
+    slug: 'spiral-freezer',
+    category: 'Gıda Teknolojisi',
+    title: 'Spiral Freezer',
+    tagline: "Binlerce ürünü dakikalar içinde -40°C'ye indir.",
+    description: "Hücre içi buz kristali oluşumunu minimize ederek ürünlerin doğal doku, lezzet ve raf ömrünü koruyan endüstriyel hızlı dondurma sistemi.",
+    longDescription: [
+      "Spiral Freezer, binlerce ürünü dakikalar içinde -40°C'ye indirerek hücre içi kristal oluşumunu minimize eder ve doğal doku, lezzet ile raf ömrünü korur.",
+      "AISI 304 paslanmaz çelik gövde ve ürün temas yüzeyleri, yoğun üretim koşullarında dayanıklılığı sürdürürken hijyen standartlarını en üst seviyede tutar.",
+      "Patentli hava akışı teknolojisi sayesinde enerji tüketimi %30'a kadar azalır.",
+    ],
+    stats: [
+      { value: '-40°C', label: 'Minimum dondurma sıcaklığı' },
+      { value: '%30', label: 'Enerji tasarrufu' },
+      { value: '20+ Yıl', label: 'Sektör deneyimi' },
+    ],
+    benefits: [
+      { icon: 'Zap', title: 'Hızlı Dondurma', description: 'Ürünler dakikalar içinde hedef sıcaklığa ulaşır; hücre yapısı ve besin değerleri korunur.' },
+      { icon: 'TrendingUp', title: 'Enerji Verimliliği', description: 'Patentli hava akışı teknolojisi enerji tüketimini %30\'a kadar azaltır.' },
+      { icon: 'ShieldCheck', title: 'Hijyen Standartları', description: 'AISI 304 paslanmaz çelik ve entegre CIP sistemi ile 3-A SSA & CE sertifikasyonu.' },
+      { icon: 'Plug', title: 'Modüler Büyüme', description: 'Kapasite artışı için mevcut sistemi sökmek gerekmez.' },
+      { icon: 'BarChart3', title: 'Uzaktan İzleme', description: 'Entegre sensörler ve dashboard ile üretim verilerini gerçek zamanlı takip edin.' },
+      { icon: 'Headphones', title: '7/24 Teknik Destek', description: '20+ yıllık deneyimli ekip, sahadaki her sorunu hızla çözer.' },
+    ],
+    howItWorks: [
+      { step: 1, title: 'İhtiyaç Analizi', description: 'Üretim kapasitesi, ürün tipi ve alan koşullarınız doğrultusunda teknik şartname hazırlanır.' },
+      { step: 2, title: 'Üretim ve Test', description: 'Sisteminiz fabrikada üretilir ve FAT (Fabrika Kabul Testi) tamamlanır.' },
+      { step: 3, title: 'Kurulum ve Devreye Alma', description: 'Uzman ekibimiz sahada kurulum ve entegrasyonu gerçekleştirir.' },
+      { step: 4, title: 'Sürekli Destek', description: 'Yıllık bakım, uzaktan izleme ve 7/24 teknik destek hattıyla kesintisiz çalışma garanti edilir.' },
+    ],
+    faqs: [
+      { question: 'Hangi ürün tiplerini işleyebilir?', answer: 'Et, kanatlı, deniz ürünleri, unlu mamüller, meyve-sebze ve hazır yemek başta olmak üzere gıda sektörünün tüm ürün tiplerini işler.' },
+      { question: 'Minimum kapasite ne kadardır?', answer: 'Modüler yapı sayesinde günlük 500 kg\'dan tonlarca kapasiteye kadar yapılandırma mümkündür.' },
+      { question: 'CE ve 3-A SSA belgelerine sahip mi?', answer: 'Evet. Tüm sistemler CE direktiflerine ve 3-A Sanitary Standards\'a tam uyumlu olarak üretilmekte ve belgelendirilmektedir.' },
+      { question: 'Bakım ne sıklıkla yapılmalı?', answer: 'Standart bakım periyodu 6 ayda birdir.' },
+    ],
+    tags: ['Endüstriyel', 'Soğutma', 'Gıda', 'CE Uyumlu'],
+    image: spiralHero,
+    heroImage: spiralHero,
+    gallery: [spiralHero, tercumedSteps, spiral2, spiralHero],
+    features: [
+      { number: '01', title: 'Patentli Hava Akışı Teknolojisi', description: "Gelişmiş yalıtım panelleriyle enerji tüketimi %30'a kadar azalır.", image: tercumedSteps },
+      { number: '02', title: 'Modüler Tasarım', description: 'Mevcut ekipmanı sökmeden yeni spiral katmanlar veya bant modülleri eklenerek kapasite dakikalar içinde ikiye katlanabilir.', image: spiral2 },
+      { number: '03', title: 'Entegre CIP Sistemi ve Sertifikasyon', description: "Clean-in-Place sistemi temizlik sürelerini kısaltır, 3-A SSA ve CE standartlarına tam uyumluluk sağlar.", image: spiralHero },
+    ],
+    featured: false,
+    color: 'bg-sky/8 text-sky border-sky/15',
+    dot: 'bg-sky',
+    en: {
+      category: 'Food Technology',
+      tagline: 'Freeze thousands of products to -40°C in minutes.',
+      description: 'An industrial rapid freezing system that minimizes intracellular ice crystal formation, preserving the natural texture, flavor, and shelf life of products.',
+      longDescription: [
+        'Spiral Freezer brings thousands of products down to -40°C in minutes, minimizing intracellular crystal formation and preserving natural texture, flavor, and shelf life.',
+        'AISI 304 stainless steel body and product contact surfaces maintain durability under intense production conditions while keeping hygiene standards at the highest level.',
+        'Thanks to patented airflow technology, energy consumption is reduced by up to 30%.',
+      ],
+      tags: ['Industrial', 'Refrigeration', 'Food', 'CE Compliant'],
+      stats: [
+        { value: '-40°C', label: 'Minimum freezing temperature' },
+        { value: '30%', label: 'Energy savings' },
+        { value: '20+ Yrs', label: 'Industry experience' },
+      ],
+      benefits: [
+        { icon: 'Zap', title: 'Rapid Freezing', description: 'Products reach target temperature in minutes; cell structure and nutritional values are preserved.' },
+        { icon: 'TrendingUp', title: 'Energy Efficiency', description: 'Patented airflow technology reduces energy consumption by up to 30%.' },
+        { icon: 'ShieldCheck', title: 'Hygiene Standards', description: 'AISI 304 stainless steel and integrated CIP system with 3-A SSA & CE certification.' },
+        { icon: 'Plug', title: 'Modular Expansion', description: 'No need to disassemble existing system for capacity increase.' },
+        { icon: 'BarChart3', title: 'Remote Monitoring', description: 'Track production data in real time with integrated sensors and dashboard.' },
+        { icon: 'Headphones', title: '24/7 Technical Support', description: 'Experienced team with 20+ years quickly resolves field issues.' },
+      ],
+      features: [
+        { number: '01', title: 'Patented Airflow Technology', description: 'Energy consumption is reduced by up to 30% with advanced insulation panels.', image: tercumedSteps },
+        { number: '02', title: 'Modular Design', description: 'New spiral layers or belt modules can be added without disassembling existing equipment, doubling capacity within minutes.', image: spiral2 },
+        { number: '03', title: 'Integrated CIP System & Certification', description: 'The Clean-in-Place system shortens cleaning times and ensures full compliance with 3-A SSA and CE standards.', image: spiralHero },
+      ],
+      howItWorks: [
+        { step: 1, title: 'Needs Analysis', description: 'Technical specifications are prepared based on your production capacity, product type, and site conditions.' },
+        { step: 2, title: 'Production & Testing', description: 'Your system is manufactured at the factory and FAT (Factory Acceptance Test) is completed.' },
+        { step: 3, title: 'Installation & Commissioning', description: 'Our expert team performs on-site installation and integration.' },
+        { step: 4, title: 'Ongoing Support', description: 'Annual maintenance, remote monitoring, and 24/7 technical support line guarantee uninterrupted operation.' },
+      ],
+      faqs: [
+        { question: 'What product types can it process?', answer: 'Ideal for all product types in the food industry, primarily meat, poultry, seafood, baked goods, fruits and vegetables, and ready meals.' },
+        { question: 'What is the minimum capacity?', answer: 'Configuration from 500 kg per day to tons is possible thanks to the modular structure.' },
+        { question: 'Does it have CE and 3-A SSA certifications?', answer: 'Yes. All systems are manufactured and certified in full compliance with CE directives and 3-A Sanitary Standards.' },
+        { question: 'How often should maintenance be performed?', answer: 'Standard maintenance period is every 6 months.' },
+      ],
+    },
+  },
+]
+
+export const categories = {
+  tr: ['Tümü', 'İK & Zaman Yönetimi', 'Yapay Zekâ / Sağlık', 'Kontrol & İzleme', 'Yapay Zekâ / Otomasyon', 'Finans / Sağlık', 'Gıda Teknolojisi'],
+  en: ['All', 'HR & Time Management', 'AI / Healthcare', 'Control & Monitoring', 'AI / Automation', 'Finance / Healthcare', 'Food Technology'],
+}

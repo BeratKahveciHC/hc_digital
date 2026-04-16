@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/cerez/page": "app/cerez/page.js",
+  "/gizlilik/page": "app/gizlilik/page.js",
+  "/ekibimiz/page": "app/ekibimiz/page.js",
+  "/kvkk/page": "app/kvkk/page.js",
+  "/haberler/[slug]/page": "app/haberler/[slug]/page.js",
+  "/haberler/page": "app/haberler/page.js",
+  "/hakkimizda/page": "app/hakkimizda/page.js",
+  "/iletisim/page": "app/iletisim/page.js",
+  "/page": "app/page.js",
+  "/referanslar/page": "app/referanslar/page.js",
+  "/servisler/page": "app/servisler/page.js",
+  "/urunler/page": "app/urunler/page.js",
+  "/servisler/[slug]/page": "app/servisler/[slug]/page.js",
+  "/urunler/[slug]/page": "app/urunler/[slug]/page.js"
+}
