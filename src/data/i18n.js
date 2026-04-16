@@ -3,10 +3,14 @@ export const i18n = {
     // Header
     nav: [
       { label: 'Ürünler',    href: '/urunler',     internal: true },
-      { label: 'Servisler',  href: '/servisler',  internal: true },
+      { label: 'Hizmetler',  href: '/servisler',  internal: true },
       { label: 'Referanslar', href: '/referanslar', internal: true },
-      { label: 'Hakkımızda', href: '/hakkimizda',  internal: true },
-      { label: 'İletişim',   href: '/iletisim',   internal: true },
+      { label: 'Haberler',  href: '/haberler',  internal: true },
+      { label: 'Hakkımızda', href: '/hakkimizda', internal: true, dropdown: [
+        { label: 'Şirket Hakkında', href: '/hakkimizda' },
+        { label: 'Ekibimiz',        href: '/ekibimiz' },
+      ]},
+      { label: 'İletişim',  href: '/iletisim',  internal: true },
     ],
     headerCta: 'Görüşme Planlayın',
 
@@ -17,15 +21,15 @@ export const i18n = {
 
     // Hero
     hero: {
-      badge: 'Dijital Dönüşüm',
-      h1Line1: 'İşletmeniz için',
-      h1Line2: ['Dijital', 'Akıllı', 'Hızlı', 'Güçlü'],
-      h1Line3: 'Dönüşüm',
-      paragraph: 'Yapay zekâ destekli yazılım ürünleri ve dijital dönüşüm çözümleriyle kurumların daha verimli ve akıllı çalışmasını sağlıyoruz.',
-      ctaPrimary: 'Görüşme Planlayın',
-      ctaSecondary: 'Ürünlerimiz',
-      trustText: 'LIV Hospital, Medical Park, MLP Care ve 40+ kuruma güvenilen platform',
-      statsLabels: ['Aktif Kullanıcı', 'Aktif Kurum', 'Yıllık Deneyim'],
+      badge: 'Kurumsal Yazılım & Yapay Zekâ',
+      h1Line1: 'Kurumunuz için',
+      h1Line2: ['Yapay Zekâ', 'Veri Analitiği', 'Kurumsal Yazılım', 'Karar Desteği'],
+      h1Line3: 'çözümleri',
+      paragraph: 'Sağlık ve kurumsal sektörde yapay zekâ destekli yazılım ürünleri ve veri odaklı çözümler geliştiriyor; kurumların karar alma kapasitesini ve operasyonel verimliliğini kalıcı biçimde artırıyoruz.',
+      ctaPrimary: 'Görüşme Talep Edin',
+      ctaSecondary: 'Çözümlerimiz',
+      trustText: 'LIV Hospital, Medical Park, MLP Care ve 40\'tan fazla kurumun tercih ettiği platform',
+      statsLabels: ['Aktif Kullanıcı', 'Kurumsal Müşteri', 'Yıllık Deneyim'],
       dashboardTitle: 'Kumanda Merkezi',
       dashboardSubtitle: 'Genel Bakış',
       dashboardLive: 'Canlı',
@@ -44,9 +48,9 @@ export const i18n = {
 
     // Services
     services: {
-      overline: 'Servislerimiz',
+      overline: 'Hizmetlerimiz',
       h2: 'Dijital dönüşümde uçtan uca çözümler',
-      discoveryTitle: 'Tüm\nServislerimiz',
+      discoveryTitle: 'Tüm\nHizmetlerimiz',
       discoveryDesc: 'Projenize ve kurumunuza uygun bir modelimiz mutlaka vardır. Tüm hizmetlerimizi keşfedin.',
       discoveryLink: 'Keşfet',
       items: [
@@ -113,10 +117,12 @@ export const i18n = {
       cookies: 'Gizlilik Politikası',
       navLinks: [
         { label: 'Ürünler',     href: '/urunler' },
-        { label: 'Servisler',   href: '/#servisler' },
+        { label: 'Hizmetler',   href: '/servisler' },
         { label: 'Referanslar', href: '/referanslar' },
-        { label: 'Hakkımızda', href: '/hakkimizda' },
-        { label: 'İletişim',   href: '/iletisim',   internal: true },
+        { label: 'Haberler',        href: '/haberler' },
+        { label: 'Şirket Hakkında', href: '/hakkimizda' },
+        { label: 'Ekibimiz',        href: '/ekibimiz' },
+        { label: 'İletişim',        href: '/iletisim', internal: true },
       ],
       products: [
         { label: 'AirX IKYS',               to: '/urunler/airx-ikys' },
@@ -177,15 +183,15 @@ export const i18n = {
 
     // Services listing page
     servicesPage: {
-      breadcrumb: 'Servisler',
-      overline: 'Servislerimiz',
+      breadcrumb: 'Hizmetler',
+      overline: 'Hizmetlerimiz',
       h1Line1: 'Dijital dönüşüm',
-      h1Line2: 'servisleri',
+      h1Line2: 'hizmetleri',
       paragraph: 'Yazılım geliştirmeden yapay zekâya, veri analitiğinden teknoloji danışmanlığına kadar her ihtiyacınız için yanınızdayız.',
       featuredBadge: 'Öne Çıkan',
       ctaOverline: 'Özel Proje',
       ctaH2: 'İhtiyacınıza özel bir çözüm mü arıyorsunuz?',
-      ctaP: 'Listelenen servislerin yanı sıra kurumunuza özel geliştirme hizmeti sunuyoruz. Gereksinimlerinizi paylaşın, birlikte tasarlayalım.',
+      ctaP: 'Listelenen hizmetlerin yanı sıra kurumunuza özel geliştirme hizmeti sunuyoruz. Gereksinimlerinizi paylaşın, birlikte tasarlayalım.',
       ctaBtn1: 'Görüşme Talep Et',
       ctaBtn2: 'Ana Sayfaya Dön',
     },
@@ -208,8 +214,12 @@ export const i18n = {
       { label: 'Products',  href: '/urunler',     internal: true },
       { label: 'Services',  href: '/servisler',  internal: true },
       { label: 'References', href: '/referanslar', internal: true },
-      { label: 'About',     href: '/hakkimizda',  internal: true },
-      { label: 'Contact',   href: '/iletisim',   internal: true },
+      { label: 'News',    href: '/haberler',   internal: true },
+      { label: 'About',   href: '/hakkimizda',  internal: true, dropdown: [
+        { label: 'About Us', href: '/hakkimizda' },
+        { label: 'Our Team', href: '/ekibimiz' },
+      ]},
+      { label: 'Contact', href: '/iletisim',    internal: true },
     ],
     headerCta: 'Schedule a Meeting',
 
@@ -220,15 +230,15 @@ export const i18n = {
 
     // Hero
     hero: {
-      badge: 'Digital Transformation',
-      h1Line1: 'For your business,',
-      h1Line2: ['Digital', 'Smart', 'Fast', 'Powerful'],
-      h1Line3: 'transformation',
-      paragraph: 'We deliver AI-powered software products and digital transformation solutions that help institutions work smarter and more efficiently.',
-      ctaPrimary: 'Schedule a Meeting',
-      ctaSecondary: 'Our Products',
-      trustText: 'Trusted by LIV Hospital, Medical Park, MLP Care and 40+ institutions',
-      statsLabels: ['Active Users', 'Active Institutions', 'Years of Experience'],
+      badge: 'Enterprise Software & AI',
+      h1Line1: 'Enterprise',
+      h1Line2: ['AI Solutions', 'Data Analytics', 'Decision Support', 'Software Platforms'],
+      h1Line3: 'for institutions',
+      paragraph: 'We build AI-powered software products and data-driven solutions for healthcare and enterprise institutions — permanently elevating decision-making capacity and operational efficiency.',
+      ctaPrimary: 'Request a Meeting',
+      ctaSecondary: 'Our Solutions',
+      trustText: 'The platform of choice for LIV Hospital, Medical Park, MLP Care and 40+ institutions',
+      statsLabels: ['Active Users', 'Enterprise Clients', 'Years of Experience'],
       dashboardTitle: 'Control Center',
       dashboardSubtitle: 'Overview',
       dashboardLive: 'Live',
@@ -318,7 +328,9 @@ export const i18n = {
         { label: 'Products', href: '/urunler' },
         { label: 'Services', href: '/#servisler' },
         { label: 'References', href: '/referanslar' },
-        { label: 'About',    href: '/hakkimizda' },
+        { label: 'News',  href: '/haberler' },
+        { label: 'About', href: '/hakkimizda' },
+        { label: 'Team',  href: '/ekibimiz' },
         { label: 'Contact',  href: '/iletisim' },
       ],
       products: [

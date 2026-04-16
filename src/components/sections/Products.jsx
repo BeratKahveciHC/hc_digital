@@ -56,7 +56,7 @@ export default function Products() {
         </div>
 
         {/* ── Kart Fanı ── */}
-        <div className="relative flex items-center justify-center h-110 sm:h-130 md:h-150 lg:h-170">
+        <div className="relative flex items-center justify-center h-96 sm:h-110 md:h-120 lg:h-136 xl:h-150 2xl:h-170">
 
           {products.map((product, i) => {
             const pos = getPos(i)

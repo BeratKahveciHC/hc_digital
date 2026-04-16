@@ -11,7 +11,11 @@ const ServicesPage = lazy(() => import('./pages/ServicesPage'))
 const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'))
 const BrandsPage = lazy(() => import('./pages/BrandsPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
+const AboutCompanyPage = lazy(() => import('./pages/AboutCompanyPage'))
+const TeamPage = lazy(() => import('./pages/TeamPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
+const NewsPage = lazy(() => import('./pages/NewsPage'))
+const NewsDetailPage = lazy(() => import('./pages/NewsDetailPage'))
 const KvkkPage = lazy(() => import('./pages/KvkkPage'))
 const GizlilikPage = lazy(() => import('./pages/GizlilikPage'))
 const CerezPage = lazy(() => import('./pages/CerezPage'))
@@ -36,7 +40,10 @@ function App() {
             <Route path="/servisler" element={<ServicesPage />} />
             <Route path="/servisler/:slug" element={<ServiceDetailPage />} />
             <Route path="/referanslar" element={<BrandsPage />} />
-            <Route path="/hakkimizda" element={<AboutPage />} />
+            <Route path="/hakkimizda" element={<AboutCompanyPage />} />
+            <Route path="/ekibimiz" element={<TeamPage />} />
+            <Route path="/haberler" element={<NewsPage />} />
+            <Route path="/haberler/:slug" element={<NewsDetailPage />} />
             <Route path="/iletisim" element={<ContactPage />} />
             <Route path="/kvkk" element={<KvkkPage />} />
             <Route path="/gizlilik" element={<GizlilikPage />} />

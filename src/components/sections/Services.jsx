@@ -101,21 +101,17 @@ export default function Services() {
           return (
             <div
               key={i}
-              className="group shrink-0 w-80 lg:w-[calc((100vw-96px)/4)] bg-dark hover:bg-primary/90 border border-white/8 hover:border-primary rounded-3xl p-8 lg:p-10 flex flex-col justify-between transition-all duration-300 select-none"
+              className="group shrink-0 w-80 lg:w-[calc((100vw-96px)/4)] bg-white hover:bg-primary border border-slate-200 hover:border-primary rounded-3xl p-8 lg:p-10 flex flex-col justify-between transition-all duration-300 select-none"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-white/8 border border-white/12 flex items-center justify-center text-sky mb-6 group-hover:bg-white/15 group-hover:border-white/20 transition-all duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-primary/8 border border-primary/15 flex items-center justify-center text-primary mb-6 group-hover:bg-white/15 group-hover:border-white/20 group-hover:text-white transition-all duration-300">
                   <Icon size={20} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{service.description}</p>
+                <h3 className="text-xl font-bold text-dark group-hover:text-white mb-4 transition-colors duration-300">{service.title}</h3>
+                <p className="text-sm text-slate-500 group-hover:text-white/70 leading-relaxed transition-colors duration-300">{service.description}</p>
               </div>
               <div
-                className="mt-10 text-6xl font-black leading-none select-none transition-all duration-300"
-                style={{
-                  color: 'rgba(255,255,255,1)',
-                  textShadow: '0 0 12px rgba(78,168,255,0.9), 0 0 30px rgba(78,168,255,0.5), 0 0 60px rgba(78,168,255,0.3)',
-                }}
+                className="mt-10 text-6xl font-black leading-none select-none transition-all duration-300 text-primary/15 group-hover:text-white/25"
               >
                 0{i + 1}
               </div>

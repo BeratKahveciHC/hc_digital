@@ -80,6 +80,7 @@ export const products = [
         { number: '01', title: 'Easy Setup & Fast Onboarding', description: 'Cloud-based setup requires no technical infrastructure. Your team can start using the platform the same day with an intuitive interface that minimizes training time.', image: '/images/products/airx-setup.webp' },
         { number: '02', title: 'Mobile & Web Access', description: 'Employees access check-in records, leave requests, and shift information from any device. Managers monitor real-time status from the web panel or mobile app.', image: '/images/products/airx-mobile.webp' },
         { number: '03', title: 'Automated Reports & Data Export', description: 'Attendance, absence, overtime, and leave data are automatically reported. Excel and PDF exports integrate directly with payroll and audit processes.', image: '/images/products/airx-report.webp' },
+
       ],
       howItWorks: [
         { step: 1, title: 'Get Started', description: 'Create your account through a web browser — no server or technical team required.' },

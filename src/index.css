@@ -62,7 +62,7 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-dark);
+    background-color: #ffffff;
     color: var(--color-dark);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
