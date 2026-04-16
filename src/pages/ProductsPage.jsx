@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, ArrowRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Mail, ChevronDown } from 'lucide-react'
 import { products } from '../data/products'
 import { useLang } from '../context/LanguageContext'
 import { i18n } from '../data/i18n'
@@ -9,49 +9,37 @@ import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import SEO, { breadcrumbJsonLd } from '../components/SEO'
 
-const seoData = {
-  tr: {
-    title: 'Ürünlerimiz – AirX IKYS, Tercümed, Kumanda Merkezi | HC Dijital',
-    description: 'HC Dijital ürün ailesi: AirX IKYS ile personel yönetimi, Tercümed ile tıbbi çeviri, Kumanda Merkezi ile operasyonel görünürlük, Yön Assist yapay zeka asistan ve daha fazlası.',
-    keywords: 'HC Dijital ürünleri, AirX IKYS, Tercümed, Kumanda Merkezi, Yön Assist, hastane bütçe yönetim sistemi, spiral freezer, sağlık yazılımları',
-  },
-  en: {
-    title: 'Our Products – AirX IKYS, Tercümed, Kumanda Merkezi | HC Digital',
-    description: 'HC Digital product family: AirX IKYS for HR management, Tercümed for medical translation, Kumanda Merkezi for operational visibility, Yön Assist AI assistant and more.',
-    keywords: 'HC Digital products, AirX IKYS, Tercümed, Kumanda Merkezi, Yön Assist, hospital budget management system, spiral freezer, health software',
-  },
-}
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] },
+})
 
-function TypewriterNeon({ words }) {
-  const [displayed, setDisplayed] = useState('')
-  const [wordIndex, setWordIndex] = useState(0)
-  const [typing, setTyping] = useState(true)
-
-  useEffect(() => {
-    const current = words[wordIndex]
-    let timeout
-    if (typing) {
-      if (displayed.length < current.length) {
-        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 90)
-      } else {
-        timeout = setTimeout(() => setTyping(false), 1800)
-      }
-    } else {
-      if (displayed.length > 0) {
-        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 55)
-      } else {
-        setWordIndex((i) => (i + 1) % words.length)
-        setTyping(true)
-      }
-    }
-    return () => clearTimeout(timeout)
-  }, [displayed, typing, wordIndex, words])
-
+function FAQItem({ faq }) {
+  const [open, setOpen] = useState(false)
   return (
-    <span style={{ color: '#4EA8FF', textShadow: '0 0 12px rgba(78,168,255,0.9), 0 0 30px rgba(78,168,255,0.6), 0 0 60px rgba(78,168,255,0.3)' }}>
-      {displayed}
-      <span className="animate-pulse" style={{ display: 'inline-block', width: '3px', marginLeft: '4px', background: '#4EA8FF', boxShadow: '0 0 8px #4EA8FF', verticalAlign: 'baseline', height: '0.85em' }} />
-    </span>
+    <div className="border-b border-slate-100 last:border-0">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="w-full flex items-start justify-between gap-6 py-5 text-left group"
+      >
+        <span className="text-sm font-semibold text-dark group-hover:text-primary transition-colors duration-200 leading-snug">
+          {faq.question}
+        </span>
+        <ChevronDown
+          size={16}
+          className={`shrink-0 mt-0.5 text-slate-400 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+      <motion.div
+        initial={false}
+        animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
+        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+        className="overflow-hidden"
+      >
+        <p className="pb-5 text-sm text-slate-500 leading-relaxed">{faq.answer}</p>
+      </motion.div>
+    </div>
   )
 }
 
@@ -59,250 +47,358 @@ export default function ProductsPage() {
   const { lang } = useLang()
   const t = i18n[lang]
   const tp = t.productsPage
-  const cats = t.categories
+  const [activeSlug, setActiveSlug] = useState(products[0].slug)
 
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  const getProductData = (p) => lang === 'en' && p.en ? { ...p, ...p.en } : p
-
-  const filtered =
-    activeIndex === 0
-      ? products
-      : products.filter((p) => getProductData(p).category === cats[activeIndex])
-
-  const featured = filtered.find((p) => p.featured)
-  const rest = filtered.filter((p) => !p.featured)
-  const seo = seoData[lang]
+  const active = products.find((p) => p.slug === activeSlug)
+  const pd = lang === 'en' && active.en ? { ...active, ...active.en } : active
 
   return (
     <div className="bg-white text-dark">
       <SEO
-        title={seo.title}
-        description={seo.description}
-        keywords={seo.keywords}
+        title={lang === 'tr' ? 'Ürünlerimiz | HC Dijital' : 'Our Products | HC Digital'}
+        description={lang === 'tr'
+          ? 'HC Dijital ürün ailesi: AirX IKYS, Tercümed, Kumanda Merkezi, Yön Assist, Hastane Bütçe Yönetim Sistemi ve Spiral Freezer.'
+          : 'HC Digital product family: AirX IKYS, Tercümed, Kumanda Merkezi, Yön Assist, Hospital Budget Management and Spiral Freezer.'}
         canonical="/urunler"
         lang={lang}
         jsonLd={breadcrumbJsonLd([
           { name: lang === 'tr' ? 'Ana Sayfa' : 'Home', url: '/' },
-          { name: lang === 'tr' ? 'Ürünler' : 'Products', url: '/urunler' },
+          { name: tp.breadcrumb, url: '/urunler' },
         ])}
       />
       <Header />
 
-      {/* ── Page Hero ── */}
-      <section className="bg-dark pt-20 relative overflow-hidden">
-
-        {/* Dekoratif arka plan yazısı */}
-        <div
-          aria-hidden
-          className="pointer-events-none select-none absolute inset-0 flex items-center justify-center -rotate-12"
-        >
-          <span className="text-[55vw] font-black text-white/4 leading-none tracking-tighter">
-            HC
-          </span>
+      {/* ══════════════════════════════════════════════
+          BANNER — Başlık + Ürün Seçici Kartlar
+      ══════════════════════════════════════════════ */}
+      <section className="bg-dark pt-20 relative overflow-hidden pb-0">
+        <div aria-hidden className="pointer-events-none select-none absolute inset-0 flex items-center justify-center -rotate-12">
+          <span className="text-[55vw] font-black text-white/4 leading-none tracking-tighter">HC</span>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12 md:py-16 relative">
 
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-xs text-white/30 font-medium mb-8">
-            <Link to="/" className="hover:text-white/60 transition-colors">{i18n[lang].productDetail.breadcrumbHome}</Link>
+            <Link to="/" className="hover:text-white/60 transition-colors">
+              {lang === 'en' ? 'Home' : 'Ana Sayfa'}
+            </Link>
             <span>/</span>
             <span className="text-white/60">{tp.breadcrumb}</span>
           </div>
 
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-            <div>
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-xs font-semibold tracking-[0.25em] uppercase text-white/30 mb-4"
-              >
-                {tp.overline}
-              </motion.p>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.08 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight"
-              >
-                {tp.h1Line1}<br />
-                <TypewriterNeon words={tp.h1Line2} />
-              </motion.h1>
-            </div>
+          {/* Başlık */}
+          <motion.div {...fadeUp(0.05)} className="mb-10">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
+              {tp.overline}
+            </p>
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+              {lang === 'en' ? 'Our Products' : 'Ürünlerimiz'}
+            </h1>
+          </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.18 }}
-              className="text-sm text-white/40 leading-relaxed max-w-xs lg:text-right lg:pb-2"
-            >
-              {tp.paragraph}
-            </motion.p>
+          {/* Ürün seçici kartlar */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
+            {products.map((p, i) => {
+              const data = lang === 'en' && p.en ? { ...p, ...p.en } : p
+              const isActive = p.slug === activeSlug
+              return (
+                <motion.button
+                  key={p.slug}
+                  {...fadeUp(0.1 + i * 0.05)}
+                  onClick={() => setActiveSlug(p.slug)}
+                  className={`group relative flex flex-col items-start gap-3 p-4 md:p-5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? 'bg-white border-white text-dark shadow-lg'
+                      : 'bg-white/8 border-white/10 hover:bg-white/12 hover:border-white/20'
+                  }`}
+                >
+                  {/* Renk noktası */}
+                  <div className={`w-2 h-2 rounded-full ${p.dot} ${isActive ? '' : 'opacity-60'}`} />
+
+                  {/* Başlık */}
+                  <span className={`text-xs md:text-sm font-bold leading-snug transition-colors duration-200 ${
+                    isActive ? 'text-dark' : 'text-white/80'
+                  }`}>
+                    {data.title}
+                  </span>
+
+                  {/* Kategori */}
+                  <span className={`text-[10px] font-medium leading-snug transition-colors duration-200 ${
+                    isActive ? 'text-dark/40' : 'text-white/35'
+                  }`}>
+                    {data.category}
+                  </span>
+
+                  {/* Aktif göstergesi */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeProductIndicator"
+                      className="absolute bottom-0 left-4 right-4 h-0.5 bg-dark/20 rounded-full"
+                    />
+                  )}
+                </motion.button>
+              )
+            })}
           </div>
+
+          {/* Seçili ürün özet şeridi */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSlug + '-strip'}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3 }}
+              className="flex items-center gap-4 mt-6 pb-6 border-t border-white/10 pt-5"
+            >
+              <span className={`w-2.5 h-2.5 rounded-full ${active.dot} shrink-0`} />
+              <div>
+                <p className="text-xs font-bold tracking-widest uppercase text-white/40">
+                  {pd.category}
+                </p>
+                <p className="text-sm text-white/60 mt-0.5">{pd.tagline}</p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 
-      {/* ── Filter & Products ── */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      {/* ══════════════════════════════════════════════
+          İÇERİK — Seçili ürün detayı
+      ══════════════════════════════════════════════ */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeSlug}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -16 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
 
-          {/* Category Filters */}
-          <div className="flex flex-wrap gap-2.5 mb-14">
-            {cats.map((cat, idx) => (
-              <button
-                key={cat}
-                onClick={() => setActiveIndex(idx)}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 ${
-                  activeIndex === idx
-                    ? 'bg-dark text-white border-dark'
-                    : 'bg-white text-slate-500 border-slate-200 hover:border-sky hover:text-dark'
-                }`}
-                style={activeIndex === idx ? { boxShadow: '0 0 12px rgba(78,168,255,0.5), 0 0 30px rgba(78,168,255,0.2)' } : {}}
-              >
-                {cat}
-                {idx === 0 && (
-                  <span className={`ml-2 text-xs font-bold ${activeIndex === 0 ? 'text-white/50' : 'text-slate-400'}`}>
-                    {products.length}
+          {/* ── Hero: görsel + başlık / istatistikler ── */}
+          <section className="py-20 md:py-28">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+                {/* Sol: Metin */}
+                <div>
+                  <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold tracking-wide mb-6 ${active.color}`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${active.dot}`} />
+                    {pd.category}
                   </span>
-                )}
-              </button>
-            ))}
-          </div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-dark leading-tight tracking-tight mb-5">
+                    {pd.title}
+                  </h2>
+                  <p className="text-base text-slate-500 leading-relaxed mb-8">
+                    {pd.description}
+                  </p>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25 }}
-            >
-              {/* Featured Card */}
-              {featured && (() => {
-                const fd = getProductData(featured)
-                return (
-                  <Link
-                    to={`/urunler/${featured.slug}`}
-                    className="card-neon group flex flex-col lg:flex-row rounded-3xl overflow-hidden border border-slate-200 mb-6 bg-white"
-                  >
-                    {/* Image */}
-                    <div className="relative lg:w-[55%] aspect-video lg:aspect-auto overflow-hidden bg-slate-100 shrink-0">
-                      <img
-                        src={featured.image}
-                        alt={fd.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-r from-transparent to-dark/10" />
+                  {/* İstatistikler */}
+                  {pd.stats && (
+                    <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-100">
+                      {pd.stats.map((s, i) => (
+                        <div key={i}>
+                          <p className="text-2xl font-black text-dark leading-none mb-1">{s.value}</p>
+                          <p className="text-xs text-slate-400 leading-snug">{s.label}</p>
+                        </div>
+                      ))}
                     </div>
+                  )}
 
-                    {/* Content */}
-                    <div className="flex flex-col justify-between p-10 lg:p-14 flex-1">
-                      <div>
-                        <div className="flex items-center gap-3 mb-6">
-                          <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold tracking-wide ${featured.color}`}>
-                            <span className={`w-1.5 h-1.5 rounded-full ${featured.dot}`} />
-                            {fd.category}
-                          </span>
-                          <span className="text-xs font-semibold text-white bg-dark px-3 py-1.5 rounded-full">
-                            {tp.featuredBadge}
-                          </span>
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-dark leading-snug mb-4 group-hover:text-primary transition-colors duration-200">
-                          {fd.title}
-                        </h2>
-                        <p className="text-base text-slate-500 leading-relaxed max-w-md">
-                          {fd.description}
-                        </p>
-                      </div>
-
-                      <div>
-                        <div className="flex flex-wrap gap-2 mt-8 mb-8">
-                          {fd.tags.map((tag) => (
-                            <span key={tag} className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-medium text-slate-500">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-2 text-sm font-bold text-dark group-hover:text-primary transition-colors duration-200">
-                          {tp.viewProduct}
-                          <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                )
-              })()}
-
-              {/* Products Grid */}
-              {rest.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {rest.map((product, i) => {
-                    const pd = getProductData(product)
-                    return (
-                      <motion.div
-                        key={product.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.35, delay: i * 0.04 }}
+                  {/* Ürün sayfasına link */}
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
+                    <Link
+                      to={`/urunler/${active.slug}`}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary border-b border-primary/30 pb-0.5 hover:border-primary transition-colors duration-200"
+                    >
+                      {lang === 'en' ? 'Full product details' : 'Ürün detay sayfası'}
+                      <ArrowRight size={13} />
+                    </Link>
+                    {active.website && (
+                      <a
+                        href={active.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-400 hover:text-dark transition-colors duration-200"
                       >
-                        <Link
-                          to={`/urunler/${product.slug}`}
-                          className="card-neon group flex flex-col rounded-3xl overflow-hidden border border-slate-200 bg-white h-full"
-                        >
-                          {/* Image */}
-                          <div className="relative w-full aspect-video overflow-hidden bg-slate-100">
-                            <img
-                              src={product.image}
-                              alt={pd.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                            <div className="absolute top-4 left-4">
-                              <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-white/95 backdrop-blur-sm text-xs font-bold tracking-wide ${product.color}`}>
-                                <span className={`w-1.5 h-1.5 rounded-full ${product.dot}`} />
-                                {pd.category}
-                              </span>
-                            </div>
-                            <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-2 group-hover:translate-x-0 shadow-sm">
-                              <ArrowUpRight size={15} className="text-dark" />
-                            </div>
-                          </div>
-
-                          {/* Content */}
-                          <div className="flex flex-col flex-1 p-8">
-                            <h3 className="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors duration-200">
-                              {pd.title}
-                            </h3>
-                            <p className="text-sm text-slate-500 leading-relaxed flex-1">
-                              {pd.description}
-                            </p>
-                            <div className="flex flex-wrap gap-2 mt-6">
-                              {pd.tags.map((tag) => (
-                                <span key={tag} className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-medium text-slate-500">
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                            <div className="mt-6 pt-6 border-t border-slate-100 flex items-center gap-2 text-sm font-semibold text-slate-400 group-hover:text-primary transition-colors duration-200">
-                              {tp.viewProduct}
-                              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
-                            </div>
-                          </div>
-                        </Link>
-                      </motion.div>
-                    )
-                  })}
+                        <ArrowUpRight size={13} />
+                        {active.website.replace('https://', '')}
+                      </a>
+                    )}
+                  </div>
                 </div>
-              )}
 
-              {filtered.length === 0 && (
-                <div className="text-center py-24">
-                  <p className="text-slate-400 text-sm">{tp.emptyText}</p>
+                {/* Sağ: Görsel */}
+                <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-100/80 aspect-video">
+                  <img
+                    src={active.heroImage || active.image}
+                    alt={pd.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Uzun Açıklama ── */}
+          {pd.longDescription && (
+            <section className="py-16 md:py-20 border-t border-slate-100">
+              <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-10 lg:gap-20">
+                  <div>
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary">
+                      {lang === 'en' ? 'About the Product' : 'Ürün Hakkında'}
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-5">
+                    {pd.longDescription.map((para, i) => (
+                      <p key={i} className="text-lg md:text-xl text-slate-600 leading-relaxed">{para}</p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* ── Özellikler ── */}
+          {pd.features && pd.features.length > 0 && (
+            <section className="py-16 md:py-24 border-t border-slate-100 bg-slate-50">
+              <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                <div className="mb-12">
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
+                    {lang === 'en' ? 'Key Features' : 'Öne Çıkan Özellikler'}
+                  </p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-dark">
+                    {lang === 'en' ? 'What it does' : 'Neler yapıyor'}
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 rounded-2xl overflow-hidden">
+                  {pd.features.map((f, i) => (
+                    <div key={i} className="bg-white p-7 flex flex-col gap-3 hover:bg-slate-50 transition-colors duration-200">
+                      <span className="text-3xl font-black text-slate-100 leading-none select-none">{f.number}</span>
+                      <h3 className="text-sm font-bold text-dark">{f.title}</h3>
+                      <p className="text-sm text-slate-500 leading-relaxed">{f.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* ── Nasıl Çalışır ── */}
+          {pd.howItWorks && pd.howItWorks.length > 0 && (
+            <section className="py-20 md:py-28 border-t border-slate-100">
+              <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12 lg:gap-20">
+                  <div>
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
+                      {lang === 'en' ? 'How It Works' : 'Nasıl Çalışır'}
+                    </p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-dark leading-tight">
+                      {lang === 'en' ? 'Getting started' : 'Başlangıç süreci'}
+                    </h2>
+                  </div>
+                  <div className="flex flex-col divide-y divide-slate-100">
+                    {pd.howItWorks.map((step, i) => (
+                      <div key={i} className="grid grid-cols-[48px_1fr] gap-6 py-7 first:pt-0 last:pb-0">
+                        <span className="text-3xl font-black text-slate-100 leading-none pt-1 select-none">
+                          {String(step.step).padStart(2, '0')}
+                        </span>
+                        <div>
+                          <h3 className="text-base font-bold text-dark mb-1.5">{step.title}</h3>
+                          <p className="text-sm text-slate-500 leading-relaxed">{step.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* ── Faydalar ── */}
+          {pd.benefits && pd.benefits.length > 0 && (
+            <section className="py-16 md:py-24 border-t border-slate-100 bg-slate-50">
+              <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                <div className="mb-12">
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
+                    {lang === 'en' ? 'Benefits' : 'Faydaları'}
+                  </p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-dark">
+                    {lang === 'en' ? 'Why it matters' : 'Neden önemli'}
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {pd.benefits.map((b, i) => (
+                    <div key={i} className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg hover:shadow-slate-100 transition-all duration-300">
+                      <div className={`w-2 h-2 rounded-full ${active.dot} mb-5`} />
+                      <h3 className="text-sm font-bold text-dark mb-2">{b.title}</h3>
+                      <p className="text-sm text-slate-500 leading-relaxed">{b.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* ── SSS ── */}
+          {pd.faqs && pd.faqs.length > 0 && (
+            <section className="py-16 md:py-20 border-t border-slate-100">
+              <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-10 lg:gap-20">
+                  <div>
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">SSS</p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-dark leading-tight">
+                      {lang === 'en' ? 'Frequently asked' : 'Sık sorulan sorular'}
+                    </h2>
+                  </div>
+                  <div>
+                    {pd.faqs.map((faq, i) => (
+                      <FAQItem key={i} faq={faq} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+        </motion.div>
+      </AnimatePresence>
+
+      {/* ══════════════════════════════════════════════
+          CTA
+      ══════════════════════════════════════════════ */}
+      <section className="relative bg-linear-to-b from-slate-100 to-slate-200">
+        <div className="max-w-5xl mx-auto px-6 lg:px-12 py-28 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-300 text-slate-500 text-xs font-semibold tracking-widest uppercase mb-10">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            {t.cta.badge}
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-[1.1] tracking-tight">
+            {t.cta.h2}
+          </h2>
+          <p className="mt-7 text-base md:text-lg text-slate-500 leading-relaxed max-w-2xl mx-auto">
+            {t.cta.paragraph}
+          </p>
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/iletisim"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-dark text-white text-[15px] font-bold hover:bg-primary transition-colors duration-300 shadow-md hover:-translate-y-0.5"
+            >
+              <Mail size={16} />
+              {t.cta.ctaPrimary}
+              <ArrowRight size={15} />
+            </Link>
+            <a
+              href="mailto:info@hcdijital.com.tr"
+              className="inline-flex items-center gap-2.5 px-7 py-4 rounded-full border border-slate-300 text-slate-600 text-[15px] font-semibold hover:border-dark hover:text-dark transition-all duration-200"
+            >
+              <Mail size={15} />
+              {t.cta.ctaSecondary}
+            </a>
+          </div>
+          <p className="mt-8 text-slate-400 text-sm">{t.cta.note}</p>
         </div>
       </section>
 

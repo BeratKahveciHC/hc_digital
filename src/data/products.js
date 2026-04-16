@@ -37,6 +37,7 @@ export const products = [
       { question: 'Veri güvenliği nasıl sağlanıyor?', answer: 'Tüm veriler şifreli kanallar üzerinden iletilir ve rol bazlı erişim kontrolüyle korunur. Günlük otomatik yedekleme standarttır.' },
     ],
     tags: ['İK Yönetimi', 'Zaman Takibi', 'Yazılım', 'Vardiya Planlama'],
+    website: 'https://airx.com.tr',
     image: '/images/products/airx-hero.webp',
     heroImage: '/images/products/airx-hero.webp',
     gallery: [
@@ -422,16 +423,16 @@ export const products = [
       { question: 'Muhasebe ekibim ek eğitim alması gerekiyor mu?', answer: 'Sezgisel arayüz tasarımı sayesinde temel eğitim 2 saatte tamamlanmaktadır. Yerinde eğitim ve online destek standarttır.' },
     ],
     tags: ['Finans', 'AI Raporlama', 'Sağlık', 'Analitik'],
-    image: '/images/products/kumanda-hero.webp',
-    heroImage: '/images/products/kumanda-hero.webp',
+    image: '/images/products/butce-2.webp',
+    heroImage: '/images/products/butce-2.webp',
     gallery: [
-      '/images/products/kumanda-hero.webp',
-      '/images/products/kumanda-2.webp',
+      '/images/products/butce-2.webp',
+      '/images/products/butce-3.webp',
       '/images/products/butce-2.webp',
       '/images/products/butce-3.webp',
     ],
     features: [
-      { number: '01', title: 'Otomatik Gider–Gelir Takibi', description: 'Tüm gelir ve gider kalemleri otomatik olarak sınıflandırılır ve izlenir. Manuel veri girişi ihtiyacı ortadan kalkar; muhasebe süreçleri hata payı sıfıra yaklaşır.', image: '/images/products/kumanda-2.webp' },
+      { number: '01', title: 'Otomatik Gider–Gelir Takibi', description: 'Tüm gelir ve gider kalemleri otomatik olarak sınıflandırılır ve izlenir. Manuel veri girişi ihtiyacı ortadan kalkar; muhasebe süreçleri hata payı sıfıra yaklaşır.', image: '/images/products/butce-2.webp' },
       { number: '02', title: 'Yapay Zekâ Destekli Raporlar', description: 'Geçmiş verileri analiz eden yapay zekâ motoru, gelecek dönem bütçe tahminleri ve sapma uyarıları üretir. Yöneticiler öngörülü kararlar alarak maliyetleri optimize eder.', image: '/images/products/butce-2.webp' },
       { number: '03', title: 'Ölçeklenebilir ve Güvenli Altyapı', description: 'Bulut tabanlı güvenli altyapı, kurumunuzun büyümesiyle birlikte ölçeklenir. Rol bazlı erişim kontrolü ve veri şifreleme ile hassas finansal veriler her zaman korunaklıdır.', image: '/images/products/butce-3.webp' },
     ],
@@ -462,7 +463,7 @@ export const products = [
         { icon: 'Zap', title: 'Instant Alerts', description: 'Automatic notifications are sent to relevant managers when budget overrun risk arises.' },
       ],
       features: [
-        { number: '01', title: 'Automated Expense-Income Tracking', description: 'All revenue and expense items are automatically classified and monitored. The need for manual data entry is eliminated; accounting processes approach zero margin of error.', image: '/images/products/kumanda-2.webp' },
+        { number: '01', title: 'Automated Expense-Income Tracking', description: 'All revenue and expense items are automatically classified and monitored. The need for manual data entry is eliminated; accounting processes approach zero margin of error.', image: '/images/products/butce-2.webp' },
         { number: '02', title: 'AI-Powered Reports', description: 'The AI engine analyzing historical data generates future period budget forecasts and deviation warnings. Managers make proactive decisions to optimize costs.', image: '/images/products/butce-2.webp' },
         { number: '03', title: 'Scalable and Secure Infrastructure', description: 'The cloud-based secure infrastructure scales with your organization\'s growth. Role-based access control and data encryption keep sensitive financial data always protected.', image: '/images/products/butce-3.webp' },
       ],

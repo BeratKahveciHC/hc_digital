@@ -94,9 +94,20 @@ export default function AirxIkysPage() {
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-dark leading-none tracking-tight mb-6">
               {base.title}
             </h1>
-            <p className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-2xl">
+            <p className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-2xl mb-8">
               {product.tagline}
             </p>
+            {base.website && (
+              <a
+                href={base.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200 text-sm font-semibold text-slate-600 hover:border-primary hover:text-primary transition-all duration-200"
+              >
+                <ArrowUpRight size={15} />
+                {base.website.replace('https://', '')}
+              </a>
+            )}
           </motion.div>
         </div>
       </section>

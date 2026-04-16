@@ -28,7 +28,7 @@ function FlagGB({ size = 20 }) {
   )
 }
 
-export default function Header({ solid = false }) {
+export default function Header({ solid = true }) {
   const { pathname } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
