@@ -10,10 +10,10 @@ import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 // SEO handled by Next.js metadata
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] },
+const fadeUp = () => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.2 },
 })
 
 function FAQItem({ faq }) {
@@ -92,9 +92,8 @@ export default function ProductsPage() {
               const data = lang === 'en' && p.en ? { ...p, ...p.en } : p
               const isActive = p.slug === activeSlug
               return (
-                <motion.button
+                <button
                   key={p.slug}
-                  {...fadeUp(0.1 + i * 0.05)}
                   onClick={() => setActiveSlug(p.slug)}
                   className={`group relative flex flex-col items-start gap-4 p-6 md:p-7 rounded-2xl border text-left transition-all duration-200 cursor-pointer ${
                     isActive
@@ -121,24 +120,21 @@ export default function ProductsPage() {
 
                   {/* Aktif göstergesi */}
                   {isActive && (
-                    <motion.div
-                      layoutId="activeProductIndicator"
-                      className="absolute bottom-0 left-6 right-6 h-0.5 bg-dark/20 rounded-full"
-                    />
+                    <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-dark/20 rounded-full" />
                   )}
-                </motion.button>
+                </button>
               )
             })}
           </div>
 
           {/* Seçili ürün özet şeridi */}
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             <motion.div
               key={activeSlug + '-strip'}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
               className="flex items-center gap-4 mt-6 pb-6 border-t border-white/10 pt-5"
             >
               <span className={`w-2.5 h-2.5 rounded-full ${active.dot} shrink-0`} />
@@ -156,13 +152,13 @@ export default function ProductsPage() {
       {/* ══════════════════════════════════════════════
           İÇERİK — Seçili ürün detayı
       ══════════════════════════════════════════════ */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         <motion.div
           key={activeSlug}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -16 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
         >
 
           {/* ── Hero: görsel + başlık / istatistikler ── */}

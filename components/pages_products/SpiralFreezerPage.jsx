@@ -9,11 +9,11 @@ import { i18n } from '../../data/i18n'
 import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
+const fadeUp = () => ({
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
   viewport: { once: true },
-  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.25 },
 })
 
 const softwareAreas = {
@@ -69,30 +69,28 @@ export default function SpiralFreezerPage() {
     <div className="bg-white text-dark">
       <Header solid />
 
-      {/* ── Intro ── */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold tracking-wide mb-8 ${base.color}`}>
-              <span className={`w-1.5 h-1.5 rounded-full ${base.dot}`} />
-              {product.category}
-            </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-dark leading-none tracking-tight mb-6">{base.title}</h1>
-            <p className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-2xl">{product.tagline}</p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Hero Image ── */}
-      <section>
-        <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-2xl shadow-slate-200/60 aspect-video">
-            <img src={base.heroImage} alt={base.title} className="w-full h-full object-cover" />
+      {/* ── Hero ── */}
+      <section className="bg-dark overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-24 md:pt-28">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-end">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="pb-10 md:pb-14">
+              <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold tracking-wide mb-6 ${base.color}`}>
+                <span className={`w-1.5 h-1.5 rounded-full ${base.dot}`} />
+                {product.category}
+              </span>
+              <h1 className="font-bold text-white leading-tight tracking-tight mb-4"
+                style={{ fontSize: 'clamp(2rem, 3.5vw, 3.25rem)' }}>{base.title}</h1>
+              <p className="text-base md:text-lg text-white/55 leading-relaxed max-w-lg">{product.tagline}</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="rounded-t-2xl overflow-hidden shadow-2xl shadow-black/40">
+              <img src={base.heroImage} alt={base.title} className="w-full object-cover aspect-video" />
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* ── Proje Kapsamı ── */}

@@ -5,11 +5,11 @@ import { ArrowUpRight } from 'lucide-react'
 import { useLang } from '../../context/LanguageContext'
 import { i18n } from '../../data/i18n'
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 16 },
-  whileInView: { opacity: 1, y: 0 },
+const fadeUp = () => ({
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
   viewport: { once: true },
-  transition: { duration: 0.4, delay, ease: 'easeOut' },
+  transition: { duration: 0.25 },
 })
 
 export default function ProductCTA() {

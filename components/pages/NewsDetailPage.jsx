@@ -10,10 +10,10 @@ import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 // SEO handled by Next.js metadata in page.jsx
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
+const fadeUp = () => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.2 },
 })
 
 function formatDate(dateStr, lang) {
@@ -91,8 +91,8 @@ export default function NewsDetailPage() {
 
             {/* Sağ: Görsel */}
             {item.image ? (
-              <motion.div {...fadeUp(0.1)} className="rounded-2xl overflow-hidden aspect-video">
-                <img src={item.image} alt={item.title[lang]} className="w-full h-full object-cover" />
+              <motion.div {...fadeUp(0.1)} className={`rounded-2xl overflow-hidden aspect-video ${item.imageFit === 'contain' ? 'bg-white/5 flex items-center justify-center p-6' : ''}`}>
+                <img src={item.image} alt={item.title[lang]} className={`w-full h-full ${item.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} />
               </motion.div>
             ) : (
               <motion.div {...fadeUp(0.1)} className="rounded-2xl overflow-hidden aspect-video bg-white/5 flex items-center justify-center">
@@ -106,18 +106,26 @@ export default function NewsDetailPage() {
       {/* ── Makale İçeriği ── */}
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col gap-6"
-          >
-            {item.content[lang].map((para, i) => (
-              <p key={i} className="text-lg md:text-xl text-slate-600 leading-relaxed">
-                {para}
-              </p>
-            ))}
-          </motion.div>
+          <div className="flex flex-col gap-6">
+            {item.content[lang].map((block, i) =>
+              typeof block === 'string' ? (
+                <p key={i} className="text-lg md:text-xl text-slate-600 leading-relaxed">
+                  {block}
+                </p>
+              ) : block.type === 'image' ? (
+                <div key={i} className={`rounded-2xl overflow-hidden ${block.fit === 'contain' ? 'bg-slate-50 flex items-center justify-center p-6' : ''}`}>
+                  <img
+                    src={block.src}
+                    alt={block.alt ?? ''}
+                    className={`w-full rounded-2xl ${block.fit === 'contain' ? 'object-contain max-h-96' : 'object-cover'}`}
+                  />
+                  {block.caption && (
+                    <p className="mt-3 text-sm text-slate-400 text-center italic">{block.caption}</p>
+                  )}
+                </div>
+              ) : null
+            )}
+          </div>
 
           {/* Geri dön */}
           <div className="mt-16 pt-8 border-t border-slate-100">
@@ -147,8 +155,8 @@ export default function NewsDetailPage() {
                   className="group flex flex-col rounded-2xl border border-slate-200 overflow-hidden bg-white hover:shadow-lg hover:shadow-slate-100 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   {other.image ? (
-                    <div className="aspect-video overflow-hidden bg-slate-100">
-                      <img src={other.image} alt={other.title[lang]} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className={`aspect-video overflow-hidden bg-slate-100 ${other.imageFit === 'contain' ? 'flex items-center justify-center p-4' : ''}`}>
+                      <img src={other.image} alt={other.title[lang]} className={`w-full h-full ${other.imageFit === 'contain' ? 'object-contain' : 'object-cover group-hover:scale-105 transition-transform duration-500'}`} />
                     </div>
                   ) : (
                     <div className="aspect-video bg-linear-to-br from-dark to-primary/80 flex items-center justify-center">

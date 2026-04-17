@@ -423,10 +423,10 @@ const serviceData = [
 
 // ── Yardımcı bileşenler ───────────────────────────────────────────────────
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] },
+const fadeUp = () => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.2 },
 })
 
 export default function ServicesPage() {
@@ -476,9 +476,8 @@ export default function ServicesPage() {
               const SIcon = s.Icon
               const isActive = s.slug === activeSlug
               return (
-                <motion.button
+                <button
                   key={s.slug}
-                  {...fadeUp(0.1 + i * 0.05)}
                   onClick={() => setActiveSlug(s.slug)}
                   className={`group relative flex flex-col items-start gap-3 p-4 md:p-5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
                     isActive
@@ -504,24 +503,21 @@ export default function ServicesPage() {
 
                   {/* Aktif göstergesi */}
                   {isActive && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute bottom-0 left-4 right-4 h-0.5 bg-dark/20 rounded-full"
-                    />
+                    <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-dark/20 rounded-full" />
                   )}
-                </motion.button>
+                </button>
               )
             })}
           </div>
 
           {/* Seçili hizmet özet şeridi */}
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             <motion.div
               key={activeSlug + '-tab'}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
               className="flex items-center gap-4 mt-6 pb-6 border-t border-white/10 pt-5"
             >
               <div className={`w-8 h-8 rounded-lg ${active.bgClass} border ${active.borderClass} flex items-center justify-center`}>
@@ -541,13 +537,13 @@ export default function ServicesPage() {
       {/* ══════════════════════════════════════════════════════════
           İÇERİK — Seçili hizmet detayları
       ══════════════════════════════════════════════════════════ */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         <motion.div
           key={activeSlug}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -16 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
         >
           {/* ── Hizmet Açıklaması ── */}
           <section className="py-20 md:py-28">

@@ -1,6 +1,9 @@
 {
+  "/haberler/[slug]/page": "app/haberler/[slug]/page.js",
   "/page": "app/page.js",
+  "/servisler/page": "app/servisler/page.js",
+  "/referanslar/page": "app/referanslar/page.js",
   "/urunler/page": "app/urunler/page.js",
-  "/urunler/[slug]/page": "app/urunler/[slug]/page.js",
-  "/haberler/page": "app/haberler/page.js"
+  "/haberler/page": "app/haberler/page.js",
+  "/iletisim/page": "app/iletisim/page.js"
 }

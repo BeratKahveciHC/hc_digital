@@ -142,7 +142,7 @@ export default function Hero() {
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ duration: 0.9, ease: [0.32, 0, 0.24, 1] }}
+          transition={{ duration: 0.4, ease: [0.32, 0, 0.24, 1] }}
           className="absolute inset-0"
         >
           <img
@@ -160,10 +160,10 @@ export default function Hero() {
       </AnimatePresence>
 
       {/* ── Header padding ── */}
-      <div className="relative z-10 flex flex-col min-h-screen pt-20 md:pt-24">
+      <div className="relative z-10 flex flex-col min-h-screen pt-16 md:pt-20">
 
         {/* ── Progress çizgileri (üst) ── */}
-        <div className="flex items-center gap-1.5 px-6 lg:px-12 pt-4">
+        <div className="flex items-center gap-1.5 px-6 lg:px-12 pt-3">
           {slides.map((s, i) => (
             <button
               key={s.id}
@@ -188,57 +188,57 @@ export default function Hero() {
         </div>
 
         {/* ── İçerik (alt kısım) ── */}
-        <div className="flex-1 flex flex-col justify-end pb-16 md:pb-20 px-6 lg:px-12">
+        <div className="flex-1 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16 xl:pb-20 px-6 lg:px-12">
 
           {/* Sol metin + Sağ özellikler */}
-          <div className="flex items-end justify-between gap-8">
+          <div className="flex items-end justify-between gap-6 lg:gap-8">
 
             {/* Sol: metin içeriği */}
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={slide.id + '-content'}
                 custom={direction}
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 className="max-w-xl"
               >
                 {/* Kategori */}
-                <div className="mb-5">
-                  <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/15 text-[11px] font-bold tracking-[0.18em] text-white/90 uppercase">
+                <div className="mb-3 lg:mb-4">
+                  <span className="inline-flex items-center px-3 py-1 lg:py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/15 text-[10px] lg:text-[11px] font-bold tracking-[0.18em] text-white/90 uppercase">
                     {slide.category[lang]}
                   </span>
                 </div>
 
                 {/* Başlık */}
                 <h1
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-5"
-                  style={{ whiteSpace: 'pre-line' }}
+                  className="font-bold text-white leading-[1.05] tracking-tight mb-3 lg:mb-4"
+                  style={{ whiteSpace: 'pre-line', fontSize: 'clamp(1.75rem, 4.5vw, 4.5rem)' }}
                 >
                   {title}
                 </h1>
 
                 {/* Tagline */}
                 <p
-                  className="text-base sm:text-lg md:text-xl font-medium text-white/75 leading-snug mb-4 max-w-xl"
-                  style={{ whiteSpace: 'pre-line' }}
+                  className="font-medium text-white/75 leading-snug mb-3 max-w-xl"
+                  style={{ whiteSpace: 'pre-line', fontSize: 'clamp(0.85rem, 1.4vw, 1.25rem)' }}
                 >
                   {slide.tagline[lang]}
                 </p>
 
                 {/* Açıklama */}
-                <p className="text-sm md:text-base text-white/50 leading-relaxed mb-8 max-w-lg">
+                <p className="text-xs lg:text-sm text-white/50 leading-relaxed mb-6 lg:mb-7 max-w-lg">
                   {slide.description[lang]}
                 </p>
 
                 {/* CTA */}
                 <Link
                   href={slide.href}
-                  className="inline-flex items-center gap-2.5 px-6 py-3 md:px-7 md:py-3.5 rounded-full bg-white text-dark text-sm md:text-base font-semibold hover:bg-white/90 transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3 rounded-full bg-white text-dark text-sm font-semibold hover:bg-white/90 transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
                 >
                   {slide.cta[lang]}
-                  <ArrowUpRight size={16} />
+                  <ArrowUpRight size={15} />
                 </Link>
               </motion.div>
             </AnimatePresence>
@@ -247,30 +247,28 @@ export default function Hero() {
             <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={slide.id + '-features'}
-                initial={{ opacity: 0, x: 32 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="hidden lg:flex flex-col gap-3 w-72 xl:w-80 shrink-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="hidden lg:flex flex-col gap-2 lg:gap-2.5 w-56 xl:w-72 shrink-0"
               >
                 {slide.features.map((f, i) => {
                   const Icon = f.icon
                   return (
-                    <motion.div
+                    <div
                       key={i}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.45, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                      className="flex items-center gap-4 px-5 py-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg shadow-black/20"
+                      className="flex items-center gap-3 px-4 py-3 xl:px-5 xl:py-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg shadow-black/20"
                     >
-                      <div className="shrink-0 w-11 h-11 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center shadow-inner">
-                        <Icon size={20} className="text-white" />
+                      <div className="shrink-0 w-9 h-9 xl:w-11 xl:h-11 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center shadow-inner">
+                        <Icon size={16} className="text-white xl:hidden" />
+                        <Icon size={20} className="text-white hidden xl:block" />
                       </div>
                       <div>
-                        <p className="text-[13px] font-bold text-white leading-tight tracking-wide">{f.label[lang]}</p>
-                        <p className="text-[12px] text-white/60 leading-snug mt-1">{f.desc[lang]}</p>
+                        <p className="text-[12px] xl:text-[13px] font-bold text-white leading-tight tracking-wide">{f.label[lang]}</p>
+                        <p className="text-[11px] xl:text-[12px] text-white/60 leading-snug mt-0.5 xl:mt-1">{f.desc[lang]}</p>
                       </div>
-                    </motion.div>
+                    </div>
                   )
                 })}
               </motion.div>
@@ -278,14 +276,14 @@ export default function Hero() {
           </div>
 
           {/* ── Navigasyon (alt) ── */}
-          <div className="flex items-center justify-between mt-10 md:mt-12">
+          <div className="flex items-center justify-between mt-6 lg:mt-8 xl:mt-10">
 
             {/* Slayt sayacı */}
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-black text-white tabular-nums leading-none">
+              <span className="text-xl lg:text-2xl font-black text-white tabular-nums leading-none">
                 {String(current + 1).padStart(2, '0')}
               </span>
-              <span className="text-white/30 text-sm font-medium">
+              <span className="text-white/30 text-xs lg:text-sm font-medium">
                 / {String(slides.length).padStart(2, '0')}
               </span>
             </div>
@@ -294,17 +292,17 @@ export default function Hero() {
             <div className="flex items-center gap-2">
               <button
                 onClick={prev}
-                className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all duration-200"
+                className="w-9 h-9 lg:w-11 lg:h-11 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all duration-200"
                 aria-label="Önceki"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={16} />
               </button>
               <button
                 onClick={next}
-                className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all duration-200"
+                className="w-9 h-9 lg:w-11 lg:h-11 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all duration-200"
                 aria-label="Sonraki"
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={16} />
               </button>
             </div>
           </div>

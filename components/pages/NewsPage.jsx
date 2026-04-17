@@ -8,10 +8,10 @@ import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 // SEO handled by Next.js metadata
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
+const fadeUp = () => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.2 },
 })
 
 function formatDate(dateStr, lang) {
@@ -86,11 +86,11 @@ export default function NewsPage() {
                   >
                     {/* Görsel */}
                     {item.image ? (
-                      <div className="aspect-video overflow-hidden bg-slate-100">
+                      <div className={`aspect-video overflow-hidden bg-slate-100 ${item.imageFit === 'contain' ? 'flex items-center justify-center p-4' : ''}`}>
                         <img
                           src={item.image}
                           alt={item.title[lang]}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className={`w-full h-full ${item.imageFit === 'contain' ? 'object-contain' : 'object-cover group-hover:scale-105 transition-transform duration-500'}`}
                         />
                       </div>
                     ) : (

@@ -9,11 +9,11 @@ import { serviceIcons } from '../../data/serviceIcons'
 import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
+const fadeUp = () => ({
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
   viewport: { once: true },
-  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.25 },
 })
 
 

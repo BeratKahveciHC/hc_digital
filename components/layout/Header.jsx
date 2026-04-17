@@ -71,10 +71,7 @@ export default function Header({ solid = true }) {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           solid || scrolled
             ? 'bg-white border-b border-slate-200 shadow-sm'
@@ -89,7 +86,7 @@ export default function Header({ solid = true }) {
               <img
                 src={logo}
                 alt="HC Dijital"
-                className={`h-8 sm:h-9 lg:h-11 xl:h-14 w-auto object-contain transition-all duration-300 ${isLight ? '' : 'brightness-0 invert'}`}
+                className={`h-8 sm:h-9 lg:h-11 xl:h-14 w-auto object-contain ${isLight ? '' : 'brightness-0 invert'}`}
               />
             </Link>
 
@@ -251,7 +248,7 @@ export default function Header({ solid = true }) {
 
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* ── Mobil Menü ── */}
       <AnimatePresence>
