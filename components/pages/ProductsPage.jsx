@@ -87,7 +87,7 @@ export default function ProductsPage() {
           </motion.div>
 
           {/* Ürün seçici kartlar */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
             {products.map((p, i) => {
               const data = lang === 'en' && p.en ? { ...p, ...p.en } : p
               const isActive = p.slug === activeSlug
@@ -96,25 +96,25 @@ export default function ProductsPage() {
                   key={p.slug}
                   {...fadeUp(0.1 + i * 0.05)}
                   onClick={() => setActiveSlug(p.slug)}
-                  className={`group relative flex flex-col items-start gap-3 p-4 md:p-5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
+                  className={`group relative flex flex-col items-start gap-4 p-6 md:p-7 rounded-2xl border text-left transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-white border-white text-dark shadow-lg'
-                      : 'bg-white/8 border-white/10 hover:bg-white/12 hover:border-white/20'
+                      ? 'bg-white border-white text-dark shadow-xl'
+                      : 'bg-white/8 border-white/10 hover:bg-white/12 hover:border-white/25'
                   }`}
                 >
                   {/* Renk noktası */}
-                  <div className={`w-2 h-2 rounded-full ${p.dot} ${isActive ? '' : 'opacity-60'}`} />
+                  <div className={`w-2.5 h-2.5 rounded-full ${p.dot} ${isActive ? '' : 'opacity-60'}`} />
 
                   {/* Başlık */}
-                  <span className={`text-xs md:text-sm font-bold leading-snug transition-colors duration-200 ${
-                    isActive ? 'text-dark' : 'text-white/80'
+                  <span className={`text-base md:text-lg font-bold leading-snug transition-colors duration-200 ${
+                    isActive ? 'text-dark' : 'text-white/85'
                   }`}>
                     {data.title}
                   </span>
 
                   {/* Kategori */}
-                  <span className={`text-[10px] font-medium leading-snug transition-colors duration-200 ${
-                    isActive ? 'text-dark/40' : 'text-white/35'
+                  <span className={`text-xs font-medium leading-snug transition-colors duration-200 ${
+                    isActive ? 'text-dark/45' : 'text-white/40'
                   }`}>
                     {data.category}
                   </span>
@@ -123,7 +123,7 @@ export default function ProductsPage() {
                   {isActive && (
                     <motion.div
                       layoutId="activeProductIndicator"
-                      className="absolute bottom-0 left-4 right-4 h-0.5 bg-dark/20 rounded-full"
+                      className="absolute bottom-0 left-6 right-6 h-0.5 bg-dark/20 rounded-full"
                     />
                   )}
                 </motion.button>
@@ -196,23 +196,23 @@ export default function ProductsPage() {
                   )}
 
                   {/* Ürün sayfasına link */}
-                  <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <div className="mt-10 flex flex-wrap items-center gap-3">
                     <Link
                       href={`/urunler/${active.slug}`}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary border-b border-primary/30 pb-0.5 hover:border-primary transition-colors duration-200"
+                      className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-dark text-white text-[15px] font-bold tracking-wide shadow-lg shadow-dark/20 hover:bg-primary hover:shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5"
                     >
                       {lang === 'en' ? 'Full product details' : 'Ürün detay sayfası'}
-                      <ArrowRight size={13} />
+                      <ArrowRight size={16} />
                     </Link>
                     {active.website && (
                       <a
                         href={active.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-400 hover:text-dark transition-colors duration-200"
+                        className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border-2 border-slate-300 text-slate-700 text-[15px] font-bold tracking-wide hover:border-dark hover:text-dark hover:bg-slate-50 transition-all duration-200 hover:-translate-y-0.5"
                       >
-                        <ArrowUpRight size={13} />
                         {active.website.replace('https://', '')}
+                        <ArrowUpRight size={16} />
                       </a>
                     )}
                   </div>

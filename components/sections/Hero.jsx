@@ -2,18 +2,16 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ArrowUpRight, Clock, Smartphone, BarChart3, Zap, ShieldCheck, TrendingUp, Brain, FileText, Users } from 'lucide-react'
 import { useLang } from '../../context/LanguageContext'
 
 import _airxHero    from '../../assets/images/products/airx-hero.webp'
 import _tercumedHero from '../../assets/images/products/tercumed-hero.webp'
 import _butce2       from '../../assets/images/products/butce-2.webp'
-import _kumandaHero  from '../../assets/images/products/kumanda-hero.webp'
 const s = (x) => x?.src ?? x
 const airxHero    = s(_airxHero)
 const tercumedHero = s(_tercumedHero)
 const butce2      = s(_butce2)
-const kumandaHero = s(_kumandaHero)
 
 const SLIDE_DURATION = 5500
 
@@ -33,6 +31,11 @@ const slides = [
     image: airxHero,
     href: '/urunler/airx-ikys',
     cta: { tr: 'Ürünü İncele', en: 'Explore Product' },
+    features: [
+      { icon: Clock,       label: { tr: 'Anında Kurulum',       en: 'Instant Setup'       }, desc: { tr: 'Aynı gün devreye alın', en: 'Go live same day'    } },
+      { icon: Smartphone,  label: { tr: 'Mobil Erişim',         en: 'Mobile Access'       }, desc: { tr: 'iOS & Android desteği', en: 'iOS & Android ready' } },
+      { icon: BarChart3,   label: { tr: 'Otomatik Raporlama',   en: 'Auto Reporting'      }, desc: { tr: 'Excel / PDF çıktısı',   en: 'Excel / PDF export' } },
+    ],
   },
   {
     id: 'tercumed',
@@ -49,6 +52,11 @@ const slides = [
     image: tercumedHero,
     href: '/urunler/tercumed',
     cta: { tr: 'Ürünü İncele', en: 'Explore Product' },
+    features: [
+      { icon: Zap,         label: { tr: 'Anında Çeviri',        en: 'Instant Translation'  }, desc: { tr: '30+ dil desteği',        en: '30+ languages'       } },
+      { icon: ShieldCheck, label: { tr: 'Klinik Doğruluk',      en: 'Clinical Accuracy'    }, desc: { tr: '%95+ terminoloji isabeti', en: '95%+ term accuracy'  } },
+      { icon: FileText,    label: { tr: 'PDF & Word Çıktı',     en: 'PDF & Word Output'    }, desc: { tr: 'Hazır belgeler, 3 adımda', en: 'Ready files, 3 steps' } },
+    ],
   },
   {
     id: 'butce',
@@ -65,22 +73,11 @@ const slides = [
     image: butce2,
     href: '/urunler/butce-yonetim',
     cta: { tr: 'Ürünü İncele', en: 'Explore Product' },
-  },
-  {
-    id: 'other',
-    category: { tr: 'Tüm Ürünlerimiz', en: 'All Our Products' },
-    title: { tr: 'Daha Fazla\nÇözüm', en: 'More Solutions\nFor You' },
-    tagline: {
-      tr: 'Kumanda Merkezi, Yön Assist,\nSpiral Freezer ve daha fazlası.',
-      en: 'Command Center, Yön Assist,\nSpiral Freezer and more.',
-    },
-    description: {
-      tr: 'Operasyonlarınızı, iş gücünüzü ve üretim süreçlerinizi dönüştüren tüm çözümlerimizi keşfedin.',
-      en: 'Discover all solutions transforming your operations, workforce and production processes.',
-    },
-    image: kumandaHero,
-    href: '/urunler',
-    cta: { tr: 'Tüm Ürünleri Gör', en: 'View All Products' },
+    features: [
+      { icon: TrendingUp,  label: { tr: 'AI Öngörü Motoru',     en: 'AI Forecast Engine'  }, desc: { tr: 'Sapmalar önceden tespit',  en: 'Detect deviations early' } },
+      { icon: Brain,       label: { tr: 'Akıllı Raporlama',     en: 'Smart Reporting'     }, desc: { tr: '1 tıkla yönetim kurulu',   en: '1-click board report'    } },
+      { icon: Users,       label: { tr: 'Birim Bazlı Analiz',   en: 'Unit-Based Analysis' }, desc: { tr: 'ERP & HBYS entegrasyonu',  en: 'ERP & HIS integration'   } },
+    ],
   },
 ]
 
@@ -192,56 +189,95 @@ export default function Hero() {
 
         {/* ── İçerik (alt kısım) ── */}
         <div className="flex-1 flex flex-col justify-end pb-16 md:pb-20 px-6 lg:px-12">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={slide.id + '-content'}
-              custom={direction}
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-3xl"
-            >
-              {/* Kategori */}
-              <div className="mb-5">
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/15 text-[11px] font-bold tracking-[0.18em] text-white/90 uppercase">
-                  {slide.category[lang]}
-                </span>
-              </div>
 
-              {/* Başlık */}
-              <h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-5"
-                style={{ whiteSpace: 'pre-line' }}
+          {/* Sol metin + Sağ özellikler */}
+          <div className="flex items-end justify-between gap-8">
+
+            {/* Sol: metin içeriği */}
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.div
+                key={slide.id + '-content'}
+                custom={direction}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                className="max-w-xl"
               >
-                {title}
-              </h1>
+                {/* Kategori */}
+                <div className="mb-5">
+                  <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/15 text-[11px] font-bold tracking-[0.18em] text-white/90 uppercase">
+                    {slide.category[lang]}
+                  </span>
+                </div>
 
-              {/* Tagline */}
-              <p
-                className="text-base sm:text-lg md:text-xl font-medium text-white/75 leading-snug mb-4 max-w-xl"
-                style={{ whiteSpace: 'pre-line' }}
+                {/* Başlık */}
+                <h1
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-5"
+                  style={{ whiteSpace: 'pre-line' }}
+                >
+                  {title}
+                </h1>
+
+                {/* Tagline */}
+                <p
+                  className="text-base sm:text-lg md:text-xl font-medium text-white/75 leading-snug mb-4 max-w-xl"
+                  style={{ whiteSpace: 'pre-line' }}
+                >
+                  {slide.tagline[lang]}
+                </p>
+
+                {/* Açıklama */}
+                <p className="text-sm md:text-base text-white/50 leading-relaxed mb-8 max-w-lg">
+                  {slide.description[lang]}
+                </p>
+
+                {/* CTA */}
+                <Link
+                  href={slide.href}
+                  className="inline-flex items-center gap-2.5 px-6 py-3 md:px-7 md:py-3.5 rounded-full bg-white text-dark text-sm md:text-base font-semibold hover:bg-white/90 transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
+                >
+                  {slide.cta[lang]}
+                  <ArrowUpRight size={16} />
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Sağ: özellik kartları */}
+            <AnimatePresence initial={false} mode="wait">
+              <motion.div
+                key={slide.id + '-features'}
+                initial={{ opacity: 0, x: 32 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                className="hidden lg:flex flex-col gap-3 w-72 xl:w-80 shrink-0"
               >
-                {slide.tagline[lang]}
-              </p>
+                {slide.features.map((f, i) => {
+                  const Icon = f.icon
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.45, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                      className="flex items-center gap-4 px-5 py-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg shadow-black/20"
+                    >
+                      <div className="shrink-0 w-11 h-11 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center shadow-inner">
+                        <Icon size={20} className="text-white" />
+                      </div>
+                      <div>
+                        <p className="text-[13px] font-bold text-white leading-tight tracking-wide">{f.label[lang]}</p>
+                        <p className="text-[12px] text-white/60 leading-snug mt-1">{f.desc[lang]}</p>
+                      </div>
+                    </motion.div>
+                  )
+                })}
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-              {/* Açıklama */}
-              <p className="text-sm md:text-base text-white/50 leading-relaxed mb-8 max-w-lg">
-                {slide.description[lang]}
-              </p>
-
-              {/* CTA */}
-              <Link
-                href={slide.href}
-                className="inline-flex items-center gap-2.5 px-6 py-3 md:px-7 md:py-3.5 rounded-full bg-white text-dark text-sm md:text-base font-semibold hover:bg-white/90 transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
-              >
-                {slide.cta[lang]}
-                <ArrowUpRight size={16} />
-              </Link>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* ── Navigasyon (sağ alt) ── */}
+          {/* ── Navigasyon (alt) ── */}
           <div className="flex items-center justify-between mt-10 md:mt-12">
 
             {/* Slayt sayacı */}

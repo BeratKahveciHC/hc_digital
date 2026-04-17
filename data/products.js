@@ -12,19 +12,8 @@ import _tercumed4        from '../assets/images/products/tercumed-4.webp'
 import _tercumedTerminology from '../assets/images/products/tercumed-terminology.webp'
 import _tercumedPdf      from '../assets/images/products/tercumed-pdf.webp'
 import _tercumedSteps    from '../assets/images/products/tercumed-steps.webp'
-import _kumandaHero      from '../assets/images/products/kumanda-hero.webp'
-import _kumanda2         from '../assets/images/products/kumanda-2.webp'
-import _yonHero          from '../assets/images/products/yon-hero.webp'
-import _yon2             from '../assets/images/products/yon-2.webp'
-import _yon3             from '../assets/images/products/yon-3.webp'
-import _yon4             from '../assets/images/products/yon-4.webp'
-import _yonVoice         from '../assets/images/products/yon-voice.webp'
-import _yonMeeting       from '../assets/images/products/yon-meeting.webp'
-import _yonSecurity      from '../assets/images/products/yon-security.webp'
 import _butce2           from '../assets/images/products/butce-2.webp'
 import _butce3           from '../assets/images/products/butce-3.webp'
-import _spiralHero       from '../assets/images/products/spiral-hero.webp'
-import _spiral2          from '../assets/images/products/spiral-2.webp'
 
 const s = (x) => x?.src ?? x
 const airxHero          = s(_airxHero)
@@ -41,19 +30,8 @@ const tercumed4         = s(_tercumed4)
 const tercumedTerminology = s(_tercumedTerminology)
 const tercumedPdf       = s(_tercumedPdf)
 const tercumedSteps     = s(_tercumedSteps)
-const kumandaHero       = s(_kumandaHero)
-const kumanda2          = s(_kumanda2)
-const yonHero           = s(_yonHero)
-const yon2              = s(_yon2)
-const yon3              = s(_yon3)
-const yon4              = s(_yon4)
-const yonVoice          = s(_yonVoice)
-const yonMeeting        = s(_yonMeeting)
-const yonSecurity       = s(_yonSecurity)
 const butce2            = s(_butce2)
 const butce3            = s(_butce3)
-const spiralHero        = s(_spiralHero)
-const spiral2           = s(_spiral2)
 
 export const products = [
   {
@@ -185,6 +163,7 @@ export const products = [
       { question: 'Genel çeviri araçlarından farkı nedir?', answer: 'Tercümed, genel amaçlı değil tıbbi terminoloji üzerinde özel olarak eğitilmiştir. Bu sayede ilaç adları, tanı kodları ve prosedür terimleri doğru çevrilir.' },
       { question: 'KVKK ve hasta gizliliği uyumlu mu?', answer: 'Evet. Yüklenen belgeler yalnızca çeviri sürecinde işlenir, depolanmaz. Tüm aktarımlar şifreli bağlantı üzerinden gerçekleşir.' },
     ],
+    website: 'https://tercumed.medtech.tr',
     tags: ['Yapay Zekâ', 'NLP', 'Sağlık', 'Çeviri'],
     image: tercumedHero,
     heroImage: tercumedHero,
@@ -236,188 +215,6 @@ export const products = [
         { question: 'How quickly is translation completed?', answer: 'Translation time for a standard page is between 10-30 seconds. No delays even during peak periods.' },
         { question: 'What makes it different from general translation tools?', answer: 'Tercümed is trained specifically on medical terminology. This ensures drug names, diagnosis codes, and procedure terms are translated correctly.' },
         { question: 'Is it GDPR compliant?', answer: 'Yes. Uploaded documents are processed only during translation and are not stored. All transfers occur over encrypted connections.' },
-      ],
-    },
-  },
-  {
-    id: 'kumanda-merkezi',
-    slug: 'kumanda-merkezi',
-    category: 'Kontrol & İzleme',
-    title: 'Kumanda Merkezi',
-    tagline: 'Tüm sistemlerinizi tek ekran üzerinden merkezi olarak izleyin ve kontrol edin.',
-    description: 'Gerçek zamanlı veri akışı, alarm yönetimi ve kapsamlı raporlama özellikleriyle operasyonel görünürlüğü artıran ve hizmet sürekliliğini garanti altına alan platform.',
-    longDescription: [
-      'HC Dijital\'in Kumanda Merkezi, tüm sistemlerinizi tek ekran üzerinden merkezi olarak izler ve kontrol eder. Gerçek zamanlı veri akışı ve alarm yönetimiyle kritik olaylara anında müdahale imkânı sağlar.',
-      'Operasyonel görünürlüğü artıran platform, verimliliği maksimize ederken hizmet sürekliliğini garanti altına alır. Kapsamlı raporlama özellikleri sayesinde yöneticiler anlık durumu ve tarihsel eğilimleri tek panelden takip eder.',
-      'Farklı sistemlerden gelen verileri normalize eden yapısı, mevcut altyapınıza ek yük bindirmeden devreye alınır. Özelleştirilebilir alarm eşikleri ile doğru kişi doğru anda bilgilendirilir.',
-    ],
-    stats: [
-      { value: '<%2sn', label: 'Alarm gecikme süresi' },
-      { value: '360°', label: 'Tam sistem görünürlüğü' },
-      { value: '%99.9', label: 'Platform çalışma süresi' },
-    ],
-    benefits: [
-      { icon: 'TrendingUp', title: 'Gerçek Zamanlı İzleme', description: 'Tüm sistem verileri tek panelde anlık olarak görselleştirilir; gecikmesiz.' },
-      { icon: 'ShieldCheck', title: 'Akıllı Alarm Yönetimi', description: 'Öncelikli alarm yapısı, gereksiz bildirim gürültüsünü filtreler; doğru kişiyi tetikler.' },
-      { icon: 'BarChart3', title: 'Tarihsel Analiz', description: 'Geçmişe dönük karşılaştırmalı raporlar SLA takibini ve kapasite planlamasını kolaylaştırır.' },
-      { icon: 'Plug', title: 'Çoklu Sistem Entegrasyonu', description: 'Farklı kaynaklardan gelen veriler normalize edilerek tek çatıda toplanır.' },
-      { icon: 'Users', title: 'Özelleştirilebilir Paneller', description: 'Her birime özel dashboard görünümleri ve kişiselleştirilebilir widget\'lar.' },
-      { icon: 'Zap', title: 'Anlık Bildirimler', description: 'SMS, e-posta ve uygulama içi bildirimlerle kritik olaylardan haberdar olun.' },
-    ],
-    howItWorks: [
-      { step: 1, title: 'Sistemleri Bağlayın', description: 'Mevcut altyapınızı API veya standart protokollerle platforma entegre edin.' },
-      { step: 2, title: 'Dashboard\'u Yapılandırın', description: 'Birime özel görünümler, alarm eşikleri ve bildirim kurallarını tanımlayın.' },
-      { step: 3, title: 'Canlı İzlemeyi Başlatın', description: 'Tüm sistemlerinizden akan veriler gerçek zamanlı olarak panelde görünür.' },
-      { step: 4, title: 'Olaylara Müdahale Edin', description: 'Otomatik alarmlar ilgili ekibi tetikler; müdahale süreci kayıt altına alınır.' },
-    ],
-    faqs: [
-      { question: 'Kaç farklı sistemi aynı anda izleyebilir?', answer: 'Platform, kaynak sayısı kısıtlaması olmaksızın farklı sistemlerden veri alabilir. Kapasite ihtiyacınıza göre ölçeklenir.' },
-      { question: 'Alarmların yanlış pozitif oranı nedir?', answer: 'Önceliklendirme algoritması sayesinde yanlış pozitif oranı %2\'nin altında tutulmaktadır. Eşikler kuruma özel özelleştirilebilir.' },
-      { question: 'Mevcut SCADA veya BMS sistemlerimle uyumlu mu?', answer: 'Evet. OPC-UA, MQTT ve REST API üzerinden yaygın endüstriyel protokollere bağlantı desteği sunulmaktadır.' },
-      { question: 'Bulut mu yoksa yerinde kurulum mu?', answer: 'Her iki seçenek de mevcuttur. Kurumun altyapı tercihine ve veri egemenliği politikasına göre yapılandırılır.' },
-    ],
-    tags: ['Monitoring', 'Gerçek Zamanlı', 'Yönetim', 'Dashboard'],
-    image: kumandaHero,
-    heroImage: kumandaHero,
-    gallery: [kumandaHero, kumanda2, kumanda2, tercumedSteps],
-    features: [
-      { number: '01', title: 'Gerçek Zamanlı Veri Akışı', description: 'Tüm sistemlerden akan veriler anlık olarak işlenir ve tek panelde görselleştirilir.', image: kumandaHero },
-      { number: '02', title: 'Alarm Yönetimi', description: 'Kritik eşiklerin aşılması durumunda ilgili ekipler SMS, e-posta veya uygulama bildirimi alır.', image: airxSetup },
-      { number: '03', title: 'Kapsamlı Raporlama', description: 'Anlık durum raporlarının yanı sıra geçmişe dönük karşılaştırmalı analizler üretilir.', image: kumanda2 },
-    ],
-    featured: false,
-    color: 'bg-sky/8 text-sky border-sky/15',
-    dot: 'bg-sky',
-    en: {
-      category: 'Control & Monitoring',
-      tagline: 'Monitor and control all your systems centrally from a single screen.',
-      description: 'A platform that enhances operational visibility and guarantees service continuity with real-time data flow, alarm management, and comprehensive reporting.',
-      longDescription: [
-        'HC Digital\'s Control Center monitors and controls all your systems centrally from a single screen. Real-time data flow and alarm management provide instant response capability to critical events.',
-        'The platform maximizes efficiency while guaranteeing service continuity. Comprehensive reporting features allow managers to track current status and historical trends from a single panel.',
-        'Its data-normalizing architecture goes live without adding overhead to your existing infrastructure. Customizable alarm thresholds ensure the right person is notified at the right time.',
-      ],
-      tags: ['Monitoring', 'Real-Time', 'Management', 'Dashboard'],
-      stats: [
-        { value: '<2s', label: 'Alarm delay time' },
-        { value: '360°', label: 'Full system visibility' },
-        { value: '99.9%', label: 'Platform uptime' },
-      ],
-      benefits: [
-        { icon: 'TrendingUp', title: 'Real-Time Monitoring', description: 'All system data is visualized instantly in a single panel; no delays.' },
-        { icon: 'ShieldCheck', title: 'Smart Alarm Management', description: 'Priority alarm structure filters unnecessary notification noise; triggers the right person.' },
-        { icon: 'BarChart3', title: 'Historical Analysis', description: 'Retrospective comparative reports simplify SLA tracking and capacity planning.' },
-        { icon: 'Plug', title: 'Multi-System Integration', description: 'Data from different sources is normalized and consolidated under one roof.' },
-        { icon: 'Users', title: 'Customizable Dashboards', description: 'Department-specific dashboard views and personalizable widgets.' },
-        { icon: 'Zap', title: 'Instant Notifications', description: 'Stay informed about critical events via SMS, email, and in-app notifications.' },
-      ],
-      features: [
-        { number: '01', title: 'Real-Time Data Flow', description: 'Data flowing from all systems is processed instantly and visualized in a single panel.', image: kumandaHero },
-        { number: '02', title: 'Alarm Management', description: 'When critical thresholds are exceeded, relevant teams receive SMS, email, or app notifications.', image: airxSetup },
-        { number: '03', title: 'Comprehensive Reporting', description: 'In addition to real-time status reports, retrospective comparative analyses are generated.', image: kumanda2 },
-      ],
-      howItWorks: [
-        { step: 1, title: 'Connect Systems', description: 'Integrate your existing infrastructure with the platform using API or standard protocols.' },
-        { step: 2, title: 'Configure Dashboard', description: 'Define department-specific views, alarm thresholds, and notification rules.' },
-        { step: 3, title: 'Start Live Monitoring', description: 'Data flowing from all your systems becomes visible in real time on the panel.' },
-        { step: 4, title: 'Respond to Events', description: 'Automatic alarms trigger the relevant team; the response process is recorded.' },
-      ],
-      faqs: [
-        { question: 'How many different systems can be monitored simultaneously?', answer: 'The platform can receive data from different systems without source number restrictions. It scales according to your capacity needs.' },
-        { question: 'What is the false positive rate for alarms?', answer: 'Thanks to the prioritization algorithm, the false positive rate is kept below 2%. Thresholds are customizable per organization.' },
-        { question: 'Is it compatible with our existing SCADA or BMS systems?', answer: 'Yes. Connection support is provided for common industrial protocols via OPC-UA, MQTT, and REST API.' },
-        { question: 'Cloud or on-premise installation?', answer: 'Both options are available. Configured according to the organization\'s infrastructure preference and data sovereignty policy.' },
-      ],
-    },
-  },
-  {
-    id: 'yon-assist',
-    slug: 'yon-assist',
-    category: 'Yapay Zekâ / Otomasyon',
-    title: 'Yön Assist',
-    tagline: 'Yapay zekâ destekli dijital asistanınız her an yanınızda.',
-    description: 'Doğal dil işleme altyapısı sayesinde sesli ve yazılı komutları anlayarak toplantı özetleri çıkaran, görevleri yöneten ve zaman planlamasını optimize eden yapay zekâ asistanı.',
-    longDescription: [
-      'Yön Assist, doğal dil işleme (NLP) altyapısı sayesinde sesli ve yazılı komutları anlayarak toplantı özetleri çıkarır, görevleri yönetir ve zaman planlamasını optimize eder.',
-      'Çok sektörlü kullanım imkânı sunan platform, 7/24 erişilebilirlik ve yüksek veri güvenliğiyle üst düzey bir dijital asistan deneyimi sağlar.',
-      'Kurumunuzun mevcut araç ekosistemiyle entegre çalışan Yön Assist, toplantı notlarını otomatik olarak düzenler, eylem maddelerini ilgili kişilere atar ve takip sürecini başlatır.',
-    ],
-    stats: [
-      { value: '%60', label: 'Toplantı süresi tasarrufu' },
-      { value: '7/24', label: 'Kesintisiz erişim' },
-      { value: '50+', label: 'Entegre edilebilir araç' },
-    ],
-    benefits: [
-      { icon: 'Zap', title: 'Anında Yanıt', description: 'Sesli veya yazılı komutlara milisaniyeler içinde yanıt verir.' },
-      { icon: 'Users', title: 'Ekip Görev Yönetimi', description: 'Toplantı eylem maddeleri otomatik olarak ilgili kişilere atanır ve takibe alınır.' },
-      { icon: 'BarChart3', title: 'Akıllı Özetler', description: 'Toplantı transkriptlerinden eyleme dönüşebilir özetler otomatik oluşturulur.' },
-      { icon: 'ShieldCheck', title: 'Kurumsal Güvenlik', description: 'Tüm veri işlemleri şifreli altyapıda, KVKK uyumlu şekilde yürütülür.' },
-      { icon: 'Plug', title: 'Araç Entegrasyonu', description: 'Takvim, e-posta ve proje yönetim araçlarıyla sorunsuz çalışır.' },
-      { icon: 'TrendingUp', title: 'Sürekli Öğrenme', description: 'Kullanıldıkça kurumunuza özgü terimlere ve iş akışlarına adapte olur.' },
-    ],
-    howItWorks: [
-      { step: 1, title: 'Bağlantıyı Kurun', description: 'Mevcut takvim, e-posta ve iletişim araçlarınızı platforma bağlayın.' },
-      { step: 2, title: 'Toplantıyı Kaydedin', description: 'Asistan toplantıya katılır, sesi transkribe eder ve anahtar noktaları belirler.' },
-      { step: 3, title: 'Özet ve Görevleri Alın', description: 'Toplantı biter bitmez özet ve eylem maddeleri otomatik olarak iletilir.' },
-      { step: 4, title: 'Takip Sürecini Başlatın', description: 'Görevler ilgili kişilere atanır; tamamlanma durumu otomatik izlenir.' },
-    ],
-    faqs: [
-      { question: 'Hangi dilleri destekliyor?', answer: 'Türkçe ve İngilizce birincil dil desteğiyle sunulmaktadır. Ek dil desteği kurumsal paketlerde mevcuttur.' },
-      { question: 'Var olan toplantı araçlarımla çalışır mı?', answer: 'Evet. Microsoft Teams, Zoom, Google Meet ve diğer yaygın platformlarla entegrasyon desteklenmektedir.' },
-      { question: 'Transkript doğruluğu nasıl?', answer: 'Standart Türkçe konuşma için %92 üzeri doğruluk oranı elde edilmektedir.' },
-      { question: 'Veri nerede saklanıyor?', answer: 'Türkiye lokasyonlu sunucularda, KVKK gerekliliklerine tam uyumlu şekilde saklanmaktadır.' },
-    ],
-    tags: ['Yapay Zekâ', 'Otomasyon', 'NLP', 'Asistan'],
-    image: yonHero,
-    heroImage: yonHero,
-    gallery: [yonHero, yon2, yon3, yon4],
-    features: [
-      { number: '01', title: 'Sesli ve Yazılı Komut Anlama', description: 'NLP altyapısı sayesinde hem sesli hem yazılı komutları doğal dilde algılar.', image: yonVoice },
-      { number: '02', title: 'Toplantı Özetleri ve Görev Yönetimi', description: 'Toplantılar otomatik olarak transkribe edilir, eylem maddeleri tespit edilir ve ilgili kişilere görev olarak atanır.', image: yonMeeting },
-      { number: '03', title: '7/24 Erişilebilirlik ve Yüksek Güvenlik', description: 'Platform kesintisiz çalışır ve tüm veri işlemleri yüksek güvenlik standartları kapsamında yürütülür.', image: yonSecurity },
-    ],
-    featured: false,
-    color: 'bg-accent/8 text-accent-dark border-accent/15',
-    dot: 'bg-accent',
-    en: {
-      category: 'AI / Automation',
-      tagline: 'Your AI-powered digital assistant is always by your side.',
-      description: 'An AI assistant that understands voice and text commands through NLP, extracts meeting summaries, manages tasks, and optimizes time planning.',
-      longDescription: [
-        'Yön Assist understands voice and text commands through its NLP infrastructure, extracting meeting summaries, managing tasks, and optimizing time planning.',
-        'The multi-sector platform provides a premium digital assistant experience with 24/7 accessibility and high data security.',
-        'Integrated with your organization\'s existing tool ecosystem, Yön Assist automatically organizes meeting notes, assigns action items to relevant people, and initiates the follow-up process.',
-      ],
-      tags: ['Artificial Intelligence', 'Automation', 'NLP', 'Assistant'],
-      stats: [
-        { value: '60%', label: 'Meeting time savings' },
-        { value: '24/7', label: 'Uninterrupted access' },
-        { value: '50+', label: 'Integrable tools' },
-      ],
-      benefits: [
-        { icon: 'Zap', title: 'Instant Response', description: 'Responds to voice or text commands in milliseconds.' },
-        { icon: 'Users', title: 'Team Task Management', description: 'Meeting action items are automatically assigned to relevant people and tracked.' },
-        { icon: 'BarChart3', title: 'Smart Summaries', description: 'Actionable summaries are automatically generated from meeting transcripts.' },
-        { icon: 'ShieldCheck', title: 'Enterprise Security', description: 'All data operations are conducted on encrypted infrastructure, GDPR compliant.' },
-        { icon: 'Plug', title: 'Tool Integration', description: 'Works seamlessly with calendar, email, and project management tools.' },
-        { icon: 'TrendingUp', title: 'Continuous Learning', description: 'Adapts to your organization\'s specific terminology and workflows over time.' },
-      ],
-      features: [
-        { number: '01', title: 'Voice and Text Command Understanding', description: 'Detects both voice and text commands in natural language through NLP.', image: yonVoice },
-        { number: '02', title: 'Meeting Summaries and Task Management', description: 'Meetings are automatically transcribed, action items are identified, and assigned as tasks to relevant people.', image: yonMeeting },
-        { number: '03', title: '24/7 Accessibility and High Security', description: 'The platform operates continuously and all data operations are conducted under high security standards.', image: yonSecurity },
-      ],
-      howItWorks: [
-        { step: 1, title: 'Establish Connection', description: 'Connect your existing calendar, email, and communication tools to the platform.' },
-        { step: 2, title: 'Record the Meeting', description: 'The assistant joins the meeting, transcribes speech, and identifies key points.' },
-        { step: 3, title: 'Receive Summaries and Tasks', description: 'As soon as the meeting ends, summary and action items are automatically delivered.' },
-        { step: 4, title: 'Start the Follow-Up Process', description: 'Tasks are assigned to relevant people; completion status is automatically tracked.' },
-      ],
-      faqs: [
-        { question: 'Which languages are supported?', answer: 'Offered primarily with Turkish and English support. Additional language support is available in enterprise packages.' },
-        { question: 'Does it work with existing meeting tools?', answer: 'Yes. Integration with Microsoft Teams, Zoom, Google Meet, and other popular platforms is supported.' },
-        { question: 'How accurate is the transcription?', answer: 'Accuracy rate above 92% is achieved for standard Turkish speech.' },
-        { question: 'Where is data stored?', answer: 'Stored on Turkey-based servers, fully compliant with local data protection requirements.' },
       ],
     },
   },
@@ -512,100 +309,9 @@ export const products = [
       ],
     },
   },
-  {
-    id: 'spiral-freezer',
-    slug: 'spiral-freezer',
-    category: 'Gıda Teknolojisi',
-    title: 'Spiral Freezer',
-    tagline: "Binlerce ürünü dakikalar içinde -40°C'ye indir.",
-    description: "Hücre içi buz kristali oluşumunu minimize ederek ürünlerin doğal doku, lezzet ve raf ömrünü koruyan endüstriyel hızlı dondurma sistemi.",
-    longDescription: [
-      "Spiral Freezer, binlerce ürünü dakikalar içinde -40°C'ye indirerek hücre içi kristal oluşumunu minimize eder ve doğal doku, lezzet ile raf ömrünü korur.",
-      "AISI 304 paslanmaz çelik gövde ve ürün temas yüzeyleri, yoğun üretim koşullarında dayanıklılığı sürdürürken hijyen standartlarını en üst seviyede tutar.",
-      "Patentli hava akışı teknolojisi sayesinde enerji tüketimi %30'a kadar azalır.",
-    ],
-    stats: [
-      { value: '-40°C', label: 'Minimum dondurma sıcaklığı' },
-      { value: '%30', label: 'Enerji tasarrufu' },
-      { value: '20+ Yıl', label: 'Sektör deneyimi' },
-    ],
-    benefits: [
-      { icon: 'Zap', title: 'Hızlı Dondurma', description: 'Ürünler dakikalar içinde hedef sıcaklığa ulaşır; hücre yapısı ve besin değerleri korunur.' },
-      { icon: 'TrendingUp', title: 'Enerji Verimliliği', description: 'Patentli hava akışı teknolojisi enerji tüketimini %30\'a kadar azaltır.' },
-      { icon: 'ShieldCheck', title: 'Hijyen Standartları', description: 'AISI 304 paslanmaz çelik ve entegre CIP sistemi ile 3-A SSA & CE sertifikasyonu.' },
-      { icon: 'Plug', title: 'Modüler Büyüme', description: 'Kapasite artışı için mevcut sistemi sökmek gerekmez.' },
-      { icon: 'BarChart3', title: 'Uzaktan İzleme', description: 'Entegre sensörler ve dashboard ile üretim verilerini gerçek zamanlı takip edin.' },
-      { icon: 'Headphones', title: '7/24 Teknik Destek', description: '20+ yıllık deneyimli ekip, sahadaki her sorunu hızla çözer.' },
-    ],
-    howItWorks: [
-      { step: 1, title: 'İhtiyaç Analizi', description: 'Üretim kapasitesi, ürün tipi ve alan koşullarınız doğrultusunda teknik şartname hazırlanır.' },
-      { step: 2, title: 'Üretim ve Test', description: 'Sisteminiz fabrikada üretilir ve FAT (Fabrika Kabul Testi) tamamlanır.' },
-      { step: 3, title: 'Kurulum ve Devreye Alma', description: 'Uzman ekibimiz sahada kurulum ve entegrasyonu gerçekleştirir.' },
-      { step: 4, title: 'Sürekli Destek', description: 'Yıllık bakım, uzaktan izleme ve 7/24 teknik destek hattıyla kesintisiz çalışma garanti edilir.' },
-    ],
-    faqs: [
-      { question: 'Hangi ürün tiplerini işleyebilir?', answer: 'Et, kanatlı, deniz ürünleri, unlu mamüller, meyve-sebze ve hazır yemek başta olmak üzere gıda sektörünün tüm ürün tiplerini işler.' },
-      { question: 'Minimum kapasite ne kadardır?', answer: 'Modüler yapı sayesinde günlük 500 kg\'dan tonlarca kapasiteye kadar yapılandırma mümkündür.' },
-      { question: 'CE ve 3-A SSA belgelerine sahip mi?', answer: 'Evet. Tüm sistemler CE direktiflerine ve 3-A Sanitary Standards\'a tam uyumlu olarak üretilmekte ve belgelendirilmektedir.' },
-      { question: 'Bakım ne sıklıkla yapılmalı?', answer: 'Standart bakım periyodu 6 ayda birdir.' },
-    ],
-    tags: ['Endüstriyel', 'Soğutma', 'Gıda', 'CE Uyumlu'],
-    image: spiralHero,
-    heroImage: spiralHero,
-    gallery: [spiralHero, tercumedSteps, spiral2, spiralHero],
-    features: [
-      { number: '01', title: 'Patentli Hava Akışı Teknolojisi', description: "Gelişmiş yalıtım panelleriyle enerji tüketimi %30'a kadar azalır.", image: tercumedSteps },
-      { number: '02', title: 'Modüler Tasarım', description: 'Mevcut ekipmanı sökmeden yeni spiral katmanlar veya bant modülleri eklenerek kapasite dakikalar içinde ikiye katlanabilir.', image: spiral2 },
-      { number: '03', title: 'Entegre CIP Sistemi ve Sertifikasyon', description: "Clean-in-Place sistemi temizlik sürelerini kısaltır, 3-A SSA ve CE standartlarına tam uyumluluk sağlar.", image: spiralHero },
-    ],
-    featured: false,
-    color: 'bg-sky/8 text-sky border-sky/15',
-    dot: 'bg-sky',
-    en: {
-      category: 'Food Technology',
-      tagline: 'Freeze thousands of products to -40°C in minutes.',
-      description: 'An industrial rapid freezing system that minimizes intracellular ice crystal formation, preserving the natural texture, flavor, and shelf life of products.',
-      longDescription: [
-        'Spiral Freezer brings thousands of products down to -40°C in minutes, minimizing intracellular crystal formation and preserving natural texture, flavor, and shelf life.',
-        'AISI 304 stainless steel body and product contact surfaces maintain durability under intense production conditions while keeping hygiene standards at the highest level.',
-        'Thanks to patented airflow technology, energy consumption is reduced by up to 30%.',
-      ],
-      tags: ['Industrial', 'Refrigeration', 'Food', 'CE Compliant'],
-      stats: [
-        { value: '-40°C', label: 'Minimum freezing temperature' },
-        { value: '30%', label: 'Energy savings' },
-        { value: '20+ Yrs', label: 'Industry experience' },
-      ],
-      benefits: [
-        { icon: 'Zap', title: 'Rapid Freezing', description: 'Products reach target temperature in minutes; cell structure and nutritional values are preserved.' },
-        { icon: 'TrendingUp', title: 'Energy Efficiency', description: 'Patented airflow technology reduces energy consumption by up to 30%.' },
-        { icon: 'ShieldCheck', title: 'Hygiene Standards', description: 'AISI 304 stainless steel and integrated CIP system with 3-A SSA & CE certification.' },
-        { icon: 'Plug', title: 'Modular Expansion', description: 'No need to disassemble existing system for capacity increase.' },
-        { icon: 'BarChart3', title: 'Remote Monitoring', description: 'Track production data in real time with integrated sensors and dashboard.' },
-        { icon: 'Headphones', title: '24/7 Technical Support', description: 'Experienced team with 20+ years quickly resolves field issues.' },
-      ],
-      features: [
-        { number: '01', title: 'Patented Airflow Technology', description: 'Energy consumption is reduced by up to 30% with advanced insulation panels.', image: tercumedSteps },
-        { number: '02', title: 'Modular Design', description: 'New spiral layers or belt modules can be added without disassembling existing equipment, doubling capacity within minutes.', image: spiral2 },
-        { number: '03', title: 'Integrated CIP System & Certification', description: 'The Clean-in-Place system shortens cleaning times and ensures full compliance with 3-A SSA and CE standards.', image: spiralHero },
-      ],
-      howItWorks: [
-        { step: 1, title: 'Needs Analysis', description: 'Technical specifications are prepared based on your production capacity, product type, and site conditions.' },
-        { step: 2, title: 'Production & Testing', description: 'Your system is manufactured at the factory and FAT (Factory Acceptance Test) is completed.' },
-        { step: 3, title: 'Installation & Commissioning', description: 'Our expert team performs on-site installation and integration.' },
-        { step: 4, title: 'Ongoing Support', description: 'Annual maintenance, remote monitoring, and 24/7 technical support line guarantee uninterrupted operation.' },
-      ],
-      faqs: [
-        { question: 'What product types can it process?', answer: 'Ideal for all product types in the food industry, primarily meat, poultry, seafood, baked goods, fruits and vegetables, and ready meals.' },
-        { question: 'What is the minimum capacity?', answer: 'Configuration from 500 kg per day to tons is possible thanks to the modular structure.' },
-        { question: 'Does it have CE and 3-A SSA certifications?', answer: 'Yes. All systems are manufactured and certified in full compliance with CE directives and 3-A Sanitary Standards.' },
-        { question: 'How often should maintenance be performed?', answer: 'Standard maintenance period is every 6 months.' },
-      ],
-    },
-  },
 ]
 
 export const categories = {
-  tr: ['Tümü', 'İK & Zaman Yönetimi', 'Yapay Zekâ / Sağlık', 'Kontrol & İzleme', 'Yapay Zekâ / Otomasyon', 'Finans / Sağlık', 'Gıda Teknolojisi'],
-  en: ['All', 'HR & Time Management', 'AI / Healthcare', 'Control & Monitoring', 'AI / Automation', 'Finance / Healthcare', 'Food Technology'],
+  tr: ['Tümü', 'İK & Zaman Yönetimi', 'Yapay Zekâ / Sağlık', 'Finans / Sağlık'],
+  en: ['All', 'HR & Time Management', 'AI / Healthcare', 'Finance / Healthcare'],
 }

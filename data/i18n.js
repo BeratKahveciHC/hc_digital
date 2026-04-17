@@ -127,10 +127,7 @@ export const i18n = {
       products: [
         { label: 'AirX IKYS',               to: '/urunler/airx-ikys' },
         { label: 'Tercümed',                to: '/urunler/tercumed' },
-        { label: 'Kumanda Merkezi',         to: '/urunler/kumanda-merkezi' },
-        { label: 'Yön Assist',              to: '/urunler/yon-assist' },
         { label: 'Hastane Bütçe Yönetimi', to: '/urunler/butce-yonetim' },
-        { label: 'Spiral Freezer',          to: '/urunler/spiral-freezer' },
       ],
     },
 
@@ -336,10 +333,7 @@ export const i18n = {
       products: [
         { label: 'AirX IKYS',                      to: '/urunler/airx-ikys' },
         { label: 'Tercümed',                       to: '/urunler/tercumed' },
-        { label: 'Control Center',                 to: '/urunler/kumanda-merkezi' },
-        { label: 'Yön Assist',                     to: '/urunler/yon-assist' },
         { label: 'Hospital Budget Management',     to: '/urunler/butce-yonetim' },
-        { label: 'Spiral Freezer',                 to: '/urunler/spiral-freezer' },
       ],
     },
 

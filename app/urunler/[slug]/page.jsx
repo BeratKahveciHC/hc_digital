@@ -12,25 +12,10 @@ const productSeoMeta = {
     description: 'Tercümed, tıbbi belgeleri saniyeler içinde 30+ dile çeviriyor. Taburculuk belgesi, onam formu ve klinik belgeler için yapay zeka destekli, klinik doğruluklu çeviri.',
     keywords: 'Tercümed, tıbbi çeviri, yapay zeka çeviri, taburculuk belgesi, onam formu, HC Dijital',
   },
-  'kumanda-merkezi': {
-    title: 'Kumanda Merkezi – Gerçek Zamanlı Operasyonel Yönetim Platformu | HC Dijital',
-    description: 'Kumanda Merkezi, gerçek zamanlı veri akışı, alarm yönetimi ve kapsamlı raporlamayla kurumsal operasyonel görünürlüğü artırıyor.',
-    keywords: 'Kumanda Merkezi, operasyonel yönetim, alarm yönetimi, SCADA, HC Dijital',
-  },
-  'yon-assist': {
-    title: 'Yön Assist – Yapay Zeka Destekli Kurumsal Asistan | HC Dijital',
-    description: 'Yön Assist, sesli ve yazılı komutlarla toplantı özetleri, görev yönetimi ve zaman planlaması yapan yapay zeka destekli kurumsal asistan.',
-    keywords: 'Yön Assist, AI asistan, toplantı özeti, görev yönetimi, NLP, HC Dijital',
-  },
   'butce-yonetim': {
     title: 'Hastane Bütçe Yönetim Sistemi – AI Destekli Finansal Platform | HC Dijital',
     description: 'Otomatik gider-gelir takibi, gerçek zamanlı öngörüler ve AI destekli raporlarla hastane bütçe yönetimini kolaylaştıran ölçeklenebilir ve güvenli platform.',
     keywords: 'hastane bütçe yönetimi, finansal platform, AI raporlama, ERP entegrasyonu, HC Dijital',
-  },
-  'spiral-freezer': {
-    title: 'Spiral Freezer – Endüstriyel Hızlı Dondurma Sistemi | HC Dijital',
-    description: 'Hücre içi buz kristali oluşumunu minimize ederek ürünlerin doğal doku, lezzet ve raf ömrünü koruyan endüstriyel Spiral Freezer teknolojisi.',
-    keywords: 'Spiral Freezer, endüstriyel dondurma, hızlı dondurma, gıda teknolojisi, CE sertifikası, HC Dijital',
   },
 }
 
