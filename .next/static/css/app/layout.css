@@ -1816,12 +1816,6 @@
       --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-slate-200) 50%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
-  .shadow-slate-200\/60 {
-    --tw-shadow-color: color-mix(in srgb, oklch(92.9% 0.013 255.508) 60%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-slate-200) 60%, transparent) var(--tw-shadow-alpha), transparent);
-    }
-  }
   .ring-primary\/10 {
     --tw-ring-color: color-mix(in srgb, #1b5fc1 10%, transparent);
     @supports (color: color-mix(in lab, red, red)) {

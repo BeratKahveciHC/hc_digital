@@ -7,11 +7,11 @@ import { useLang } from '../../context/LanguageContext'
 
 import _airxHero    from '../../assets/images/products/airx-hero.webp'
 import _tercumedHero from '../../assets/images/products/tercumed-hero.webp'
-import _butce2       from '../../assets/images/products/butce-2.webp'
+import _butceHero    from '../../assets/images/products/butce-hero.webp'
 const s = (x) => x?.src ?? x
 const airxHero    = s(_airxHero)
 const tercumedHero = s(_tercumedHero)
-const butce2      = s(_butce2)
+const butceHero   = s(_butceHero)
 
 const SLIDE_DURATION = 5500
 
@@ -70,7 +70,7 @@ const slides = [
       tr: 'Otomatik gider–gelir takibi, gerçek zamanlı öngörüler ve AI destekli raporlarla stratejik kararlar.',
       en: 'Strategic decisions with automated tracking, real-time insights and AI-powered reports.',
     },
-    image: butce2,
+    image: butceHero,
     href: '/urunler/butce-yonetim',
     cta: { tr: 'Ürünü İncele', en: 'Explore Product' },
     features: [

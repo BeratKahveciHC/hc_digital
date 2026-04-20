@@ -12,8 +12,10 @@ import _tercumed4        from '../assets/images/products/tercumed-4.webp'
 import _tercumedTerminology from '../assets/images/products/tercumed-terminology.webp'
 import _tercumedPdf      from '../assets/images/products/tercumed-pdf.webp'
 import _tercumedSteps    from '../assets/images/products/tercumed-steps.webp'
+import _butceHero        from '../assets/images/products/butce-hero.webp'
 import _butce2           from '../assets/images/products/butce-2.webp'
 import _butce3           from '../assets/images/products/butce-3.webp'
+import _butce4           from '../assets/images/products/butce-4.webp'
 
 const s = (x) => x?.src ?? x
 const airxHero          = s(_airxHero)
@@ -30,8 +32,10 @@ const tercumed4         = s(_tercumed4)
 const tercumedTerminology = s(_tercumedTerminology)
 const tercumedPdf       = s(_tercumedPdf)
 const tercumedSteps     = s(_tercumedSteps)
+const butceHero         = s(_butceHero)
 const butce2            = s(_butce2)
 const butce3            = s(_butce3)
+const butce4            = s(_butce4)
 
 export const products = [
   {
@@ -256,12 +260,12 @@ export const products = [
       { question: 'Muhasebe ekibim ek eğitim alması gerekiyor mu?', answer: 'Sezgisel arayüz tasarımı sayesinde temel eğitim 2 saatte tamamlanmaktadır.' },
     ],
     tags: ['Finans', 'AI Raporlama', 'Sağlık', 'Analitik'],
-    image: butce2,
-    heroImage: butce2,
-    gallery: [butce2, butce3, butce2, butce3],
+    image: butceHero,
+    heroImage: butceHero,
+    gallery: [butceHero, butce2, butce3, butce4],
     features: [
       { number: '01', title: 'Otomatik Gider–Gelir Takibi', description: 'Tüm gelir ve gider kalemleri otomatik olarak sınıflandırılır ve izlenir.', image: butce2 },
-      { number: '02', title: 'Yapay Zekâ Destekli Raporlar', description: 'Geçmiş verileri analiz eden yapay zekâ motoru, gelecek dönem bütçe tahminleri ve sapma uyarıları üretir.', image: butce2 },
+      { number: '02', title: 'Yapay Zekâ Destekli Raporlar', description: 'Geçmiş verileri analiz eden yapay zekâ motoru, gelecek dönem bütçe tahminleri ve sapma uyarıları üretir.', image: butce4 },
       { number: '03', title: 'Ölçeklenebilir ve Güvenli Altyapı', description: 'Bulut tabanlı güvenli altyapı, kurumunuzun büyümesiyle birlikte ölçeklenir.', image: butce3 },
     ],
     featured: false,
@@ -292,7 +296,7 @@ export const products = [
       ],
       features: [
         { number: '01', title: 'Automated Expense-Income Tracking', description: 'All revenue and expense items are automatically classified and monitored.', image: butce2 },
-        { number: '02', title: 'AI-Powered Reports', description: 'The AI engine analyzing historical data generates future period budget forecasts and deviation warnings.', image: butce2 },
+        { number: '02', title: 'AI-Powered Reports', description: 'The AI engine analyzing historical data generates future period budget forecasts and deviation warnings.', image: butce4 },
         { number: '03', title: 'Scalable and Secure Infrastructure', description: 'The cloud-based secure infrastructure scales with your organization\'s growth.', image: butce3 },
       ],
       howItWorks: [

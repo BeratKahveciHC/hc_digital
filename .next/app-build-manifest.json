@@ -11,40 +11,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/urunler/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/urunler/[slug]/page.js"
-    ],
-    "/haberler/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/haberler/page.js"
-    ],
-    "/haberler/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/haberler/[slug]/page.js"
-    ],
-    "/servisler/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/servisler/page.js"
-    ],
-    "/referanslar/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/referanslar/page.js"
-    ],
     "/urunler/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/urunler/page.js"
     ],
-    "/iletisim/page": [
+    "/urunler/[slug]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/iletisim/page.js"
+      "static/chunks/app/urunler/[slug]/page.js"
     ]
   }
 }
