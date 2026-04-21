@@ -7,6 +7,11 @@ import _saglikIkizAcilis  from '../assets/images/news/saglik-ikiz-donusum-acilis
 import _kosgeb           from '../assets/images/news/kosgeb-logo.webp'
 import _patentLisanslama  from '../assets/images/news/patent-lisanslama.webp'
 import _teknogisimRozeti  from '../assets/images/news/teknogisim-rozeti.webp'
+import _okanUniversitesi  from '../assets/images/news/okan-universitesi-protokol.webp'
+import _okanUniversitesi1 from '../assets/images/news/okan-universitesi-protokol-1.webp'
+import _okanUniversitesi2 from '../assets/images/news/okan-universitesi-protokol-2.webp'
+import _okanUniversitesi3  from '../assets/images/news/okan-universitesi-protokol-3.webp'
+import _bilisimVadisiHaber from '../assets/images/news/bilisim-vadisi-haber.webp'
 
 const s = (x) => x?.src ?? x
 const tercumedHero     = s(_tercumedHero)
@@ -18,8 +23,85 @@ const saglikIkizAcilis = s(_saglikIkizAcilis)
 const kosgeb           = s(_kosgeb)
 const patentLisanslama = s(_patentLisanslama)
 const teknogisimRozeti = s(_teknogisimRozeti)
+const okanUniversitesi  = s(_okanUniversitesi)
+const okanUniversitesi1 = s(_okanUniversitesi1)
+const okanUniversitesi2 = s(_okanUniversitesi2)
+const okanUniversitesi3  = s(_okanUniversitesi3)
+const bilisimVadisiHaber = s(_bilisimVadisiHaber)
 
 export const news = [
+  {
+    slug: 'hc-dijital-bilisim-vadisi',
+    date: '2026-04-21',
+    category: { tr: 'Ekosistem', en: 'Ecosystem' },
+    image: bilisimVadisiHaber,
+    title: {
+      tr: 'HC Dijital Sağlık Teknolojileri, Türkiye\'nin Teknoloji Üssü Bilişim Vadisi\'nde',
+      en: 'HC Dijital Health Technologies at Bilişim Vadisi, Turkey\'s Technology Hub',
+    },
+    summary: {
+      tr: 'HC Dijital Sağlık Teknolojileri, Türkiye\'nin öncü teknoloji ve inovasyon ekosistemi Bilişim Vadisi çatısı altında faaliyetlerini sürdürerek sağlık teknolojileri alanında güçlü bir büyüme vizyonuyla ilerliyor.',
+      en: 'HC Dijital Health Technologies continues its operations under Bilişim Vadisi, Turkey\'s leading technology and innovation ecosystem, advancing with a strong growth vision in health technologies.',
+    },
+    content: {
+      tr: [
+        'HC Dijital Sağlık Teknolojileri olarak, Türkiye\'nin en köklü ve prestijli teknoloji ekosistemlerinden biri olan Bilişim Vadisi bünyesinde yer almanın gururunu yaşıyoruz. Bu çatı altında gerçekleştirdiğimiz çalışmalar, yalnızca bir lokasyon tercihinin çok ötesinde; stratejik bir konumlanmanın ve geleceğe yönelik güçlü bir vizyonun somut göstergesi niteliğinde.',
+        { type: 'image', src: bilisimVadisiHaber, alt: 'HC Dijital Sağlık Teknolojileri - Bilişim Vadisi' },
+        'Bilişim Vadisi, Türkiye\'nin teknoloji ve inovasyon alanındaki dönüşümünün merkezinde yer alan bir ekosistem olarak, bünyesindeki şirketlere yalnızca fiziksel bir alan değil; iş birliği fırsatları, nitelikli insan kaynağına erişim ve güçlü kurumsal ağlar sunmaktadır. HC Dijital olarak bu ekosistemin dinamiklerinden en verimli biçimde yararlanarak sağlık teknolojileri alanında katma değerli çözümler üretmeye devam ediyoruz.',
+        'Kurucumuz Ersan BİÇKİOĞLU\'nun vizyoner liderliği doğrultusunda şirketimiz; yapay zekâ destekli karar destek sistemleri, veri odaklı sağlık yönetimi platformları ve dijital dönüşüm çözümleri geliştirerek Türkiye\'nin sağlık ekosistemine değer katmayı hedeflemektedir. Bilişim Vadisi\'nin sunduğu güçlü altyapı ve inovasyon kültürü, bu hedefler doğrultusunda bize kritik bir ivme kazandırmaktadır.',
+        'Sağlık sektörünün dijital geleceğini şekillendirme sorumluluğunu taşıyan bir şirket olarak, doğru ekosistemde konumlanmak stratejik öneme sahiptir. Bilişim Vadisi bu anlamda HC Dijital için yalnızca bir çalışma alanı değil; inovasyon, iş birliği ve büyüme fırsatlarının bir arada sunulduğu güçlü bir platform olmayı sürdürmektedir.',
+        'Sağlık teknolojileri, yapay zekâ ve dijital dönüşüm ekseninde ürettiğimiz çözümlerle Bilişim Vadisi ekosisteminin ve Türkiye\'nin teknoloji gündeminin ayrılmaz bir parçası olmaya devam edeceğiz.',
+      ],
+      en: [
+        'As HC Dijital Health Technologies, we are proud to be part of Bilişim Vadisi, one of Turkey\'s most established and prestigious technology ecosystems. Our work under this umbrella is far beyond a mere location preference — it is a concrete indicator of strategic positioning and a strong vision for the future.',
+        { type: 'image', src: bilisimVadisiHaber, alt: 'HC Dijital Health Technologies - Bilişim Vadisi' },
+        'Bilişim Vadisi, as an ecosystem at the center of Turkey\'s transformation in technology and innovation, offers the companies within it not only a physical space but also collaboration opportunities, access to qualified human resources, and strong institutional networks. As HC Dijital, we continue to produce high-value solutions in health technologies by making the most of the dynamics of this ecosystem.',
+        'In line with the visionary leadership of our founder Ersan BİÇKİOĞLU, our company aims to add value to Turkey\'s healthcare ecosystem by developing AI-powered decision support systems, data-driven health management platforms, and digital transformation solutions. The strong infrastructure and culture of innovation offered by Bilişim Vadisi provides us with critical momentum toward these goals.',
+        'As a company that bears the responsibility of shaping the digital future of the healthcare sector, being positioned in the right ecosystem is of strategic importance. In this sense, Bilişim Vadisi continues to be not just a workspace for HC Dijital, but a powerful platform where innovation, collaboration, and growth opportunities are offered together.',
+        'We will continue to be an integral part of the Bilişim Vadisi ecosystem and Turkey\'s technology agenda with the solutions we produce at the intersection of health technologies, artificial intelligence, and digital transformation.',
+      ],
+    },
+  },
+  {
+    slug: 'okan-universitesi-akademi-sektor-isbirligi',
+    date: '2026-04-21',
+    category: { tr: 'İş Birliği', en: 'Collaboration' },
+    image: okanUniversitesi,
+    title: {
+      tr: 'HC Dijital Sağlık Teknolojileri ve İstanbul Okan Üniversitesi\'nden Akademi-Sektör İş Birliğinde Güçlü Adım',
+      en: 'A Strong Step in Academia-Industry Collaboration from HC Dijital Health Technologies and Istanbul Okan University',
+    },
+    summary: {
+      tr: 'HC Dijital Sağlık Teknolojileri ile T.C. İstanbul Okan Üniversitesi arasında imzalanan Mesleki ve Sanayi İş Birliği Protokolü, bilgi üretimini sahadaki ihtiyaçlarla buluşturan değerli bir iş birliğinin kapısını araladı.',
+      en: 'The Professional and Industrial Cooperation Protocol signed between HC Dijital Health Technologies and Istanbul Okan University opened the door to a valuable collaboration that bridges knowledge production with real-world needs.',
+    },
+    content: {
+      tr: [
+        'HC Dijital Sağlık Teknolojileri, akademi ile sektör arasındaki bağı güçlendirecek önemli bir adım daha attı. Şirketimiz ile T.C. İstanbul Okan Üniversitesi arasında imzalanan Mesleki ve Sanayi İş Birliği Protokolü, bilgi üretimini sahadaki ihtiyaçlarla buluşturan değerli bir iş birliğinin kapısını araladı.',
+        { type: 'image', src: okanUniversitesi1, alt: 'HC Dijital - İstanbul Okan Üniversitesi İş Birliği Protokolü' },
+        'Sağlık teknolojileri alanında yenilikçi yaklaşımı, çözüm odaklı bakışı ve büyüme vizyonuyla dikkat çeken HC Dijital Sağlık Teknolojileri Kurucusu Ersan BİÇKİOĞLU, yalnızca bugünü yöneten değil, geleceği de inşa etmeyi hedefleyen bir anlayışla hareket ediyor. Bu protokol de tam olarak bu vizyonun somut bir yansıması niteliğinde öne çıkıyor.',
+        'İmzalanan iş birliği kapsamında, üniversite ile sektör arasında daha güçlü bir etkileşim kurulması, öğrencilerin ve akademik çevrenin uygulama sahasıyla daha yakın temas etmesi ve sağlık teknolojileri odağında bilgi paylaşımının artırılması hedefleniyor. Böylece hem genç yeteneklerin gelişimine katkı sunulacak hem de sektörün ihtiyaç duyduğu nitelikli bilgi ve insan kaynağına daha güçlü bir köprü kurulmuş olacak.',
+        { type: 'image', src: okanUniversitesi2, alt: 'HC Dijital - İstanbul Okan Üniversitesi İş Birliği Protokolü İmza' },
+        'Bu kıymetli sürecin önemli isimlerinden biri de şirketimizin danışmanı Dr. Hasan OĞUZ oldu. Aynı zamanda İstanbul Okan Üniversitesi bünyesinde yer alan Dr. Hasan OĞUZ, akademik birikimi ile sektör deneyimini bir araya getiren yaklaşımı sayesinde bu iş birliğine önemli bir derinlik kazandırıyor. Dr. OĞUZ\'un rehberliği, HC Dijital\'in yalnızca ticari hedeflere değil, aynı zamanda sürdürülebilir bilgi üretimine ve uzun vadeli kurumsal gelişime odaklandığını da ortaya koyuyor.',
+        'Süreçte ayrıca Dr. Çağlar AKAR ve Dr. Alper ÇELTİKÇİ gibi İstanbul Okan Üniversitesi\'nin değerli akademik isimlerinin yer alması, bu iş birliğinin akademik açıdan da güçlü bir zemine oturduğunu gösterdi. Sektörün dinamizmi ile akademinin disiplinini bir araya getiren bu yapı, önümüzdeki dönemde üretilecek projeler açısından oldukça kıymetli bir vizyon sunuyor.',
+        { type: 'image', src: okanUniversitesi3, alt: 'HC Dijital - İstanbul Okan Üniversitesi Akademi Sektör İş Birliği' },
+        'HC Dijital Sağlık Teknolojileri olarak her zaman teknoloji, sağlık ve eğitim ekseninde kurduğumuz her yeni teması yalnızca bir iş birliği değil, aynı zamanda geleceğe yapılan stratejik bir yatırım olarak görüyoruz. Bu noktada Ersan BİÇKİOĞLU\'nun vizyoner liderliği ve Dr. Hasan OĞUZ\'un akademik danışmanlığı, şirketimizin büyüme yolculuğunda itici bir güç olmaya devam ediyor.',
+        'İstanbul Okan Üniversitesi ile imzalanan bu protokolün, önümüzdeki dönemde yeni projelere, ortak üretim alanlarına ve değerli çıktılara zemin hazırlayacağına inanıyoruz.',
+      ],
+      en: [
+        'HC Dijital Health Technologies has taken another important step to strengthen the bond between academia and industry. The Professional and Industrial Cooperation Protocol signed between our company and Istanbul Okan University has opened the door to a valuable collaboration that bridges knowledge production with real-world needs.',
+        { type: 'image', src: okanUniversitesi1, alt: 'HC Dijital - Istanbul Okan University Cooperation Protocol' },
+        'Ersan BİÇKİOĞLU, the founder of HC Dijital Health Technologies, who stands out with his innovative approach in health technologies, solution-oriented perspective, and growth vision, operates with an understanding that aims not only to manage today but also to build the future. This protocol stands out as a concrete reflection of exactly this vision.',
+        'Within the scope of the signed cooperation, the goals include establishing stronger interaction between the university and the industry, bringing students and the academic community into closer contact with the field of application, and increasing knowledge sharing with a focus on health technologies. This way, both the development of young talents will be supported and a stronger bridge will be built to the qualified knowledge and human resources that the sector needs.',
+        { type: 'image', src: okanUniversitesi2, alt: 'HC Dijital - Istanbul Okan University Cooperation Protocol Signing' },
+        'One of the key figures in this valuable process was our company\'s consultant Dr. Hasan OĞUZ. Dr. Hasan OĞUZ, who is also affiliated with Istanbul Okan University, adds significant depth to this collaboration through his approach that combines academic knowledge with industry experience. Dr. OĞUZ\'s guidance also reveals that HC Dijital focuses not only on commercial goals but also on sustainable knowledge production and long-term institutional development.',
+        'The participation of valuable academic figures from Istanbul Okan University such as Dr. Çağlar AKAR and Dr. Alper ÇELTİKÇİ showed that this collaboration is also built on a strong academic foundation. This structure, which brings together the dynamism of the industry and the discipline of academia, offers a very valuable vision for projects to be produced in the coming period.',
+        { type: 'image', src: okanUniversitesi3, alt: 'HC Dijital - Istanbul Okan University Academia Industry Collaboration' },
+        'As HC Dijital Health Technologies, we always view every new contact we establish at the intersection of technology, health, and education not just as a collaboration, but as a strategic investment in the future. At this point, the visionary leadership of Ersan BİÇKİOĞLU and the academic consultancy of Dr. Hasan OĞUZ continue to be a driving force in our company\'s growth journey.',
+        'We believe that this protocol signed with Istanbul Okan University will lay the groundwork for new projects, joint production areas, and valuable outputs in the coming period.',
+      ],
+    },
+  },
   {
     slug: 'istinye-universitesi-patent-lisanslama',
     date: '2025-12-22',

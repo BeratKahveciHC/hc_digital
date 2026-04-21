@@ -1,111 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Ana Sayfa -->
+  <!-- ── Ana Sayfa ── -->
   <url>
-    <loc>https://www.hcdijital.com.tr/</loc>
+    <loc>https://www.hcdijital.com/</loc>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-04-06</lastmod>
   </url>
 
-  <!-- Hakkımızda -->
+  <!-- ── Kurumsal ── -->
   <url>
-    <loc>https://www.hcdijital.com.tr/hakkimizda</loc>
+    <loc>https://www.hcdijital.com/hakkimizda/</loc>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-
-  <!-- Ürünler -->
-  <url>
-    <loc>https://www.hcdijital.com.tr/urunler</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-
-  <!-- Ürün Detayları -->
-  <url>
-    <loc>https://www.hcdijital.com.tr/urunler/airx-ikys</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <lastmod>2026-04-06</lastmod>
   </url>
   <url>
-    <loc>https://www.hcdijital.com.tr/urunler/tercumed</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.hcdijital.com.tr/urunler/butce-yonetim</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-
-  <!-- Hizmetler -->
-  <url>
-    <loc>https://www.hcdijital.com.tr/servisler</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-
-  <!-- Hizmet Detayları -->
-  <url>
-    <loc>https://www.hcdijital.com.tr/servisler/yazilim-gelistirme</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.hcdijital.com.tr/servisler/yapay-zeka</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.hcdijital.com.tr/servisler/veri-analitigi</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.hcdijital.com.tr/servisler/raporlama-sistemleri</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.hcdijital.com.tr/servisler/teknoloji-danismanligi</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-  <url>
-    <loc>https://www.hcdijital.com.tr/servisler/veri-bilimi</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-    <lastmod>2026-04-06</lastmod>
-  </url>
-
-  <!-- Referanslar -->
-  <url>
-    <loc>https://www.hcdijital.com.tr/referanslar</loc>
+    <loc>https://www.hcdijital.com/ekibimiz/</loc>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-04-06</lastmod>
   </url>
-
-  <!-- İletişim -->
   <url>
-    <loc>https://www.hcdijital.com.tr/iletisim</loc>
+    <loc>https://www.hcdijital.com/referanslar/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/iletisim/</loc>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-04-06</lastmod>
+  </url>
+
+  <!-- ── Ürünler ── -->
+  <url>
+    <loc>https://www.hcdijital.com/urunler/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/urunler/airx-ikys/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/urunler/tercumed/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/urunler/butce-yonetim/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ── Hizmetler ── -->
+  <url>
+    <loc>https://www.hcdijital.com/servisler/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ── Haberler ── -->
+  <url>
+    <loc>https://www.hcdijital.com/haberler/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/haberler/tera-projesi-istanbul-kalkinma-ajansi/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/haberler/hc-dijital-teknogisim-rozeti/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/haberler/butce-planlama-sistemi-lisanslama/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/haberler/airx-mobil-pdks-kullanima-acildi/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/haberler/tercumed-ai-kosgeb-tam-puan/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/haberler/saglik-ikiz-donusum-merkezi-acilis/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.hcdijital.com/haberler/istinye-universitesi-patent-lisanslama/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>

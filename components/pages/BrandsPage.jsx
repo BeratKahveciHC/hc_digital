@@ -13,7 +13,9 @@ import _mlpcare     from '../../assets/brands/mlpcare.webp'
 import _mlpCare     from '../../assets/brands/mlp-care.webp'
 import _tasarim5e   from '../../assets/brands/5e-tasarim.webp'
 import _cafrost     from '../../assets/brands/cafrost.webp'
-import _brainco     from '../../assets/brands/brainco.webp'
+import _brainco       from '../../assets/brands/brainco.webp'
+import _bilisimVadisi from '../../assets/brands/bilisim-vadisi.webp'
+import _okanUni       from '../../assets/brands/okan-universitesi.webp'
 const s = (x) => x?.src ?? x
 const istinye    = s(_istinye)
 const livHospital = s(_livHospital)
@@ -22,7 +24,9 @@ const mlpcare    = s(_mlpcare)
 const mlpCare    = s(_mlpCare)
 const tasarim5e  = s(_tasarim5e)
 const cafrost    = s(_cafrost)
-const brainco    = s(_brainco)
+const brainco       = s(_brainco)
+const bilisimVadisi = s(_bilisimVadisi)
+const okanUni       = s(_okanUni)
 
 const seoData = {
   tr: {
@@ -94,6 +98,18 @@ const brands = {
       url: 'https://brainco.com.tr',
       description: 'Beyin-bilgisayar arayüzü ve nöroteknoloji alanında ürünler geliştiren inovasyon şirketi. Yapay zekâ entegrasyonu süreçlerinde HC Dijital ile iş ortaklığı yürütmektedir.',
     },
+    {
+      name: 'Bilişim Vadisi',
+      src: bilisimVadisi,
+      url: 'https://www.bilisimvadisi.com.tr',
+      description: 'Türkiye\'nin teknoloji ve inovasyon merkezi. HC Dijital, Bilişim Vadisi ekosistemi içinde yer alarak dijital dönüşüm ve sağlık teknolojileri alanındaki gelişim sürecini sürdürmektedir.',
+    },
+    {
+      name: 'İstanbul Okan Üniversitesi',
+      src: okanUni,
+      url: 'https://www.okan.edu.tr',
+      description: 'İstanbul Okan Üniversitesi ile imzalanan Mesleki ve Sanayi İş Birliği Protokolü kapsamında akademi-sektör iş birliği güçlendirilmekte; bilgi üretimi ve insan kaynağı geliştirme alanlarında ortak çalışmalar yürütülmektedir.',
+    },
   ],
   en: [
     {
@@ -137,6 +153,18 @@ const brands = {
       src: brainco,
       url: 'https://brainco.com.tr',
       description: 'An innovation company developing brain-computer interface and neurotechnology products, partnering with HC Digital on AI integration processes.',
+    },
+    {
+      name: 'Bilişim Vadisi',
+      src: bilisimVadisi,
+      url: 'https://www.bilisimvadisi.com.tr',
+      description: 'Turkey\'s technology and innovation hub. HC Digital operates within the Bilişim Vadisi ecosystem, advancing its growth in digital transformation and health technologies.',
+    },
+    {
+      name: 'Istanbul Okan University',
+      src: okanUni,
+      url: 'https://www.okan.edu.tr',
+      description: 'Under the Professional and Industrial Cooperation Protocol signed with Istanbul Okan University, academia-industry collaboration is being strengthened through joint efforts in knowledge production and human resource development.',
     },
   ],
 }

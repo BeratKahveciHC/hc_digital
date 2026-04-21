@@ -9,16 +9,20 @@ import _medicalPark from '../../assets/brands/medical-park.webp'
 import _mlpcare     from '../../assets/brands/mlpcare.webp'
 import _tasarim5e   from '../../assets/brands/5e-tasarim.webp'
 import _cafrost     from '../../assets/brands/cafrost.webp'
-import _brainco     from '../../assets/brands/brainco.webp'
+import _brainco        from '../../assets/brands/brainco.webp'
+import _bilisimVadisi  from '../../assets/brands/bilisim-vadisi.webp'
+import _okanUni        from '../../assets/brands/okan-universitesi.webp'
 const s = (x) => x?.src ?? x
 const logos = [
-  { name: 'İstinye Üniversitesi', src: s(_istinye) },
-  { name: 'LIV Hospital',         src: s(_livHospital) },
-  { name: 'Medical Park',         src: s(_medicalPark) },
-  { name: 'MLP Care',             src: s(_mlpcare) },
-  { name: '5E Tasarım',           src: s(_tasarim5e) },
-  { name: 'Cafrost',              src: s(_cafrost) },
-  { name: 'Brainco',              src: s(_brainco) },
+  { name: 'İstinye Üniversitesi',  src: s(_istinye) },
+  { name: 'LIV Hospital',          src: s(_livHospital) },
+  { name: 'Medical Park',          src: s(_medicalPark) },
+  { name: 'MLP Care',              src: s(_mlpcare) },
+  { name: '5E Tasarım',            src: s(_tasarim5e) },
+  { name: 'Cafrost',               src: s(_cafrost) },
+  { name: 'Brainco',               src: s(_brainco) },
+  { name: 'Bilişim Vadisi',        src: s(_bilisimVadisi) },
+  { name: 'İstanbul Okan Üniversitesi', src: s(_okanUni) },
 ]
 
 export default function LogoMarquee() {

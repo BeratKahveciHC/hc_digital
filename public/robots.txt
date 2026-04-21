@@ -7,4 +7,4 @@ Disallow: /gizlilik
 Disallow: /cerez
 
 # Sitemap
-Sitemap: https://www.hcdijital.com.tr/sitemap.xml
+Sitemap: https://www.hcdijital.com/sitemap.xml

@@ -113,11 +113,11 @@ export default function NewsDetailPage() {
                   {block}
                 </p>
               ) : block.type === 'image' ? (
-                <div key={i} className={`rounded-2xl overflow-hidden ${block.fit === 'contain' ? 'bg-slate-50 flex items-center justify-center p-6' : ''}`}>
+                <div key={i} className={`rounded-2xl overflow-hidden max-w-2xl mx-auto w-full ${block.fit === 'contain' ? 'bg-slate-50 flex items-center justify-center p-6' : ''}`}>
                   <img
                     src={block.src}
                     alt={block.alt ?? ''}
-                    className={`w-full rounded-2xl ${block.fit === 'contain' ? 'object-contain max-h-96' : 'object-cover'}`}
+                    className={`w-full rounded-2xl max-h-105 ${block.fit === 'contain' ? 'object-contain' : 'object-cover'}`}
                   />
                   {block.caption && (
                     <p className="mt-3 text-sm text-slate-400 text-center italic">{block.caption}</p>
