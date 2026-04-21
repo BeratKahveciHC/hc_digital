@@ -1,11 +1,11 @@
 'use client'
 import { useRef, useState, useEffect } from 'react'
-import { ArrowRight, ChevronLeft, ChevronRight, BarChart2, Code2, Brain, FileBarChart, Lightbulb, FlaskConical } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight, MonitorDot, Globe, Code2, FileBarChart, Lightbulb, Brain } from 'lucide-react'
 import Link from 'next/link'
 import { useLang } from '../../context/LanguageContext'
 import { i18n } from '../../data/i18n'
 
-const serviceIcons = [BarChart2, Code2, Brain, FileBarChart, Lightbulb, FlaskConical]
+const serviceIcons = [MonitorDot, Globe, Code2, FileBarChart, Lightbulb, Brain]
 
 export default function Services() {
   const { lang } = useLang()
@@ -50,8 +50,9 @@ export default function Services() {
         {/* ── Başlık ── */}
         <div className="flex flex-col items-center text-center">
           <h2
-            className="text-5xl md:text-9xl font-black leading-tight mb-4 pt-2"
+            className="font-black leading-tight mb-4 pt-2"
             style={{
+              fontSize: 'clamp(1.8rem, 7vw, 8rem)',
               background: 'linear-gradient(to right, #0c122d 0%, #1b5fc1 40%, #4EA8FF 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',

@@ -55,6 +55,14 @@ export const i18n = {
       discoveryLink: 'Keşfet',
       items: [
         {
+          title: 'Kumanda ve Yönetim Merkezi Kuruluşu',
+          description: 'Kurumunuzun tüm operasyonel süreçlerini tek bir merkezden izleyip yönetebileceğiniz gerçek zamanlı kumanda ve yönetim merkezi altyapısı kuruyoruz.',
+        },
+        {
+          title: 'Web Geliştirme',
+          description: 'Kurumsal ihtiyaçlara özel, modern ve ölçeklenebilir web uygulamaları geliştirerek dijital varlığınızı güçlendiriyoruz.',
+        },
+        {
           title: 'Yazılım Geliştirme',
           description: 'Süreç yönetim sistemlerinden karar destek yazılımlarına kadar sektöre özel, ölçeklenebilir ve güvenli yazılımlar geliştiriyoruz.',
         },
@@ -69,14 +77,6 @@ export const i18n = {
         {
           title: 'Yapay Zekâ',
           description: 'Yapay zekâ destekli otomasyon sistemleri, veri analitiği ve süreç optimizasyonuyla kurumların karar alma kapasitesini artırıyoruz.',
-        },
-        {
-          title: 'Veri Bilimi Hizmeti',
-          description: 'Makine öğrenmesi modelleri ve istatistiksel analizlerle kurumsal verilerden tahmin gücü elde ediyor, operasyonel verimliliği artırıyoruz.',
-        },
-        {
-          title: 'Veri Analitiği',
-          description: 'Kurumsal verileri anlamlı içgörülere dönüştürüyor; raporlama sistemleri ve gerçek zamanlı panolarla yöneticilere stratejik görünürlük sağlıyoruz.',
         },
       ],
     },
@@ -261,6 +261,14 @@ export const i18n = {
       discoveryLink: 'Explore',
       items: [
         {
+          title: 'Command & Control Center Setup',
+          description: 'We build real-time command and control center infrastructure that allows you to monitor and manage all your institution\'s operational processes from a single point.',
+        },
+        {
+          title: 'Web Development',
+          description: 'We develop modern and scalable web applications tailored to institutional needs, strengthening your digital presence.',
+        },
+        {
           title: 'Software Development',
           description: 'From process management systems to decision support software, we develop scalable and secure solutions tailored to your industry.',
         },
@@ -275,14 +283,6 @@ export const i18n = {
         {
           title: 'Artificial Intelligence',
           description: 'We enhance institutions\' decision-making capacity with AI-powered automation systems, data analytics, and process optimization.',
-        },
-        {
-          title: 'Data Science Services',
-          description: 'We extract predictive power from institutional data with machine learning models and statistical analyses, improving operational efficiency.',
-        },
-        {
-          title: 'Data Analytics',
-          description: 'We transform institutional data into meaningful insights, providing strategic visibility to managers through reporting systems and real-time dashboards.',
         },
       ],
     },

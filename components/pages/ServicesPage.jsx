@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Mail, Phone, BarChart2, Code2, Brain, FileBarChart, Lightbulb, FlaskConical } from 'lucide-react'
+import { ArrowRight, Mail, Phone, MonitorDot, Globe, Code2, Brain, FileBarChart, Lightbulb } from 'lucide-react'
 import { useLang } from '../../context/LanguageContext'
 import { i18n } from '../../data/i18n'
 import Header from '../layout/Header'
@@ -11,6 +11,142 @@ import Footer from '../layout/Footer'
 
 // ── Tüm servis içerikleri ──────────────────────────────────────────────────
 const serviceData = [
+  {
+    slug: 'kumanda-yonetim-merkezi',
+    Icon: MonitorDot,
+    accent: 'sky',
+    accentClass: 'text-sky',
+    bgClass: 'bg-sky/8',
+    borderClass: 'border-sky/15',
+    activeBg: 'bg-sky',
+    title: { tr: 'Kumanda ve Yönetim Merkezi Kuruluşu', en: 'Command & Control Center Setup' },
+    tagline: {
+      tr: 'Tüm operasyonlarınızı tek ekrandan gerçek zamanlı izleyin ve yönetin.',
+      en: 'Monitor and manage all your operations in real time from a single screen.',
+    },
+    description: {
+      tr: [
+        'Kurumlar büyüdükçe, farklı sistemlerden gelen verileri anlık olarak izlemek ve doğru kararı hızlı almak giderek zorlaşır. Kumanda ve yönetim merkezleri, bu dağınıklığı ortadan kaldırarak tüm operasyonel süreçleri tek bir merkezi noktada görünür hâle getirir.',
+        'HC Dijital olarak kurumunuzun ihtiyaçlarına özel, gerçek zamanlı veri akışı, alarm yönetimi ve karar destek modüllerini bir arada sunan kumanda merkezi altyapıları kuruyoruz. Sağlık tesislerinden lojistik operasyon merkezlerine, fabrika yönetim odalarından belediye kontrol merkezlerine kadar her ölçekte çözüm üretiyoruz.',
+      ],
+      en: [
+        'As organizations grow, monitoring data from different systems in real time and making the right decisions quickly becomes increasingly difficult. Command and control centers eliminate this fragmentation, making all operational processes visible from a single central point.',
+        "At HC Dijital, we build command center infrastructure tailored to your institution's needs — combining real-time data streams, alarm management, and decision support modules. We deliver solutions at every scale, from healthcare facilities to logistics operation centers, factory management rooms to municipal control centers.",
+      ],
+    },
+    offers: {
+      tr: [
+        { title: 'Gerçek Zamanlı İzleme Panosu', desc: 'Tüm sistemlerden gelen verileri tek ekranda birleştiren, özelleştirilebilir canlı panolar.' },
+        { title: 'Alarm & Uyarı Yönetimi', desc: 'Kritik eşiklere ulaşıldığında anlık bildirim ve eskalasyon akışları.' },
+        { title: 'Çoklu Kaynak Entegrasyonu', desc: 'SCADA, ERP, CRM ve IoT sensörlerinden gelen verilerin tek platformda birleştirilmesi.' },
+        { title: 'Video & Sensör Yönetimi', desc: 'Güvenlik kameraları ve saha sensörlerinin merkezi yönetim altyapısına entegrasyonu.' },
+        { title: 'Karar Destek Modülü', desc: 'Anlık verilere dayalı aksiyon önerileri sunan yapay zekâ destekli karar destek araçları.' },
+        { title: 'Tarihsel Veri & Raporlama', desc: 'Geçmiş operasyonel verilerin analizi ve yönetim raporlaması için arşiv altyapısı.' },
+      ],
+      en: [
+        { title: 'Real-Time Monitoring Dashboard', desc: 'Customizable live dashboards that consolidate data from all systems onto a single screen.' },
+        { title: 'Alarm & Alert Management', desc: 'Instant notifications and escalation workflows when critical thresholds are reached.' },
+        { title: 'Multi-Source Integration', desc: 'Consolidating data from SCADA, ERP, CRM, and IoT sensors into a single platform.' },
+        { title: 'Video & Sensor Management', desc: 'Integration of security cameras and field sensors into central management infrastructure.' },
+        { title: 'Decision Support Module', desc: 'AI-powered decision support tools providing action recommendations based on real-time data.' },
+        { title: 'Historical Data & Reporting', desc: 'Archive infrastructure for analyzing historical operational data and management reporting.' },
+      ],
+    },
+    steps: {
+      tr: [
+        { n: '01', title: 'Operasyonel Analiz', desc: 'Mevcut süreçleri, veri kaynaklarını ve izleme ihtiyaçlarını detaylı biçimde haritalandırıyoruz.' },
+        { n: '02', title: 'Mimari & Entegrasyon Tasarımı', desc: 'Tüm sistemlerin veri akışını tek platform üzerinde buluşturacak teknik mimariyi tasarlıyoruz.' },
+        { n: '03', title: 'Geliştirme & Kurulum', desc: 'Panoları, alarm akışlarını ve entegrasyonları geliştiriyor, donanım altyapısını kuruyoruz.' },
+        { n: '04', title: 'Eğitim & Canlı Destek', desc: 'Operatör ekibini eğitiyor, canlıya geçiş sonrasında sahada destek sağlıyoruz.' },
+      ],
+      en: [
+        { n: '01', title: 'Operational Analysis', desc: 'We thoroughly map existing processes, data sources, and monitoring requirements.' },
+        { n: '02', title: 'Architecture & Integration Design', desc: 'We design the technical architecture that brings all system data flows together on a single platform.' },
+        { n: '03', title: 'Development & Installation', desc: 'We develop dashboards, alarm workflows, and integrations, and set up hardware infrastructure.' },
+        { n: '04', title: 'Training & Live Support', desc: 'We train the operator team and provide on-site support after go-live.' },
+      ],
+    },
+    why: {
+      tr: [
+        { title: 'Sektörel Deneyim', desc: 'Sağlık, sanayi ve belediye gibi farklı sektörlerde kumanda merkezi kurulum deneyimine sahibiz.' },
+        { title: 'Uçtan Uca Teslimat', desc: 'Yazılım geliştirmeden donanım kurulumuna, eğitimden devreye almaya kadar tüm süreci yönetiyoruz.' },
+        { title: '7/24 Operasyonel Dayanıklılık', desc: 'Yüksek erişilebilirlik mimarisi ve yedeklilik planlamasıyla sistemin kesintisiz çalışmasını garanti ediyoruz.' },
+      ],
+      en: [
+        { title: 'Sector Experience', desc: 'We have command center setup experience across different sectors including healthcare, industry, and municipalities.' },
+        { title: 'End-to-End Delivery', desc: 'We manage the entire process — from software development and hardware installation to training and commissioning.' },
+        { title: '24/7 Operational Resilience', desc: 'We guarantee uninterrupted system operation with high-availability architecture and redundancy planning.' },
+      ],
+    },
+  },
+  {
+    slug: 'web-gelistirme',
+    Icon: Globe,
+    accent: 'accent',
+    accentClass: 'text-accent',
+    bgClass: 'bg-accent/8',
+    borderClass: 'border-accent/15',
+    activeBg: 'bg-accent',
+    title: { tr: 'Web Geliştirme', en: 'Web Development' },
+    tagline: {
+      tr: 'Kurumsal ihtiyaçlara özel, modern ve ölçeklenebilir web uygulamaları geliştiriyoruz.',
+      en: 'Building modern and scalable web applications tailored to institutional needs.',
+    },
+    description: {
+      tr: [
+        'Dijital dünyada kurumunuzun yüzü web uygulamalarıdır. Kurumsal portallardan hasta/müşteri self-servis platformlarına, dahili iş akışı araçlarından halkla iletişim sitelerine kadar her web uygulaması hem işlevsel hem de güvenilir olmak zorundadır.',
+        'HC Dijital olarak modern teknoloji yığınıyla kurumsal web uygulamaları geliştiriyoruz. Hızlı yükleme süreleri, güçlü güvenlik altyapısı, mobil uyumlu tasarım ve kolay yönetilebilir içerik yapısıyla uzun vadeli dijital varlığınızı inşa ediyoruz.',
+      ],
+      en: [
+        "In the digital world, web applications are your institution's face. From corporate portals to patient/customer self-service platforms, internal workflow tools to public communication sites — every web application must be both functional and reliable.",
+        'At HC Dijital, we develop enterprise web applications with modern technology stacks. We build your long-term digital presence with fast load times, robust security infrastructure, mobile-responsive design, and easily manageable content structure.',
+      ],
+    },
+    offers: {
+      tr: [
+        { title: 'Kurumsal Web Portalı', desc: 'Hizmet tanıtımı, içerik yönetimi ve kurumsal iletişim için kapsamlı kurumsal web siteleri.' },
+        { title: 'Self-Servis Platformu', desc: 'Hasta, müşteri veya çalışanların randevu, başvuru ve takip işlemlerini kendi yapabildiği portal uygulamaları.' },
+        { title: 'Dahili İş Akışı Arayüzü', desc: 'Personelin günlük operasyonlarını yönettiği kurumsal intranet ve iş akışı uygulamaları.' },
+        { title: 'API Entegrasyonlu Web Uygulaması', desc: 'Mevcut ERP, CRM veya klinik sistemlere bağlanan entegre web arayüzleri.' },
+        { title: 'İçerik Yönetim Sistemi', desc: 'Teknik bilgi gerektirmeden içerik eklenip güncellenebilen özel CMS altyapısı.' },
+        { title: 'Performans & SEO Optimizasyonu', desc: 'Hız, erişilebilirlik ve arama motoru görünürlüğü için kapsamlı teknik optimizasyon.' },
+      ],
+      en: [
+        { title: 'Corporate Web Portal', desc: 'Comprehensive corporate websites for service presentation, content management, and institutional communication.' },
+        { title: 'Self-Service Platform', desc: 'Portal applications where patients, customers, or staff can independently handle appointments, applications, and tracking.' },
+        { title: 'Internal Workflow Interface', desc: 'Enterprise intranet and workflow applications where staff manage daily operations.' },
+        { title: 'API-Integrated Web Application', desc: 'Integrated web interfaces connecting to existing ERP, CRM, or clinical systems.' },
+        { title: 'Content Management System', desc: 'Custom CMS infrastructure where content can be added and updated without technical knowledge.' },
+        { title: 'Performance & SEO Optimization', desc: 'Comprehensive technical optimization for speed, accessibility, and search engine visibility.' },
+      ],
+    },
+    steps: {
+      tr: [
+        { n: '01', title: 'Keşif & Planlama', desc: 'Hedef kitle, içerik yapısı, entegrasyon ihtiyaçları ve teknik gereksinimleri birlikte belirliyoruz.' },
+        { n: '02', title: 'Tasarım & Prototip', desc: 'Kullanıcı deneyimini ön planda tutan wireframe ve görsel tasarımları hazırlıyor, onay alıyoruz.' },
+        { n: '03', title: 'Geliştirme & Test', desc: 'Uygulamayı geliştiriyor, çapraz tarayıcı ve mobil uyumluluk testleri yürütüyoruz.' },
+        { n: '04', title: 'Yayın & Sürekli Destek', desc: 'Uygulamayı canlıya alıyor, güvenlik güncellemeleri ve içerik desteğini sürdürüyoruz.' },
+      ],
+      en: [
+        { n: '01', title: 'Discovery & Planning', desc: 'We collaboratively define target audience, content structure, integration needs, and technical requirements.' },
+        { n: '02', title: 'Design & Prototype', desc: 'We prepare user-experience-first wireframes and visual designs and get approval.' },
+        { n: '03', title: 'Development & Testing', desc: 'We develop the application and conduct cross-browser and mobile compatibility tests.' },
+        { n: '04', title: 'Launch & Ongoing Support', desc: 'We go live and maintain security updates and content support.' },
+      ],
+    },
+    why: {
+      tr: [
+        { title: 'Kurumsal Odak', desc: 'Yalnızca vitrin siteler değil; entegrasyon, güvenlik ve ölçeklenebilirlik gözetilerek inşa edilmiş kurumsal web altyapıları geliştiriyoruz.' },
+        { title: 'Hız & Performans', desc: 'Core Web Vitals standartlarında, gerçek dünya kullanımında hızlı ve akıcı çalışan uygulamalar teslim ediyoruz.' },
+        { title: 'Uzun Vadeli Sahiplik', desc: 'Yayın sonrasında bakım, güncelleme ve geliştirme süreçlerinde kurumunuzla birlikte yürüyoruz.' },
+      ],
+      en: [
+        { title: 'Enterprise Focus', desc: "We build enterprise web infrastructure constructed with integration, security, and scalability in mind — not just showcase sites." },
+        { title: 'Speed & Performance', desc: 'We deliver applications that are fast and fluid in real-world usage, meeting Core Web Vitals standards.' },
+        { title: 'Long-Term Ownership', desc: "We walk alongside your institution through maintenance, updates, and development processes after launch." },
+      ],
+    },
+  },
   {
     slug: 'yazilim-gelistirme',
     Icon: Code2,
@@ -283,142 +419,6 @@ const serviceData = [
       ],
     },
   },
-  {
-    slug: 'veri-bilimi',
-    Icon: FlaskConical,
-    accent: 'accent',
-    accentClass: 'text-accent',
-    bgClass: 'bg-accent/8',
-    borderClass: 'border-accent/15',
-    activeBg: 'bg-accent',
-    title: { tr: 'Veri Bilimi', en: 'Data Science' },
-    tagline: {
-      tr: 'Kurumsal veriden makine öğrenmesi ile tahmin gücü ve stratejik içgörü elde ediyoruz.',
-      en: 'Extracting predictive power and strategic insight from institutional data through machine learning.',
-    },
-    description: {
-      tr: [
-        'Veri bilimi, ham veriden istatistiksel modeller ve makine öğrenmesi algoritmaları aracılığıyla geleceğe yönelik içgörüler çıkarma disiplinidir. Bu disiplin; talep tahmininden kaynak optimizasyonuna, müşteri davranışı analizinden maliyet modellemesine kadar her sektörde geniş uygulama alanı bulur.',
-        'HC Dijital olarak kurumsal veri üzerinde uzmanlaşmış veri bilimi hizmeti sunuyoruz. Veri setlerinin analizinden tahmine dayalı model geliştirmeye, istatistiksel araştırma desteğinden üretim ortamında model dağıtımına kadar her aşamada yanınızdayız.',
-      ],
-      en: [
-        "Data science is the discipline of extracting forward-looking insights from raw data through statistical models and machine learning algorithms. This discipline finds broad application across every sector — from demand forecasting to resource optimization, customer behavior analysis to cost modeling.",
-        "At HC Dijital, we offer specialized data science services on institutional data. We're with you at every stage — from analyzing datasets to developing predictive models, from statistical research support to model deployment in production environments.",
-      ],
-    },
-    offers: {
-      tr: [
-        { title: 'Tahmine Dayalı Modelleme', desc: 'Talep tahmini, churn riski, sipariş hacmi ve operasyonel kapasite tahmin modelleri.' },
-        { title: 'İstatistiksel Analiz', desc: 'İş araştırmalarında hipotez testi, regresyon analizi ve çok değişkenli istatistik.' },
-        { title: 'Segmentasyon & Kümeleme', desc: 'Müşteri, ürün veya operasyonel verilerde anlamlı grupları keşfeden kümeleme analizleri.' },
-        { title: 'Kaynak Optimizasyonu', desc: 'Personel planlaması, stok yönetimi ve operasyon takvimi için optimizasyon modelleri.' },
-        { title: 'Anomali Tespiti', desc: 'Fatura sahteciliği, kullanım anomalileri ve süreç sapmalarının otomatik tespiti.' },
-        { title: 'Model Dağıtımı & İzleme', desc: 'Geliştirilen modellerin üretim ortamına taşınması ve performans takibi.' },
-      ],
-      en: [
-        { title: 'Predictive Modeling', desc: 'Demand forecasting, churn risk, order volume, and operational capacity prediction models.' },
-        { title: 'Statistical Analysis', desc: 'Hypothesis testing, regression analysis, and multivariate statistics in business research.' },
-        { title: 'Segmentation & Clustering', desc: 'Clustering analyses that discover meaningful groups in customer, product, or operational data.' },
-        { title: 'Resource Optimization', desc: 'Optimization models for staff planning, inventory management, and operational scheduling.' },
-        { title: 'Anomaly Detection', desc: 'Automated detection of billing fraud, usage anomalies, and process deviations.' },
-        { title: 'Model Deployment & Monitoring', desc: 'Migrating developed models to production and tracking performance.' },
-      ],
-    },
-    steps: {
-      tr: [
-        { n: '01', title: 'Problem Tanımı', desc: 'Çözülmek istenen iş problemini ve başarı metriklerini netleştiriyoruz.' },
-        { n: '02', title: 'Veri Hazırlığı', desc: 'Veri toplama, temizleme, özellik mühendisliği ve keşifsel veri analizini yürütüyoruz.' },
-        { n: '03', title: 'Model Geliştirme', desc: 'Birden fazla algoritma deniyor, en iyi performanslı modeli seçiyor ve iyileştiriyoruz.' },
-        { n: '04', title: 'Dağıtım & İzleme', desc: 'Modeli üretim ortamına taşıyor, performansını düzenli olarak izliyor ve güncelliyoruz.' },
-      ],
-      en: [
-        { n: '01', title: 'Problem Definition', desc: 'We clarify the business problem to be solved and success metrics.' },
-        { n: '02', title: 'Data Preparation', desc: 'We conduct data collection, cleaning, feature engineering, and exploratory data analysis.' },
-        { n: '03', title: 'Model Development', desc: 'We test multiple algorithms, select the best performing model, and refine it.' },
-        { n: '04', title: 'Deployment & Monitoring', desc: 'We move the model to production and regularly monitor and update its performance.' },
-      ],
-    },
-    why: {
-      tr: [
-        { title: 'Sektörel Bağlam Anlayışı', desc: 'Veri bilimcilerimiz iş süreçlerini ve sektörel dinamikleri biliyor; modeller gerçekçi kısıtlamalar gözetilerek tasarlanır.' },
-        { title: 'Yorumlanabilir Sonuçlar', desc: 'Model çıktılarını yöneticilerin ve operasyon ekiplerinin anlayabileceği biçimde sunuyoruz; kara kutu kalmaz.' },
-        { title: 'Yeniden Kullanılabilir Altyapı', desc: "Her proje, kurumunuzun veri bilimi kapasitesini kalıcı olarak artıran bir altyapı bırakır." },
-      ],
-      en: [
-        { title: 'Sector Context Understanding', desc: 'Our data scientists know business processes and sector dynamics — models are designed with realistic constraints.' },
-        { title: 'Interpretable Results', desc: 'We present model outputs in a way managers and operations teams can understand — nothing stays a black box.' },
-        { title: 'Reusable Infrastructure', desc: "Every project leaves behind infrastructure that permanently increases your institution's data science capacity." },
-      ],
-    },
-  },
-  {
-    slug: 'veri-analitigi',
-    Icon: BarChart2,
-    accent: 'sky',
-    accentClass: 'text-sky',
-    bgClass: 'bg-sky/8',
-    borderClass: 'border-sky/15',
-    activeBg: 'bg-sky',
-    title: { tr: 'Veri Analitiği', en: 'Data Analytics' },
-    tagline: {
-      tr: 'Kurumsal verileri stratejik içgörülere dönüştürüyoruz.',
-      en: 'Transforming institutional data into strategic insights.',
-    },
-    description: {
-      tr: [
-        'Kurumlar her gün milyonlarca satır veri üretir: operasyonel metrikler, finansal işlemler, müşteri verileri, süreç kayıtları. Ancak bu verilerin büyük çoğunluğu ham hâlde kalır ve stratejik karar alma süreçlerine katkı sağlayamaz.',
-        "HC Dijital olarak veri analitiği hizmetimizle bu ham veriyi anlamlı içgörülere dönüştürüyor; kurumunuza özgü raporlama sistemleri, gerçek zamanlı panolar ve tahmine dayalı modeller kuruyoruz.",
-      ],
-      en: [
-        'Organizations generate millions of rows of data every day: operational metrics, financial transactions, customer data, process records. Yet most of this data remains raw and fails to contribute to strategic decision-making.',
-        "With our data analytics service at HC Dijital, we transform this raw data into meaningful insights — building custom reporting systems, real-time dashboards, and predictive models tailored to your institution.",
-      ],
-    },
-    offers: {
-      tr: [
-        { title: 'Gerçek Zamanlı Panolar', desc: "Kurumunuzun KPI'larını anlık olarak izleyen, özelleştirilebilir web tabanlı panolar." },
-        { title: 'İş Zekâsı Entegrasyonu', desc: 'Mevcut ERP ve kurumsal sistemlerinize bağlanan BI çözümleri.' },
-        { title: 'Süreç Analizi', desc: 'İş akışları, darboğazlar ve operasyonel verimliliğe ilişkin derinlemesine analizler.' },
-        { title: 'Finansal Raporlama', desc: 'Departman bazında gelir–gider takibi, bütçe sapma analizi.' },
-        { title: 'Veri Ambarı Tasarımı', desc: 'Farklı kaynaklardan gelen kurumsal veriyi tek bir merkezi yapıda birleştirme.' },
-        { title: 'Öngörüsel Analitik', desc: 'Geçmiş veriden geleceğe yönelik tahmin modelleri ve erken uyarı sistemleri.' },
-      ],
-      en: [
-        { title: 'Real-Time Dashboards', desc: "Customizable web-based dashboards that monitor your institution's KPIs in real time." },
-        { title: 'Business Intelligence Integration', desc: 'BI solutions connecting to your existing ERP and enterprise systems.' },
-        { title: 'Process Analysis', desc: 'In-depth analysis of workflows, bottlenecks, and operational efficiency.' },
-        { title: 'Financial Reporting', desc: 'Department-level revenue/expense tracking and budget variance analysis.' },
-        { title: 'Data Warehouse Design', desc: 'Consolidating institutional data from multiple sources into a single central structure.' },
-        { title: 'Predictive Analytics', desc: 'Forward-looking forecasting models and early warning systems from historical data.' },
-      ],
-    },
-    steps: {
-      tr: [
-        { n: '01', title: 'Veri Keşfi', desc: 'Mevcut veri kaynaklarınızı, kalitesini ve boşluklarını analiz ediyoruz.' },
-        { n: '02', title: 'Mimari Tasarım', desc: 'Kurumunuza özel veri ambarı ve raporlama mimarisini tasarlıyoruz.' },
-        { n: '03', title: 'Geliştirme & Entegrasyon', desc: 'Panolar ve raporları inşa eder, mevcut sistemlere entegre ediyoruz.' },
-        { n: '04', title: 'Eğitim & Sürekli Destek', desc: "Ekibinizi eğitir ve sistemin gelişimini desteklemeye devam ediyoruz." },
-      ],
-      en: [
-        { n: '01', title: 'Data Discovery', desc: 'We analyze your existing data sources, quality, and gaps.' },
-        { n: '02', title: 'Architecture Design', desc: 'We design a data warehouse and reporting architecture tailored to your institution.' },
-        { n: '03', title: 'Development & Integration', desc: 'We build dashboards and reports, integrating with existing systems.' },
-        { n: '04', title: 'Training & Ongoing Support', desc: "We train your team and continue supporting the system's evolution." },
-      ],
-    },
-    why: {
-      tr: [
-        { title: 'Sektöre Özgü Uzmanlık', desc: 'Analistlerimiz kurumsal veri yapıları ve sektöre özgü metrikler konusunda derinlemesine deneyime sahiptir.' },
-        { title: 'Hızlı Prototip', desc: 'İlk çalışan pano prototipini ortalama 2 hafta içinde teslim ediyoruz.' },
-        { title: 'KVKK Uyumlu Altyapı', desc: 'Tüm veri akışları ve depolama süreçleri KVKK ve ilgili mevzuata uygundur.' },
-      ],
-      en: [
-        { title: 'Sector-Specific Expertise', desc: 'Our analysts have deep experience with institutional data structures and sector-specific metrics.' },
-        { title: 'Rapid Prototyping', desc: 'We deliver the first working dashboard prototype in an average of 2 weeks.' },
-        { title: 'GDPR-Compliant Infrastructure', desc: 'All data flows and storage processes comply with GDPR and relevant regulations.' },
-      ],
-    },
-  },
 ]
 
 // ── Yardımcı bileşenler ───────────────────────────────────────────────────
@@ -432,7 +432,7 @@ const fadeUp = () => ({
 export default function ServicesPage() {
   const { lang } = useLang()
   const t = i18n[lang]
-  const [activeSlug, setActiveSlug] = useState('yazilim-gelistirme')
+  const [activeSlug, setActiveSlug] = useState('kumanda-yonetim-merkezi')
 
   const active = serviceData.find((s) => s.slug === activeSlug)
   const { Icon } = active

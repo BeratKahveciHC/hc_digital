@@ -131,7 +131,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-dark">
+    <section className="relative w-full h-svh overflow-hidden bg-dark">
 
       {/* ── Slayt görseli ── */}
       <AnimatePresence initial={false} custom={direction} mode="sync">
@@ -148,19 +148,19 @@ export default function Hero() {
           <img
             src={slide.image}
             alt={title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center md:object-top"
             style={{ animation: `kenBurns ${SLIDE_DURATION}ms ease-out forwards` }}
           />
 
           {/* Gradient katmanları */}
-          <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/35 to-black/10" />
-          <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-linear-to-r from-black/45 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/50 to-black/15 md:from-black/85 md:via-black/35 md:to-black/10" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/60 via-transparent to-transparent md:from-black/50" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/55 via-transparent to-transparent md:from-black/45" />
         </motion.div>
       </AnimatePresence>
 
       {/* ── Header padding ── */}
-      <div className="relative z-10 flex flex-col min-h-screen pt-16 md:pt-20">
+      <div className="relative z-10 flex flex-col h-full pt-16 md:pt-20">
 
         {/* ── Progress çizgileri (üst) ── */}
         <div className="flex items-center gap-1.5 px-6 lg:px-12 pt-3">
@@ -188,7 +188,7 @@ export default function Hero() {
         </div>
 
         {/* ── İçerik (alt kısım) ── */}
-        <div className="flex-1 flex flex-col justify-end pb-10 md:pb-14 lg:pb-16 xl:pb-20 px-6 lg:px-12">
+        <div className="flex-1 flex flex-col justify-end pb-8 md:pb-14 lg:pb-16 xl:pb-20 px-5 md:px-6 lg:px-12">
 
           {/* Sol metin + Sağ özellikler */}
           <div className="flex items-end justify-between gap-6 lg:gap-8">
@@ -214,7 +214,7 @@ export default function Hero() {
                 {/* Başlık */}
                 <h1
                   className="font-bold text-white leading-[1.05] tracking-tight mb-3 lg:mb-4"
-                  style={{ whiteSpace: 'pre-line', fontSize: 'clamp(1.75rem, 4.5vw, 4.5rem)' }}
+                  style={{ whiteSpace: 'pre-line', fontSize: 'clamp(1.5rem, 5vw, 4.5rem)' }}
                 >
                   {title}
                 </h1>
@@ -222,13 +222,13 @@ export default function Hero() {
                 {/* Tagline */}
                 <p
                   className="font-medium text-white/75 leading-snug mb-3 max-w-xl"
-                  style={{ whiteSpace: 'pre-line', fontSize: 'clamp(0.85rem, 1.4vw, 1.25rem)' }}
+                  style={{ whiteSpace: 'pre-line', fontSize: 'clamp(0.8rem, 2vw, 1.25rem)' }}
                 >
                   {slide.tagline[lang]}
                 </p>
 
                 {/* Açıklama */}
-                <p className="text-xs lg:text-sm text-white/50 leading-relaxed mb-6 lg:mb-7 max-w-lg">
+                <p className="text-[11px] md:text-xs lg:text-sm text-white/50 leading-relaxed mb-5 lg:mb-7 max-w-lg hidden sm:block">
                   {slide.description[lang]}
                 </p>
 
@@ -276,7 +276,7 @@ export default function Hero() {
           </div>
 
           {/* ── Navigasyon (alt) ── */}
-          <div className="flex items-center justify-between mt-6 lg:mt-8 xl:mt-10">
+          <div className="flex items-center justify-between mt-4 lg:mt-8 xl:mt-10">
 
             {/* Slayt sayacı */}
             <div className="flex items-baseline gap-1">

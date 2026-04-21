@@ -34,8 +34,9 @@ export default function Products() {
         {/* ── Başlık ── */}
         <div className="flex flex-col items-center text-center mb-16">
           <h2
-            className="text-5xl md:text-9xl font-black leading-tight mb-4 pt-2"
+            className="font-black leading-tight mb-4 pt-2"
             style={{
+              fontSize: 'clamp(1.8rem, 7vw, 8rem)',
               background: 'linear-gradient(to right, #0c122d 0%, #1b5fc1 40%, #4EA8FF 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
