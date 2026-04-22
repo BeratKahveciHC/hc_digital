@@ -3,17 +3,17 @@ import { products } from '../../../data/products'
 
 const productSeoMeta = {
   'airx-ikys': {
-    title: 'AirX IKYS – Personel Devam Takibi ve İK Yönetim Sistemi | HC Dijital',
+    title: 'AirX IKYS - Personel Devam Takibi ve İK Yönetim Sistemi | HC Dijital',
     description: 'AirX IKYS, personel giriş-çıkış takibi, vardiya planlaması ve izin yönetimini tek platformda birleştiriyor. Bulut tabanlı, mobil erişimli İK yönetim sistemi. Aynı gün kurulum.',
     keywords: 'AirX IKYS, personel takip sistemi, İK yönetimi, vardiya planlaması, PDKS, HC Dijital',
   },
   'tercumed': {
-    title: 'Tercümed – Yapay Zeka Destekli Tıbbi Belge Çeviri Sistemi | HC Dijital',
+    title: 'Tercümed - Yapay Zeka Destekli Tıbbi Belge Çeviri Sistemi | HC Dijital',
     description: 'Tercümed, tıbbi belgeleri saniyeler içinde 30+ dile çeviriyor. Taburculuk belgesi, onam formu ve klinik belgeler için yapay zeka destekli, klinik doğruluklu çeviri.',
     keywords: 'Tercümed, tıbbi çeviri, yapay zeka çeviri, taburculuk belgesi, onam formu, HC Dijital',
   },
   'butce-yonetim': {
-    title: 'Hastane Bütçe Yönetim Sistemi – AI Destekli Finansal Platform | HC Dijital',
+    title: 'Hastane Bütçe Yönetim Sistemi - AI Destekli Finansal Platform | HC Dijital',
     description: 'Otomatik gider-gelir takibi, gerçek zamanlı öngörüler ve AI destekli raporlarla hastane bütçe yönetimini kolaylaştıran ölçeklenebilir ve güvenli platform.',
     keywords: 'hastane bütçe yönetimi, finansal platform, AI raporlama, ERP entegrasyonu, HC Dijital',
   },

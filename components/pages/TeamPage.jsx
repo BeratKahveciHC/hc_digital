@@ -81,7 +81,7 @@ function MemberCard({ member, lang, onOpen, delay = 0, size = 'md' }) {
   return (
     <motion.div
       {...fadeUpView(delay)}
-      className={`flex flex-col gap-4 ${size === 'lg' ? 'w-64' : ''}`}
+      className={`flex flex-col gap-4 ${size === 'lg' ? 'w-full sm:w-64' : ''}`}
     >
       <div
         onClick={() => hasCv && onOpen(member)}
@@ -184,9 +184,10 @@ export default function TeamPage() {
           </div>
 
           <motion.div {...fadeUp(0)}>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
-              {lang === 'en' ? 'The People Behind HC Digital' : 'HC Dijital\'in Arkasındaki İnsanlar'}
-            </p>
+            <div className="flex items-center gap-3 mb-3">
+              <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+              <span style={{ fontFamily:"'Albert Sans',sans-serif", fontSize:'1rem', fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', background:'linear-gradient(to right,#1b5fc1,#4EA8FF)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>{lang === 'en' ? 'The People Behind HC Digital' : 'HC Dijital\'in Arkasındaki İnsanlar'}</span>
+            </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
               {lang === 'en' ? 'Our Team' : 'Ekibimiz'}
             </h1>
@@ -211,10 +212,11 @@ export default function TeamPage() {
 
           {/* Kurucu */}
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-8">
-              {lang === 'en' ? 'Founder' : 'Kurucu'}
-            </p>
-            <div className="flex justify-start">
+            <div className="flex items-center gap-3 mb-8">
+              <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+              <span style={{ fontFamily:"'Albert Sans',sans-serif", fontSize:'1rem', fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', background:'linear-gradient(to right,#1b5fc1,#4EA8FF)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>{lang === 'en' ? 'Founder' : 'Kurucu'}</span>
+            </div>
+            <div className="flex justify-center">
               {team[0].members.map((p, i) => (
                 <MemberCard key={i} member={p} lang={lang} onOpen={setSelected} delay={0} size="lg" />
               ))}
@@ -223,10 +225,11 @@ export default function TeamPage() {
 
           {/* Danışman */}
           <div className="border-t border-slate-100 pt-16">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-8">
-              {lang === 'en' ? 'Advisor' : 'Danışman'}
-            </p>
-            <div className="flex justify-start">
+            <div className="flex items-center gap-3 mb-8">
+              <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+              <span style={{ fontFamily:"'Albert Sans',sans-serif", fontSize:'1rem', fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', background:'linear-gradient(to right,#1b5fc1,#4EA8FF)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>{lang === 'en' ? 'Advisor' : 'Danışman'}</span>
+            </div>
+            <div className="flex justify-center">
               {team[1].members.map((p, i) => (
                 <MemberCard key={i} member={p} lang={lang} onOpen={setSelected} delay={0.05} size="lg" />
               ))}
@@ -235,9 +238,10 @@ export default function TeamPage() {
 
           {/* Ekip */}
           <div className="border-t border-slate-100 pt-16">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-8">
-              {lang === 'en' ? 'Team' : 'Ekip'}
-            </p>
+            <div className="flex items-center gap-3 mb-8">
+              <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+              <span style={{ fontFamily:"'Albert Sans',sans-serif", fontSize:'1rem', fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', background:'linear-gradient(to right,#1b5fc1,#4EA8FF)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>{lang === 'en' ? 'Team' : 'Ekip'}</span>
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
               {team[2].members.map((p, i) => (
                 <MemberCard key={i} member={p} lang={lang} onOpen={setSelected} delay={i * 0.07} />

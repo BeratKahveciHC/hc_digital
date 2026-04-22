@@ -10,12 +10,12 @@ import Footer from '../layout/Footer'
 
 const seoData = {
   tr: {
-    title: 'İletişim – HC Dijital | Demo Talebi ve Destek',
+    title: 'İletişim - HC Dijital | Demo Talebi ve Destek',
     description: 'HC Dijital ile iletişime geçin. Demo talebi, fiyat bilgisi veya teknik destek için bize ulaşın. İstanbul Sarıyer ofisimiz: info@hcdijital.com.tr',
     keywords: 'HC Dijital iletişim, demo talebi, yazılım fiyat, teknik destek, HC Dijital İstanbul',
   },
   en: {
-    title: 'Contact – HC Digital | Demo Request & Support',
+    title: 'Contact - HC Digital | Demo Request & Support',
     description: 'Contact HC Digital. Request a demo, get pricing information, or reach our technical support team. Istanbul Sarıyer office: info@hcdijital.com.tr',
     keywords: 'HC Digital contact, demo request, software pricing, technical support, HC Digital Istanbul',
   },
@@ -366,15 +366,20 @@ export default function ContactPage() {
                 </a>
 
                 {/* Adres */}
-                <div className="flex items-start gap-4 p-5 rounded-2xl border border-slate-200">
-                  <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 shrink-0">
+                <a
+                  href="https://maps.google.com/?q=Ayazağa,+Vadis+Istanbul+Park+Etabı,+Kemerburgaz+Cad.+D:7A+Blok,+34396+Sarıyer/İstanbul"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-4 p-5 rounded-2xl border border-slate-200 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-primary/8 group-hover:border-primary/15 group-hover:text-primary shrink-0 transition-all duration-200">
                     <MapPin size={16} />
                   </div>
                   <div>
                     <p className="text-xs text-slate-400 font-medium mb-1">{c.addressLabel}</p>
-                    <p className="text-sm font-semibold text-dark leading-relaxed whitespace-pre-line">{c.address}</p>
+                    <p className="text-sm font-semibold text-dark group-hover:text-primary leading-relaxed whitespace-pre-line transition-colors duration-200">{c.address}</p>
                   </div>
-                </div>
+                </a>
               </div>
 
               {/* Sosyal Medya */}

@@ -91,8 +91,15 @@ export default function NewsDetailPage() {
 
             {/* Sağ: Görsel */}
             {item.image ? (
-              <motion.div {...fadeUp(0.1)} className={`rounded-2xl overflow-hidden aspect-video ${item.imageFit === 'contain' ? 'bg-white/5 flex items-center justify-center p-6' : ''}`}>
-                <img src={item.image} alt={item.title[lang]} className={`w-full h-full ${item.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`} />
+              <motion.div
+                {...fadeUp(0.1)}
+                className={`rounded-2xl overflow-hidden ${item.imageFit === 'contain' ? '' : 'aspect-video'}`}
+              >
+                <img
+                  src={item.image}
+                  alt={item.title[lang]}
+                  className={`w-full ${item.imageFit === 'contain' ? 'h-auto block' : 'h-full object-cover'}`}
+                />
               </motion.div>
             ) : (
               <motion.div {...fadeUp(0.1)} className="rounded-2xl overflow-hidden aspect-video bg-white/5 flex items-center justify-center">
@@ -113,11 +120,11 @@ export default function NewsDetailPage() {
                   {block}
                 </p>
               ) : block.type === 'image' ? (
-                <div key={i} className={`rounded-2xl overflow-hidden max-w-2xl mx-auto w-full ${block.fit === 'contain' ? 'bg-slate-50 flex items-center justify-center p-6' : ''}`}>
+                <div key={i} className="rounded-2xl overflow-hidden max-w-2xl mx-auto w-full">
                   <img
                     src={block.src}
                     alt={block.alt ?? ''}
-                    className={`w-full rounded-2xl max-h-105 ${block.fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+                    className={`w-full rounded-2xl ${block.fit === 'contain' ? 'h-auto block' : 'max-h-105 object-cover'}`}
                   />
                   {block.caption && (
                     <p className="mt-3 text-sm text-slate-400 text-center italic">{block.caption}</p>
@@ -127,8 +134,26 @@ export default function NewsDetailPage() {
             )}
           </div>
 
+          {/* Devamı linki */}
+          {item.continuationLink && (
+            <div className="mt-10 p-5 rounded-2xl border border-primary/20 bg-primary/4 flex items-center justify-between gap-4">
+              <p className="text-sm text-slate-500">
+                {lang === 'en' ? 'Continue reading:' : 'Devamını oku:'}
+              </p>
+              <a
+                href={item.continuationLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+              >
+                {item.continuationLink.label[lang]}
+                <ArrowLeft size={13} className="rotate-180" />
+              </a>
+            </div>
+          )}
+
           {/* Geri dön */}
-          <div className="mt-16 pt-8 border-t border-slate-100">
+          <div className="mt-10 pt-8 border-t border-slate-100">
             <Link
               href="/haberler"
               className="inline-flex items-center gap-2 text-sm font-semibold text-dark/50 hover:text-dark transition-colors duration-200"
@@ -155,8 +180,12 @@ export default function NewsDetailPage() {
                   className="group flex flex-col rounded-2xl border border-slate-200 overflow-hidden bg-white hover:shadow-lg hover:shadow-slate-100 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   {other.image ? (
-                    <div className={`aspect-video overflow-hidden bg-slate-100 ${other.imageFit === 'contain' ? 'flex items-center justify-center p-4' : ''}`}>
-                      <img src={other.image} alt={other.title[lang]} className={`w-full h-full ${other.imageFit === 'contain' ? 'object-contain' : 'object-cover group-hover:scale-105 transition-transform duration-500'}`} />
+                    <div className={`${other.imageFit === 'contain' ? 'overflow-hidden bg-white' : 'aspect-video overflow-hidden bg-slate-100'}`}>
+                      <img
+                        src={other.image}
+                        alt={other.title[lang]}
+                        className={`w-full ${other.imageFit === 'contain' ? 'h-auto block' : 'h-full object-cover group-hover:scale-105 transition-transform duration-500'}`}
+                      />
                     </div>
                   ) : (
                     <div className="aspect-video bg-linear-to-br from-dark to-primary/80 flex items-center justify-center">

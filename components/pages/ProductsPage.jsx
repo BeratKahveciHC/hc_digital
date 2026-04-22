@@ -2,7 +2,29 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, Mail, ChevronDown } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Mail, ChevronDown, LayoutDashboard, Zap, Link2, ShieldCheck, Cpu, BarChart3, Award, Sparkles, Users } from 'lucide-react'
+
+const FEATURE_ICONS = [LayoutDashboard, Zap, Link2, ShieldCheck, Cpu, BarChart3]
+const WHY_ICONS = [Award, Sparkles, Users]
+
+const GradientLabel = ({ children }) => (
+  <div className="flex items-center gap-3 mb-3">
+    <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+    <span style={{
+      fontFamily: "'Albert Sans', sans-serif",
+      fontSize: '1rem',
+      fontWeight: 600,
+      letterSpacing: '0.18em',
+      textTransform: 'uppercase',
+      background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+    }}>
+      {children}
+    </span>
+  </div>
+)
 import { products } from '../../data/products'
 import { useLang } from '../../context/LanguageContext'
 import { i18n } from '../../data/i18n'
@@ -78,9 +100,7 @@ export default function ProductsPage() {
 
           {/* Başlık */}
           <motion.div {...fadeUp(0.05)} className="mb-10">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
-              {tp.overline}
-            </p>
+            <GradientLabel>{tp.overline}</GradientLabel>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
               {lang === 'en' ? 'Our Products' : 'Ürünlerimiz'}
             </h1>
@@ -95,26 +115,24 @@ export default function ProductsPage() {
                 <button
                   key={p.slug}
                   onClick={() => setActiveSlug(p.slug)}
-                  className={`group relative flex flex-col items-start gap-4 p-6 md:p-7 rounded-2xl border text-left transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-white border-white text-dark shadow-xl'
-                      : 'bg-white/8 border-white/10 hover:bg-white/12 hover:border-white/25'
-                  }`}
+                  className="group relative flex flex-col items-start gap-4 p-6 md:p-7 rounded-2xl border text-left transition-all duration-200 cursor-pointer"
+                  style={isActive
+                    ? { background: '#fff', borderColor: '#fff', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }
+                    : { background: `${p.hexColor}18`, borderColor: `${p.hexColor}35` }
+                  }
                 >
                   {/* Renk noktası */}
                   <div className={`w-2.5 h-2.5 rounded-full ${p.dot} ${isActive ? '' : 'opacity-60'}`} />
 
                   {/* Başlık */}
-                  <span className={`text-base md:text-lg font-bold leading-snug transition-colors duration-200 ${
-                    isActive ? 'text-dark' : 'text-white/85'
-                  }`}>
+                  <span className="text-base md:text-lg font-bold leading-snug transition-colors duration-200"
+                    style={{ color: isActive ? '#0c122d' : 'rgba(255,255,255,0.85)' }}>
                     {data.title}
                   </span>
 
                   {/* Kategori */}
-                  <span className={`text-xs font-medium leading-snug transition-colors duration-200 ${
-                    isActive ? 'text-dark/45' : 'text-white/40'
-                  }`}>
+                  <span className="text-xs font-medium leading-snug transition-colors duration-200"
+                    style={{ color: isActive ? 'rgba(12,18,45,0.45)' : 'rgba(255,255,255,0.40)' }}>
                     {data.category}
                   </span>
 
@@ -232,9 +250,7 @@ export default function ProductsPage() {
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-10 lg:gap-20">
                   <div>
-                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary">
-                      {lang === 'en' ? 'About the Product' : 'Ürün Hakkında'}
-                    </p>
+                    <GradientLabel>{lang === 'en' ? 'About the Product' : 'Ürün Hakkında'}</GradientLabel>
                   </div>
                   <div className="flex flex-col gap-5">
                     {pd.longDescription.map((para, i) => (
@@ -251,21 +267,27 @@ export default function ProductsPage() {
             <section className="py-16 md:py-24 border-t border-slate-100 bg-slate-50">
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="mb-12">
-                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
-                    {lang === 'en' ? 'Key Features' : 'Öne Çıkan Özellikler'}
-                  </p>
+                  <GradientLabel>{lang === 'en' ? 'Key Features' : 'Öne Çıkan Özellikler'}</GradientLabel>
                   <h2 className="text-3xl md:text-4xl font-bold text-dark">
                     {lang === 'en' ? 'What it does' : 'Neler yapıyor'}
                   </h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 rounded-2xl overflow-hidden">
-                  {pd.features.map((f, i) => (
-                    <div key={i} className="bg-white p-7 flex flex-col gap-3 hover:bg-slate-50 transition-colors duration-200">
-                      <span className="text-3xl font-black text-slate-100 leading-none select-none">{f.number}</span>
-                      <h3 className="text-sm font-bold text-dark">{f.title}</h3>
-                      <p className="text-sm text-slate-500 leading-relaxed">{f.description}</p>
-                    </div>
-                  ))}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {pd.features.map((f, i) => {
+                    const Icon = FEATURE_ICONS[i % FEATURE_ICONS.length]
+                    return (
+                      <div key={i} className="bg-white rounded-xl border border-slate-200 p-7 flex flex-col gap-3 group transition-colors duration-200"
+                        onMouseEnter={e => e.currentTarget.style.background = '#eef0f3'}
+                        onMouseLeave={e => e.currentTarget.style.background = ''}>
+                        <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+                          style={{ background: `${active.hexColor}15` }}>
+                          <Icon size={17} style={{ color: active.hexColor }} />
+                        </div>
+                        <h3 className="text-sm font-bold text-dark">{f.title}</h3>
+                        <p className="text-sm text-slate-500 leading-relaxed">{f.description}</p>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             </section>
@@ -277,24 +299,30 @@ export default function ProductsPage() {
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12 lg:gap-20">
                   <div>
-                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
-                      {lang === 'en' ? 'How It Works' : 'Nasıl Çalışır'}
-                    </p>
+                    <GradientLabel>{lang === 'en' ? 'How It Works' : 'Nasıl Çalışır'}</GradientLabel>
                     <h2 className="text-2xl md:text-3xl font-bold text-dark leading-tight">
                       {lang === 'en' ? 'Getting started' : 'Başlangıç süreci'}
                     </h2>
                   </div>
                   <div className="flex flex-col divide-y divide-slate-100">
                     {pd.howItWorks.map((step, i) => (
-                      <div key={i} className="grid grid-cols-[48px_1fr] gap-6 py-7 first:pt-0 last:pb-0">
-                        <span className="text-3xl font-black text-slate-100 leading-none pt-1 select-none">
+                      <motion.div
+                        key={`${activeSlug}-step-${i}`}
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        transition={{ duration: 0.4, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                        className="grid grid-cols-[48px_1fr] gap-6 py-6 first:pt-0 last:pb-0"
+                      >
+                        <span className="text-3xl font-black leading-none pt-1 select-none"
+                          style={{ color: active.hexColor, opacity: 0.45 }}>
                           {String(step.step).padStart(2, '0')}
                         </span>
                         <div>
-                          <h3 className="text-base font-bold text-dark mb-1.5">{step.title}</h3>
+                          <h3 className="text-base font-bold text-dark mb-1">{step.title}</h3>
                           <p className="text-sm text-slate-500 leading-relaxed">{step.description}</p>
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
@@ -307,21 +335,25 @@ export default function ProductsPage() {
             <section className="py-16 md:py-24 border-t border-slate-100 bg-slate-50">
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="mb-12">
-                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
-                    {lang === 'en' ? 'Benefits' : 'Faydaları'}
-                  </p>
+                  <GradientLabel>{lang === 'en' ? 'Benefits' : 'Faydaları'}</GradientLabel>
                   <h2 className="text-3xl md:text-4xl font-bold text-dark">
                     {lang === 'en' ? 'Why it matters' : 'Neden önemli'}
                   </h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {pd.benefits.map((b, i) => (
-                    <div key={i} className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg hover:shadow-slate-100 transition-all duration-300">
-                      <div className={`w-2 h-2 rounded-full ${active.dot} mb-5`} />
-                      <h3 className="text-sm font-bold text-dark mb-2">{b.title}</h3>
-                      <p className="text-sm text-slate-500 leading-relaxed">{b.description}</p>
-                    </div>
-                  ))}
+                  {pd.benefits.map((b, i) => {
+                    const WIcon = WHY_ICONS[i % WHY_ICONS.length]
+                    return (
+                      <div key={i} className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg hover:shadow-slate-100 transition-all duration-300">
+                        <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-5"
+                          style={{ background: `${active.hexColor}18`, border: `1px solid ${active.hexColor}35` }}>
+                          <WIcon size={17} style={{ color: active.hexColor }} />
+                        </div>
+                        <h3 className="text-sm font-bold text-dark mb-2">{b.title}</h3>
+                        <p className="text-sm text-slate-500 leading-relaxed">{b.description}</p>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             </section>
@@ -333,7 +365,7 @@ export default function ProductsPage() {
               <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-10 lg:gap-20">
                   <div>
-                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">SSS</p>
+                    <GradientLabel>SSS</GradientLabel>
                     <h2 className="text-2xl md:text-3xl font-bold text-dark leading-tight">
                       {lang === 'en' ? 'Frequently asked' : 'Sık sorulan sorular'}
                     </h2>
@@ -356,10 +388,7 @@ export default function ProductsPage() {
       ══════════════════════════════════════════════ */}
       <section className="relative bg-linear-to-b from-slate-100 to-slate-200">
         <div className="max-w-5xl mx-auto px-6 lg:px-12 py-28 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-300 text-slate-500 text-xs font-semibold tracking-widest uppercase mb-10">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            {t.cta.badge}
-          </div>
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-[1.1] tracking-tight">
             {t.cta.h2}
           </h2>

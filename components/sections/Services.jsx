@@ -44,29 +44,31 @@ export default function Services() {
   }
 
   return (
-    <section className="bg-white py-24" id="servisler">
+    <section className="bg-white py-14" id="servisler">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* ── Başlık ── */}
         <div className="flex flex-col items-center text-center">
-          <h2
-            className="font-black leading-tight mb-4 pt-2"
-            style={{
-              fontSize: 'clamp(1.8rem, 7vw, 8rem)',
-              background: 'linear-gradient(to right, #0c122d 0%, #1b5fc1 40%, #4EA8FF 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            {t.overline}
-          </h2>
-          <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
+          <Link href="/servisler">
+            <h2
+              className="font-black leading-tight mb-4 pt-2 hover:opacity-80 transition-opacity duration-200"
+              style={{
+                fontSize: 'clamp(1.4rem, 5vw, 5rem)',
+                background: 'linear-gradient(to right, #0c122d 0%, #1b5fc1 40%, #4EA8FF 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {t.overline}
+            </h2>
+          </Link>
+          <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed mt-2">
             {t.h2}
           </p>
 
           {/* Ok butonlar */}
-          <div className="hidden md:flex items-center gap-2 mt-8">
+          <div className="hidden md:flex items-center gap-2 mt-5">
             <button
               onClick={() => scroll(-1)}
               className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all duration-200 ${
@@ -95,7 +97,7 @@ export default function Services() {
       {/* ── Kayan Kartlar ── */}
       <div
         ref={trackRef}
-        className="flex gap-4 overflow-x-auto pb-4 mt-14"
+        className="flex gap-4 overflow-x-auto pb-4 mt-8"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'smooth', paddingLeft: '24px' }}
       >
         {t.items.map((service, i) => {

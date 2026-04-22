@@ -44,7 +44,7 @@ export default function CTA() {
 
   return (
     <section className="relative bg-linear-to-b from-slate-100 to-slate-200" id="iletisim">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-28">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
           {/* ── Sol: Metin ── */}

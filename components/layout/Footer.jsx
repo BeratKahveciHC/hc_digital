@@ -27,28 +27,22 @@ export default function Footer() {
     <footer className="bg-dark isolate">
 
       {/* ── Üst büyük tagline ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-16">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-12">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
 
           <div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] tracking-tight max-w-2xl">
-              {t.taglineLine1} <br />
-              <span className="text-white/30">{t.taglineLine2}</span> <br />
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.08] tracking-tight lg:whitespace-nowrap">
+              {t.taglineLine1}{' '}
+              <span className="text-white/30">{t.taglineLine2}</span>{' '}
               {t.taglineLine3}
             </h2>
           </div>
 
-          <Link
-            href="/iletisim"
-            className="btn-neon shrink-0 inline-flex items-center px-7 py-3 rounded-full text-[16px] font-semibold shadow-sm transition-all duration-200 hover:-translate-y-0.5 bg-white text-dark hover:bg-white/90 self-start lg:self-auto"
-          >
-            {t.cta}
-          </Link>
         </div>
       </div>
 
       {/* ── Orta grid ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 
         {/* Logo & Açıklama */}
         <div className="lg:col-span-1">
@@ -129,9 +123,15 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-xs text-white/20 uppercase tracking-widest font-semibold mb-1">{t.addressLabel}</p>
-                <p className="text-sm text-white/45 leading-relaxed" style={{ whiteSpace: 'pre-line' }}>
+                <a
+                  href="https://maps.google.com/?q=Ayazağa,+Vadis+Istanbul+Park+Etabı,+Kemerburgaz+Cad.+D:7A+Blok,+Sarıyer,+İstanbul"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/45 leading-relaxed hover:text-white/75 transition-colors duration-200"
+                  style={{ whiteSpace: 'pre-line' }}
+                >
                   {t.address}
-                </p>
+                </a>
               </div>
             </li>
 

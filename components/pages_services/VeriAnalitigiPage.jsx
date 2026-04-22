@@ -29,7 +29,7 @@ const content = {
       { title: 'Gerçek Zamanlı Panolar', desc: 'Kurumunuzun KPI\'larını anlık olarak izleyen, özelleştirilebilir web tabanlı panolar.' },
       { title: 'İş Zekâsı Entegrasyonu', desc: 'Mevcut ERP ve kurumsal sistemlerinize bağlanan BI çözümleri.' },
       { title: 'Süreç Analizi', desc: 'İş akışları, darboğazlar ve operasyonel verimliliğe ilişkin derinlemesine analizler.' },
-      { title: 'Finansal Raporlama', desc: 'Departman bazında gelir–gider takibi, bütçe sapma analizi.' },
+      { title: 'Finansal Raporlama', desc: 'Departman bazında gelir-gider takibi, bütçe sapma analizi.' },
       { title: 'Veri Ambarı Tasarımı', desc: 'Farklı kaynaklardan gelen kurumsal veriyi tek bir merkezi yapıda birleştirme.' },
       { title: 'Öngörüsel Analitik', desc: 'Geçmiş veriden geleceğe yönelik tahmin modelleri ve erken uyarı sistemleri.' },
     ],

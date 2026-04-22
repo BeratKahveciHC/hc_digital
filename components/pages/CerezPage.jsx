@@ -1,95 +1,182 @@
 'use client'
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import { useLang } from '../../context/LanguageContext'
 import Header from '../layout/Header'
 import Footer from '../layout/Footer'
-// SEO handled by Next.js metadata
 
-const sections = [
-  {
-    title: '1. Çerez Nedir?',
-    content: (
-      <p className="text-slate-600 leading-relaxed">
-        Çerezler (cookies), ziyaret ettiğiniz web siteleri tarafından tarayıcınıza gönderilen küçük veri dosyalarıdır. Bu dosyalar, ziyaretçilerin site içerisindeki tercihlerini hatırlamak ve kullanıcı deneyimini iyileştirmek için kullanılır.
-      </p>
-    ),
-  },
-  {
-    title: '2. Çerez Türleri',
-    content: (
-      <div className="flex flex-col gap-5">
-        <div>
-          <h3 className="text-base font-semibold text-dark mb-1.5">a) Zorunlu Çerezler</h3>
-          <p className="text-slate-600 leading-relaxed">
-            Web sitesinin düzgün çalışması için gereklidir. Oturum yönetimi, güvenlik gibi temel işlevleri sağlar.
-          </p>
-        </div>
-        <div>
-          <h3 className="text-base font-semibold text-dark mb-1.5">b) İşlevsel Çerezler</h3>
-          <p className="text-slate-600 leading-relaxed">
-            Kullanıcı tercihlerini (dil, bölge, temalar) hatırlayarak daha kişiselleştirilmiş bir deneyim sunar.
-          </p>
-        </div>
-        <div>
-          <h3 className="text-base font-semibold text-dark mb-1.5">c) Analitik ve Performans Çerezleri</h3>
-          <p className="text-slate-600 leading-relaxed">
-            Web sitemizin kullanım istatistiklerini toplar, sayfa görüntüleme sayıları ve tıklama oranları gibi verileri analiz eder.
-          </p>
-        </div>
-        <div>
-          <h3 className="text-base font-semibold text-dark mb-1.5">d) Reklam ve Hedefleme Çerezleri</h3>
-          <p className="text-slate-600 leading-relaxed">
-            Kullanıcılara ilgi alanlarına uygun reklamlar göstermek için kullanılır. Üçüncü taraf reklam hizmetleriyle entegre olabilir.
-          </p>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: '3. Çerezlerin Kullanım Amaçları',
-    content: (
-      <ul className="list-disc list-inside text-slate-600 space-y-1.5 leading-relaxed">
-        <li>Web sitesinin daha hızlı ve güvenli çalışmasını sağlamak</li>
-        <li>Site içeriğini ve kullanıcı deneyimini kişiselleştirmek</li>
-        <li>İstatistiksel veriler toplayarak performansı değerlendirmek</li>
-        <li>Hizmetleri tanıtmak ve pazarlama faaliyetlerini yürütmek</li>
-      </ul>
-    ),
-  },
-  {
-    title: '4. Çerezleri Yönetme ve Kontrol Etme',
-    content: (
-      <>
-        <p className="text-slate-600 leading-relaxed mb-4">
-          Tarayıcınız üzerinden çerezleri yönetebilir veya tamamen devre dışı bırakabilirsiniz. Ancak bazı çerezlerin devre dışı bırakılması, sitenin belirli bölümlerinin doğru çalışmamasına neden olabilir.
+const sections = {
+  tr: [
+    {
+      title: '1. Çerez Nedir?',
+      content: (
+        <p className="text-slate-600 leading-relaxed">
+          Çerezler (cookies), ziyaret ettiğiniz web siteleri tarafından tarayıcınıza gönderilen küçük veri dosyalarıdır. Bu dosyalar, ziyaretçilerin site içerisindeki tercihlerini hatırlamak ve kullanıcı deneyimini iyileştirmek için kullanılır.
         </p>
-        <p className="text-slate-600 leading-relaxed mb-3 font-medium">Tarayıcı Bazlı Ayarlar:</p>
+      ),
+    },
+    {
+      title: '2. Çerez Türleri',
+      content: (
+        <div className="flex flex-col gap-5">
+          <div>
+            <h3 className="text-base font-semibold text-dark mb-1.5">a) Zorunlu Çerezler</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Web sitesinin düzgün çalışması için gereklidir. Oturum yönetimi, güvenlik gibi temel işlevleri sağlar.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-dark mb-1.5">b) İşlevsel Çerezler</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Kullanıcı tercihlerini (dil, bölge, temalar) hatırlayarak daha kişiselleştirilmiş bir deneyim sunar.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-dark mb-1.5">c) Analitik ve Performans Çerezleri</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Web sitemizin kullanım istatistiklerini toplar, sayfa görüntüleme sayıları ve tıklama oranları gibi verileri analiz eder.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-dark mb-1.5">d) Reklam ve Hedefleme Çerezleri</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Kullanıcılara ilgi alanlarına uygun reklamlar göstermek için kullanılır. Üçüncü taraf reklam hizmetleriyle entegre olabilir.
+            </p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: '3. Çerezlerin Kullanım Amaçları',
+      content: (
         <ul className="list-disc list-inside text-slate-600 space-y-1.5 leading-relaxed">
-          <li>Google Chrome: Ayarlar &gt; Gizlilik ve Güvenlik &gt; Çerezler</li>
-          <li>Mozilla Firefox: Ayarlar &gt; Gizlilik ve Güvenlik &gt; Çerezler ve Site Verileri</li>
-          <li>Safari: Ayarlar &gt; Gizlilik &gt; Çerezleri Engelle</li>
-          <li>Microsoft Edge: Ayarlar &gt; Site izinleri &gt; Çerezler ve site verileri</li>
+          <li>Web sitesinin daha hızlı ve güvenli çalışmasını sağlamak</li>
+          <li>Site içeriğini ve kullanıcı deneyimini kişiselleştirmek</li>
+          <li>İstatistiksel veriler toplayarak performansı değerlendirmek</li>
+          <li>Hizmetleri tanıtmak ve pazarlama faaliyetlerini yürütmek</li>
         </ul>
-      </>
-    ),
-  },
-  {
-    title: '5. Üçüncü Taraf Çerezleri',
-    content: (
-      <p className="text-slate-600 leading-relaxed">
-        Web sitemiz, Google Analytics, Meta Pixel gibi analiz ve reklam sağlayıcılarının çerezlerini kullanabilir. Bu çerezler, ilgili üçüncü tarafların kendi politikalarına tabidir.
-      </p>
-    ),
-  },
-  {
-    title: '6. Güncellemeler ve Değişiklikler',
-    content: (
-      <p className="text-slate-600 leading-relaxed">
-        Bu politika, yasal düzenlemeler veya site işlevleri değiştikçe güncellenebilir. En güncel çerez politikası versiyonu her zaman bu sayfada yayınlanır.
-      </p>
-    ),
-  },
-]
+      ),
+    },
+    {
+      title: '4. Çerezleri Yönetme ve Kontrol Etme',
+      content: (
+        <>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            Tarayıcınız üzerinden çerezleri yönetebilir veya tamamen devre dışı bırakabilirsiniz. Ancak bazı çerezlerin devre dışı bırakılması, sitenin belirli bölümlerinin doğru çalışmamasına neden olabilir.
+          </p>
+          <p className="text-slate-600 leading-relaxed mb-3 font-medium">Tarayıcı Bazlı Ayarlar:</p>
+          <ul className="list-disc list-inside text-slate-600 space-y-1.5 leading-relaxed">
+            <li>Google Chrome: Ayarlar &gt; Gizlilik ve Güvenlik &gt; Çerezler</li>
+            <li>Mozilla Firefox: Ayarlar &gt; Gizlilik ve Güvenlik &gt; Çerezler ve Site Verileri</li>
+            <li>Safari: Ayarlar &gt; Gizlilik &gt; Çerezleri Engelle</li>
+            <li>Microsoft Edge: Ayarlar &gt; Site izinleri &gt; Çerezler ve site verileri</li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      title: '5. Üçüncü Taraf Çerezleri',
+      content: (
+        <p className="text-slate-600 leading-relaxed">
+          Web sitemiz, Google Analytics, Meta Pixel gibi analiz ve reklam sağlayıcılarının çerezlerini kullanabilir. Bu çerezler, ilgili üçüncü tarafların kendi politikalarına tabidir.
+        </p>
+      ),
+    },
+    {
+      title: '6. Güncellemeler ve Değişiklikler',
+      content: (
+        <p className="text-slate-600 leading-relaxed">
+          Bu politika, yasal düzenlemeler veya site işlevleri değiştikçe güncellenebilir. En güncel çerez politikası versiyonu her zaman bu sayfada yayınlanır.
+        </p>
+      ),
+    },
+  ],
+  en: [
+    {
+      title: '1. What Are Cookies?',
+      content: (
+        <p className="text-slate-600 leading-relaxed">
+          Cookies are small data files sent to your browser by the websites you visit. These files are used to remember visitors' preferences within the site and to improve the user experience.
+        </p>
+      ),
+    },
+    {
+      title: '2. Types of Cookies',
+      content: (
+        <div className="flex flex-col gap-5">
+          <div>
+            <h3 className="text-base font-semibold text-dark mb-1.5">a) Essential Cookies</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Required for the website to function properly. They provide core functionalities such as session management and security.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-dark mb-1.5">b) Functional Cookies</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Remembers user preferences (language, region, themes) to offer a more personalized experience.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-dark mb-1.5">c) Analytics and Performance Cookies</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Collects usage statistics of our website and analyzes data such as page views and click rates.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-base font-semibold text-dark mb-1.5">d) Advertising and Targeting Cookies</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Used to show users advertisements relevant to their interests. May integrate with third-party advertising services.
+            </p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: '3. Purposes of Cookie Use',
+      content: (
+        <ul className="list-disc list-inside text-slate-600 space-y-1.5 leading-relaxed">
+          <li>To ensure the website operates faster and more securely</li>
+          <li>To personalize site content and user experience</li>
+          <li>To evaluate performance by collecting statistical data</li>
+          <li>To promote services and carry out marketing activities</li>
+        </ul>
+      ),
+    },
+    {
+      title: '4. Managing and Controlling Cookies',
+      content: (
+        <>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            You can manage or completely disable cookies through your browser. However, disabling certain cookies may cause some sections of the site to not function properly.
+          </p>
+          <p className="text-slate-600 leading-relaxed mb-3 font-medium">Browser Settings:</p>
+          <ul className="list-disc list-inside text-slate-600 space-y-1.5 leading-relaxed">
+            <li>Google Chrome: Settings &gt; Privacy and Security &gt; Cookies</li>
+            <li>Mozilla Firefox: Settings &gt; Privacy and Security &gt; Cookies and Site Data</li>
+            <li>Safari: Settings &gt; Privacy &gt; Block Cookies</li>
+            <li>Microsoft Edge: Settings &gt; Site permissions &gt; Cookies and site data</li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      title: '5. Third-Party Cookies',
+      content: (
+        <p className="text-slate-600 leading-relaxed">
+          Our website may use cookies from analytics and advertising providers such as Google Analytics and Meta Pixel. These cookies are subject to the respective third parties' own policies.
+        </p>
+      ),
+    },
+    {
+      title: '6. Updates and Changes',
+      content: (
+        <p className="text-slate-600 leading-relaxed">
+          This policy may be updated as legal regulations or site functions change. The most current version of the cookie policy is always published on this page.
+        </p>
+      ),
+    },
+  ],
+}
 
 function Accordion({ title, content }) {
   const [open, setOpen] = useState(false)
@@ -113,18 +200,23 @@ function Accordion({ title, content }) {
 }
 
 export default function CerezPage() {
+  const { lang } = useLang()
+  const list = sections[lang]
+
   return (
     <div className="bg-white text-dark">
       <Header solid />
 
       <main className="max-w-3xl mx-auto px-6 lg:px-12 pt-36 pb-24">
         <h1 className="text-3xl md:text-4xl font-bold text-dark mb-2">
-          Çerez Politikası
+          {lang === 'en' ? 'Cookie Policy' : 'Çerez Politikası'}
         </h1>
-        <p className="text-sm text-slate-400 mb-12">Son güncelleme: Mart 2025</p>
+        <p className="text-sm text-slate-400 mb-12">
+          {lang === 'en' ? 'Last updated: March 2025' : 'Son güncelleme: Mart 2025'}
+        </p>
 
         <div>
-          {sections.map((s) => (
+          {list.map((s) => (
             <Accordion key={s.title} title={s.title} content={s.content} />
           ))}
         </div>

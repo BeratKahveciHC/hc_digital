@@ -2,7 +2,10 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Mail, Phone, MonitorDot, Globe, Code2, Brain, FileBarChart, Lightbulb } from 'lucide-react'
+import { ArrowRight, Mail, Phone, MonitorDot, Globe, Code2, Brain, FileBarChart, Lightbulb, LayoutDashboard, Zap, Link2, ShieldCheck, Cpu, BarChart3, Award, Users, Sparkles } from 'lucide-react'
+
+const OFFER_ICONS = [LayoutDashboard, Zap, Link2, ShieldCheck, Cpu, BarChart3]
+const WHY_ICONS = [Award, Sparkles, Users]
 import { useLang } from '../../context/LanguageContext'
 import { i18n } from '../../data/i18n'
 import Header from '../layout/Header'
@@ -19,6 +22,7 @@ const serviceData = [
     bgClass: 'bg-sky/8',
     borderClass: 'border-sky/15',
     activeBg: 'bg-sky',
+    color: '#0ea5e9',
     title: { tr: 'Kumanda ve Yönetim Merkezi Kuruluşu', en: 'Command & Control Center Setup' },
     tagline: {
       tr: 'Tüm operasyonlarınızı tek ekrandan gerçek zamanlı izleyin ve yönetin.',
@@ -87,6 +91,7 @@ const serviceData = [
     bgClass: 'bg-accent/8',
     borderClass: 'border-accent/15',
     activeBg: 'bg-accent',
+    color: '#10b981',
     title: { tr: 'Web Geliştirme', en: 'Web Development' },
     tagline: {
       tr: 'Kurumsal ihtiyaçlara özel, modern ve ölçeklenebilir web uygulamaları geliştiriyoruz.',
@@ -155,6 +160,7 @@ const serviceData = [
     bgClass: 'bg-primary/8',
     borderClass: 'border-primary/15',
     activeBg: 'bg-primary',
+    color: '#1b5fc1',
     title: { tr: 'Yazılım Geliştirme', en: 'Software Development' },
     tagline: {
       tr: 'Sektörünüze özgü, ölçeklenebilir yazılım çözümleri geliştiriyoruz.',
@@ -223,6 +229,7 @@ const serviceData = [
     bgClass: 'bg-accent/8',
     borderClass: 'border-accent/15',
     activeBg: 'bg-accent',
+    color: '#8b5cf6',
     title: { tr: 'Raporlama Sistemleri', en: 'Reporting Systems' },
     tagline: {
       tr: 'Kurumunuza özgü raporlama altyapısı ile veriyi anlamlı çıktılara dönüştürüyoruz.',
@@ -291,6 +298,7 @@ const serviceData = [
     bgClass: 'bg-sky/8',
     borderClass: 'border-sky/15',
     activeBg: 'bg-sky',
+    color: '#f59e0b',
     title: { tr: 'Teknoloji Danışmanlığı', en: 'Technology Consulting' },
     tagline: {
       tr: 'Dijital dönüşüm yolculuğunuzda stratejik rehberiniz oluyoruz.',
@@ -359,6 +367,7 @@ const serviceData = [
     bgClass: 'bg-primary/8',
     borderClass: 'border-primary/15',
     activeBg: 'bg-primary',
+    color: '#f43f5e',
     title: { tr: 'Yapay Zekâ', en: 'Artificial Intelligence' },
     tagline: {
       tr: 'Yapay zekânın gücünü kurumların hizmetine sunuyoruz.',
@@ -462,9 +471,22 @@ export default function ServicesPage() {
 
           {/* Başlık */}
           <motion.div {...fadeUp(0.05)} className="mb-10">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
-              {lang === 'en' ? 'What We Do' : 'Neler Yapıyoruz'}
-            </p>
+            <div className="flex items-center gap-3 mb-3">
+              <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+              <span style={{
+                fontFamily: "'Albert Sans', sans-serif",
+                fontSize: '1rem',
+                fontWeight: 600,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                {lang === 'en' ? 'What We Do' : 'Neler Yapıyoruz'}
+              </span>
+            </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
               {lang === 'en' ? 'Our Services' : 'Hizmetlerimiz'}
             </h1>
@@ -479,25 +501,24 @@ export default function ServicesPage() {
                 <button
                   key={s.slug}
                   onClick={() => setActiveSlug(s.slug)}
-                  className={`group relative flex flex-col items-start gap-3 p-4 md:p-5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-white border-white text-dark shadow-lg'
-                      : 'bg-white/8 border-white/10 hover:bg-white/12 hover:border-white/20'
-                  }`}
+                  className="group relative flex flex-col items-start gap-3 p-4 md:p-5 rounded-xl border text-left transition-all duration-200 cursor-pointer"
+                  style={isActive
+                    ? { background: '#fff', borderColor: '#fff', boxShadow: '0 4px 20px rgba(0,0,0,0.15)' }
+                    : { background: `${s.color}18`, borderColor: `${s.color}35` }
+                  }
                 >
                   {/* İkon */}
-                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 ${
-                    isActive
-                      ? `${s.bgClass} border ${s.borderClass}`
-                      : 'bg-white/10 border border-white/15'
-                  }`}>
-                    <SIcon size={16} className={isActive ? s.accentClass : 'text-white/70'} />
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200"
+                    style={{ background: `${s.color}22`, border: `1px solid ${s.color}40` }}
+                  >
+                    <SIcon size={16} style={{ color: isActive ? s.color : s.color }} />
                   </div>
 
                   {/* Başlık */}
-                  <span className={`text-xs md:text-sm font-bold leading-snug transition-colors duration-200 ${
-                    isActive ? 'text-dark' : 'text-white/80'
-                  }`}>
+                  <span className="text-xs md:text-sm font-bold leading-snug transition-colors duration-200"
+                    style={{ color: isActive ? '#0c122d' : 'rgba(255,255,255,0.85)' }}
+                  >
                     {s.title[lang]}
                   </span>
 
@@ -520,11 +541,12 @@ export default function ServicesPage() {
               transition={{ duration: 0.15 }}
               className="flex items-center gap-4 mt-6 pb-6 border-t border-white/10 pt-5"
             >
-              <div className={`w-8 h-8 rounded-lg ${active.bgClass} border ${active.borderClass} flex items-center justify-center`}>
-                <Icon size={15} className={active.accentClass} />
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: `${active.color}20`, border: `1px solid ${active.color}40` }}>
+                <Icon size={15} style={{ color: active.color }} />
               </div>
               <div>
-                <p className={`text-xs font-bold tracking-widest uppercase ${active.accentClass}`}>
+                <p className="text-xs font-bold tracking-widest uppercase" style={{ color: active.color }}>
                   {active.title[lang]}
                 </p>
                 <p className="text-sm text-white/40 mt-0.5">{active.tagline[lang]}</p>
@@ -550,9 +572,24 @@ export default function ServicesPage() {
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12 lg:gap-20">
                 <div>
-                  <p className={`text-xs font-bold tracking-[0.2em] uppercase ${active.accentClass}`}>
-                    {lang === 'en' ? 'About the Service' : 'Hizmet Hakkında'}
-                  </p>
+                  <div className="flex items-center gap-3">
+                    <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+                    <span
+                      style={{
+                        fontFamily: "'Albert Sans', sans-serif",
+                        fontSize: '1rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                      }}
+                    >
+                      {lang === 'en' ? 'About the Service' : 'Hizmet Hakkında'}
+                    </span>
+                  </div>
                 </div>
                 <div className="flex flex-col gap-6">
                   {active.description[lang].map((para, i) => (
@@ -567,21 +604,45 @@ export default function ServicesPage() {
           <section className="py-16 md:py-24 border-t border-slate-100 bg-slate-50">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="mb-12">
-                <p className={`text-xs font-bold tracking-[0.2em] uppercase ${active.accentClass} mb-3`}>
-                  {lang === 'en' ? 'What We Offer' : 'Ne Sunuyoruz'}
-                </p>
+                <div className="flex items-center gap-3 mb-3">
+                  <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+                  <span
+                    style={{
+                      fontFamily: "'Albert Sans', sans-serif",
+                      fontSize: '1rem',
+                      fontWeight: 600,
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    {lang === 'en' ? 'What We Offer' : 'Ne Sunuyoruz'}
+                  </span>
+                </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-dark">
                   {lang === 'en' ? 'Our solution areas' : 'Çözüm alanlarımız'}
                 </h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 rounded-2xl overflow-hidden">
-                {active.offers[lang].map((item, i) => (
-                  <div key={i} className="bg-white p-7 flex flex-col gap-3 group hover:bg-slate-50 transition-colors duration-200">
-                    <div className={`w-1.5 h-1.5 rounded-full ${active.activeBg}`} />
-                    <h3 className="text-sm font-bold text-dark">{item.title}</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {active.offers[lang].map((item, i) => {
+                  const Icon = OFFER_ICONS[i % OFFER_ICONS.length]
+                  return (
+                    <div key={i} className="bg-white rounded-xl border border-slate-200 p-7 flex flex-col gap-3 group transition-colors duration-200"
+                      onMouseEnter={e => e.currentTarget.style.background = '#eef0f3'}
+                      onMouseLeave={e => e.currentTarget.style.background = ''}
+                    >
+                      <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+                        style={{ background: `${active.color}15` }}>
+                        <Icon size={17} style={{ color: active.color }} />
+                      </div>
+                      <h3 className="text-sm font-bold text-dark">{item.title}</h3>
+                      <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </section>
@@ -591,22 +652,48 @@ export default function ServicesPage() {
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-12 lg:gap-20">
                 <div>
-                  <p className={`text-xs font-bold tracking-[0.2em] uppercase ${active.accentClass} mb-3`}>
-                    {lang === 'en' ? 'Our Approach' : 'Yaklaşımımız'}
-                  </p>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+                    <span
+                      style={{
+                        fontFamily: "'Albert Sans', sans-serif",
+                        fontSize: '1rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                      }}
+                    >
+                      {lang === 'en' ? 'Our Approach' : 'Yaklaşımımız'}
+                    </span>
+                  </div>
                   <h2 className="text-2xl md:text-3xl font-bold text-dark leading-tight">
                     {lang === 'en' ? 'How we work' : 'Nasıl çalışırız'}
                   </h2>
                 </div>
                 <div className="flex flex-col divide-y divide-slate-100">
                   {active.steps[lang].map((step, i) => (
-                    <div key={i} className="grid grid-cols-[48px_1fr] gap-6 py-7 first:pt-0 last:pb-0">
-                      <span className="text-3xl font-black text-slate-100 leading-none pt-1 select-none">{step.n}</span>
+                    <motion.div
+                      key={`${activeSlug}-step-${i}`}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.3 }}
+                      transition={{ duration: 0.4, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                      className="grid grid-cols-[48px_1fr] gap-6 py-6 first:pt-0 last:pb-0"
+                    >
+                      <span className="text-3xl font-black leading-none pt-1 select-none"
+                        style={{ color: active.color, opacity: 0.45 }}
+                      >
+                        {step.n}
+                      </span>
                       <div>
-                        <h3 className="text-base font-bold text-dark mb-1.5">{step.title}</h3>
+                        <h3 className="text-base font-bold text-dark mb-1">{step.title}</h3>
                         <p className="text-sm text-slate-500 leading-relaxed">{step.desc}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -617,18 +704,34 @@ export default function ServicesPage() {
           <section className="py-16 md:py-24 border-t border-slate-100 bg-slate-50">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               <div className="mb-12">
-                <p className={`text-xs font-bold tracking-[0.2em] uppercase ${active.accentClass} mb-3`}>
-                  {lang === 'en' ? 'Why HC Dijital' : 'Neden HC Dijital'}
-                </p>
+                <div className="flex items-center gap-3 mb-3">
+                  <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+                  <span
+                    style={{
+                      fontFamily: "'Albert Sans', sans-serif",
+                      fontSize: '1rem',
+                      fontWeight: 600,
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    {lang === 'en' ? 'Why HC Dijital' : 'Neden HC Dijital'}
+                  </span>
+                </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-dark">
-                  {lang === 'en' ? 'What sets us apart' : 'Bizi farklı kılan'}
+                  {lang === 'en' ? 'What sets us apart' : 'Bizi farklı kılan nedir?'}
                 </h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {active.why[lang].map((item, i) => (
                   <div key={i} className="bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-lg hover:shadow-slate-100 transition-all duration-300">
-                    <div className={`w-8 h-8 rounded-lg ${active.activeBg} flex items-center justify-center mb-5`}>
-                      <span className="text-white text-xs font-black">0{i + 1}</span>
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-5"
+                      style={{ background: `${active.color}18`, border: `1px solid ${active.color}35` }}>
+                      {(() => { const WIcon = WHY_ICONS[i % WHY_ICONS.length]; return <WIcon size={16} style={{ color: active.color }} /> })()}
                     </div>
                     <h3 className="text-base font-bold text-dark mb-3">{item.title}</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
@@ -645,10 +748,7 @@ export default function ServicesPage() {
       ══════════════════════════════════════════════════════════ */}
       <section className="relative bg-linear-to-b from-slate-100 to-slate-200">
         <div className="max-w-5xl mx-auto px-6 lg:px-12 py-28 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-300 text-slate-500 text-xs font-semibold tracking-widest uppercase mb-10">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            {t.cta.badge}
-          </div>
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark leading-[1.1] tracking-tight">
             {t.cta.h2}
           </h2>

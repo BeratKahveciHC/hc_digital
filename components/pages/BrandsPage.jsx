@@ -30,12 +30,12 @@ const okanUni       = s(_okanUni)
 
 const seoData = {
   tr: {
-    title: 'Referanslarımız – HC Dijital | Güvenen Kurumlar',
+    title: 'Referanslarımız - HC Dijital | Güvenen Kurumlar',
     description: 'HC Dijital\'e güvenen kurumlar: İstinye Üniversitesi, LIV Hospital, Medical Park, MLP Care, Brainco, Cafrost ve 5E Tasarım. Sağlık ve teknoloji sektörünün öncü isimleri.',
     keywords: 'HC Dijital referanslar, hastane yazılım müşterileri, sağlık teknoloji referansları, İstinye Üniversitesi, LIV Hospital, Medical Park, MLP Care',
   },
   en: {
-    title: 'References – HC Digital | Trusted Institutions',
+    title: 'References - HC Digital | Trusted Institutions',
     description: 'Institutions that trust HC Digital: İstinye University, LIV Hospital, Medical Park, MLP Care, Brainco, Cafrost and 5E Design. Leading names in healthcare and technology.',
     keywords: 'HC Digital references, hospital software clients, health technology references, İstinye University, LIV Hospital, Medical Park, MLP Care',
   },
@@ -172,7 +172,7 @@ const brands = {
 function BrandsMarquee({ brandList }) {
   const trackRef = useRef(null)
   const [paused, setPaused] = useState(false)
-  const speed = 0.6 // px per frame
+  const speed = 1.2 // px per frame
   const posRef = useRef(0)
   const rafRef = useRef(null)
 
@@ -206,26 +206,25 @@ function BrandsMarquee({ brandList }) {
       {/* Sağ fade */}
       <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
 
-      <div className="overflow-hidden" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <div className="overflow-hidden">
         <div ref={trackRef} className="flex gap-6 will-change-transform">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex gap-6 shrink-0" aria-hidden={copy === 1 || undefined}>
               {brandList.map((brand, i) => (
-                <div key={i} className="shrink-0 w-80 bg-white border border-slate-200 rounded-2xl p-7 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col gap-5">
+                <a
+                  key={i}
+                  href={brand.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 w-80 bg-white border border-slate-200 rounded-2xl p-7 shadow-sm hover:shadow-md hover:border-slate-400 transition-all duration-300 flex flex-col gap-5 cursor-pointer"
+                >
                   <img src={brand.src} alt={brand.name} className="h-12 w-auto object-contain object-left" />
                   <p className="text-sm text-slate-500 leading-relaxed">{brand.description}</p>
-                  {brand.url && (
-                    <a
-                      href={brand.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-dark transition-colors duration-200 mt-auto"
-                    >
-                      {brand.url.replace(/^https?:\/\/(www\.)?/, '')}
-                      <ArrowUpRight size={12} />
-                    </a>
-                  )}
-                </div>
+                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary mt-auto">
+                    {brand.url.replace(/^https?:\/\/(www\.)?/, '')}
+                    <ArrowUpRight size={12} />
+                  </div>
+                </a>
               ))}
             </div>
           ))}

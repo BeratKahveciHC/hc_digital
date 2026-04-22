@@ -24,13 +24,13 @@ const beratKahveci    = s(_beratKahveci)
 
 const seoData = {
   tr: {
-    title: 'Hakkımızda – HC Dijital | Dijital Dönüşüm Partneri',
+    title: 'Hakkımızda - HC Dijital | Dijital Dönüşüm Partneri',
     description: 'HC Dijital hakkında: 8+ yıllık deneyim, 40+ aktif kurum ve 15.000+ kullanıcıyla Türkiye\'nin dijital dönüşümüne öncülük ediyoruz. Ekibimiz, misyon ve vizyonumuzu keşfedin.',
     keywords: 'HC Dijital hakkında, dijital dönüşüm şirketi, sağlık teknolojisi şirketi, yazılım geliştirme şirketi İstanbul, HC Dijital ekibi',
     canonical: '/hakkimizda',
   },
   en: {
-    title: 'About Us – HC Digital | Digital Transformation Partner',
+    title: 'About Us - HC Digital | Digital Transformation Partner',
     description: 'About HC Digital: 8+ years of experience, 40+ active institutions and 15,000+ users. Pioneering digital transformation in Turkey. Discover our team, mission and vision.',
     keywords: 'HC Digital about, digital transformation company, health technology company, software development company Istanbul, HC Digital team',
     canonical: '/hakkimizda',
@@ -260,7 +260,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-16 lg:gap-24">
             <motion.div {...fadeUpView()}>
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">{c.philosophyOverline}</p>
+              <div className="flex items-center gap-3 mb-4">
+                <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+                <span style={{ fontFamily:"'Albert Sans',sans-serif", fontSize:'1rem', fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', background:'linear-gradient(to right,#1b5fc1,#4EA8FF)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>{c.philosophyOverline}</span>
+              </div>
               <h2 className="text-2xl md:text-3xl font-bold text-dark leading-snug">{c.philosophyHeading}</h2>
             </motion.div>
             <motion.div {...fadeUpView(0.1)} className="flex flex-col gap-6">
@@ -278,9 +281,10 @@ export default function AboutPage() {
 
           {/* Başlık */}
           <motion.div {...fadeUpView()} className="mb-20">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-              {lang === 'en' ? 'Our Team' : 'Ekibimiz'}
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+              <span style={{ fontFamily:"'Albert Sans',sans-serif", fontSize:'1rem', fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', background:'linear-gradient(to right,#1b5fc1,#4EA8FF)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>{lang === 'en' ? 'Our Team' : 'Ekibimiz'}</span>
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-dark leading-tight tracking-tight">
               {lang === 'en' ? 'Get to know\nour team' : 'Ekibimizi yakından\ntanıyın'}
             </h2>
@@ -353,8 +357,8 @@ export default function AboutPage() {
             {/* Misyon */}
             <motion.div {...fadeUpView(0)} className="bg-white pr-0 lg:pr-16 pb-16 lg:pb-0 flex flex-col gap-6">
               <div className="flex flex-col gap-4">
-                <p className="text-2xl font-bold text-primary">{c.mission.label}</p>
-                <h2 className="text-2xl md:text-3xl font-bold text-dark leading-snug">{c.mission.heading}</h2>
+                <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">{c.mission.label}</p>
+                <h2 className="text-xl md:text-2xl font-bold text-dark leading-snug">{c.mission.heading}</h2>
                 <p className="text-base text-slate-500 leading-relaxed">{c.mission.text}</p>
               </div>
             </motion.div>
@@ -362,8 +366,8 @@ export default function AboutPage() {
             {/* Vizyon */}
             <motion.div {...fadeUpView(0.1)} className="bg-white pl-0 lg:pl-16 pt-16 lg:pt-0 flex flex-col gap-6">
               <div className="flex flex-col gap-4">
-                <p className="text-2xl font-bold text-primary">{c.vision.label}</p>
-                <h2 className="text-2xl md:text-3xl font-bold text-dark leading-snug">{c.vision.heading}</h2>
+                <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">{c.vision.label}</p>
+                <h2 className="text-xl md:text-2xl font-bold text-dark leading-snug">{c.vision.heading}</h2>
                 <p className="text-base text-slate-500 leading-relaxed">{c.vision.text}</p>
               </div>
             </motion.div>
@@ -374,13 +378,19 @@ export default function AboutPage() {
       {/* ── İstatistikler ── */}
       <section ref={statsRef} className="bg-slate-50 py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.p {...fadeUpView()} className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-12">
-            {c.statsOverline}
-          </motion.p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+          <motion.div {...fadeUpView()} className="flex items-center gap-3 mb-12">
+            <div style={{ height: '1px', width: '24px', background: 'linear-gradient(to right, #1b5fc1, #4EA8FF)' }} />
+            <span style={{ fontFamily:"'Albert Sans',sans-serif", fontSize:'1rem', fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', background:'linear-gradient(to right,#1b5fc1,#4EA8FF)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>{c.statsOverline}</span>
+          </motion.div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {c.stats.map((s, i) => (
-              <motion.div key={i} {...fadeUpView(i * 0.08)}>
-                <p className="text-5xl md:text-6xl font-black text-dark tracking-tight leading-none mb-3">
+              <motion.div
+                key={i}
+                {...fadeUpView(i * 0.08)}
+                className="rounded-2xl bg-white border border-primary/20 p-4 md:p-7 flex flex-col gap-2 md:gap-3"
+                style={{ boxShadow: '0 0 18px rgba(78,168,255,0.12), 0 0 40px rgba(27,95,193,0.06)' }}
+              >
+                <p className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-none" style={{ color: '#1b5fc1' }}>
                   <CountUp {...aboutStatsData[i]} delay={i * 150} active={statsVisible} />
                 </p>
                 <p className="text-sm text-slate-500 font-medium">{s.label}</p>

@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { products } from '../../data/products'
@@ -21,66 +21,82 @@ export default function Products() {
     if (diff < -products.length / 2) diff += products.length
     if (diff === 0)  return 'center'
     if (diff === 1)  return 'right'
-    if (diff === 2)  return 'far-right'
     if (diff === -1) return 'left'
-    if (diff === -2) return 'far-left'
     return 'hidden'
   }
 
   return (
-    <section className="relative bg-white py-24 overflow-hidden" id="urunler">
+    <section className="relative bg-white py-14 overflow-hidden" id="urunler">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        {/* ── Başlık ── */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <h2
-            className="font-black leading-tight mb-4 pt-2"
-            style={{
-              fontSize: 'clamp(1.8rem, 7vw, 8rem)',
-              background: 'linear-gradient(to right, #0c122d 0%, #1b5fc1 40%, #4EA8FF 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            {t.overline}
-          </h2>
-          <p className="text-base md:text-lg text-slate-400 max-w-xl leading-relaxed">
-            {t.h2Line1} {t.h2Line2}
-          </p>
-          <Link
-            href="/urunler"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 border-b border-slate-300 pb-0.5 hover:text-dark hover:border-dark transition-colors duration-200"
-          >
-            {t.allProducts}
-            <ArrowUpRight size={14} />
+        {/* Başlık */}
+        <div className="flex flex-col items-center text-center mb-8">
+          <Link href="/urunler">
+            <h2
+              className="font-black leading-tight mb-4 pt-2 hover:opacity-80 transition-opacity duration-200"
+              style={{
+                fontSize: 'clamp(1.4rem, 5vw, 5rem)',
+                background: 'linear-gradient(to right, #0c122d 0%, #1b5fc1 40%, #4EA8FF 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {t.overline}
+            </h2>
           </Link>
         </div>
 
-        {/* ── Kart Fanı ── */}
-        <div className="relative flex items-center justify-center h-96 sm:h-110 md:h-120 lg:h-136 xl:h-150 2xl:h-170">
+        {/* Navigasyon */}
+        <div className="flex items-center justify-center gap-6 mb-6">
+          <button
+            onClick={prev}
+            className="btn-neon w-11 h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-dark hover:text-white hover:border-dark transition-all duration-200"
+          >
+            <ChevronLeft size={18} />
+          </button>
 
+          <div className="flex items-center gap-2">
+            {products.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  i === active ? 'w-6 h-2 bg-primary' : 'w-2 h-2 bg-slate-200 hover:bg-slate-300'
+                }`}
+                style={i === active ? { boxShadow: '0 0 8px rgba(78,168,255,0.8), 0 0 20px rgba(78,168,255,0.4)' } : {}}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={next}
+            className="btn-neon w-11 h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-dark hover:text-white hover:border-dark transition-all duration-200"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+
+        {/* Kartlar */}
+        <div className="relative flex items-center justify-center h-96 sm:h-110 md:h-120 lg:h-136 xl:h-150">
           {products.map((product, i) => {
             const pos = getPos(i)
             if (pos === 'hidden') return null
             const p = lang === 'en' && product.en ? { ...product, ...product.en } : product
 
             const variants = {
-              'center':     { x: '0%',   rotate: 0,   scale: 1,    filter: 'blur(0px)',   opacity: 1,    zIndex: 20 },
-              'left':       { x: '-58%', rotate: -12, scale: 0.87, filter: 'none', opacity: 0.85, zIndex: 15 },
-              'far-left':   { x: '-95%', rotate: -22, scale: 0.74, filter: 'none', opacity: 0.65, zIndex: 10 },
-              'right':      { x: '58%',  rotate: 12,  scale: 0.87, filter: 'none', opacity: 0.85, zIndex: 15 },
-              'far-right':  { x: '95%',  rotate: 22,  scale: 0.74, filter: 'none', opacity: 0.65, zIndex: 10 },
+              center: { x: '0%',    scale: 1,    opacity: 1,    zIndex: 20 },
+              left:   { x: '-82%', scale: 0.88, opacity: 0.85, zIndex: 15 },
+              right:  { x: '82%',  scale: 0.88, opacity: 0.85, zIndex: 15 },
             }
 
             return (
               <motion.div
                 key={product.id}
                 animate={variants[pos]}
-                transition={{ duration: 0.25, ease: 'easeInOut' }}
-                className="absolute w-80 md:w-130 cursor-pointer"
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="absolute w-80 md:w-120 cursor-pointer"
                 onClick={() => pos !== 'center' && setActive(i)}
-                style={{ transformOrigin: 'bottom center' }}
               >
                 <Link
                   href={pos === 'center' ? `/urunler/${product.slug}` : '#'}
@@ -115,13 +131,9 @@ export default function Products() {
                   </div>
 
                   {/* İçerik */}
-                  <div className="p-7">
-                    <h3 className="text-lg font-bold text-dark mb-2">
-                      {p.title}
-                    </h3>
-                    <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">
-                      {p.tagline}
-                    </p>
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold text-dark mb-2">{p.title}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">{p.tagline}</p>
                     {pos === 'center' && (
                       <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
                         {t.viewProduct}
@@ -135,35 +147,6 @@ export default function Products() {
           })}
         </div>
 
-        {/* ── Navigasyon ── */}
-        <div className="flex items-center justify-center gap-6 mt-10">
-          <button
-            onClick={prev}
-            className="btn-neon w-11 h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-dark hover:text-white hover:border-dark transition-all duration-200"
-          >
-            <ChevronLeft size={18} />
-          </button>
-
-          <div className="flex items-center gap-2">
-            {products.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`rounded-full transition-all duration-300 ${
-                  i === active ? 'w-6 h-2 bg-primary' : 'w-2 h-2 bg-slate-200 hover:bg-slate-300'
-                }`}
-                style={i === active ? { boxShadow: '0 0 8px rgba(78,168,255,0.8), 0 0 20px rgba(78,168,255,0.4)' } : {}}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={next}
-            className="btn-neon w-11 h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-dark hover:text-white hover:border-dark transition-all duration-200"
-          >
-            <ChevronRight size={18} />
-          </button>
-        </div>
 
       </div>
     </section>

@@ -86,7 +86,7 @@ export default function Header({ solid = true }) {
               <img
                 src={logo}
                 alt="HC Dijital"
-                className={`h-8 sm:h-9 lg:h-11 xl:h-14 w-auto object-contain ${isLight ? '' : 'brightness-0 invert'}`}
+                className={`h-9 sm:h-11 lg:h-14 xl:h-18 w-auto object-contain ${isLight ? '' : 'brightness-0 invert'}`}
               />
             </Link>
 
@@ -111,7 +111,7 @@ export default function Header({ solid = true }) {
                         <button
                           className={`relative flex items-center gap-1 px-3 py-2 rounded-lg text-[12px] lg:px-4 lg:py-2.5 lg:text-[13px] xl:px-5 xl:py-3 xl:text-[15px] font-medium transition-all duration-200 group ${
                             isLight
-                              ? active ? 'text-dark' : 'text-dark/60 hover:text-dark hover:bg-dark/5'
+                              ? active ? 'text-dark' : 'text-dark hover:bg-dark/10'
                               : active ? 'text-white font-semibold' : 'text-white/90 hover:text-white hover:bg-white/10'
                           }`}
                         >
@@ -175,7 +175,7 @@ export default function Header({ solid = true }) {
                       href={link.href}
                       className={`relative px-3 py-2 rounded-lg text-[12px] lg:px-4 lg:py-2.5 lg:text-[13px] xl:px-5 xl:py-3 xl:text-[15px] font-medium transition-all duration-200 group ${
                         isLight
-                          ? active ? 'text-dark' : 'text-dark/60 hover:text-dark hover:bg-dark/5'
+                          ? active ? 'text-dark' : 'text-dark hover:bg-dark/10'
                           : active ? 'text-white font-semibold' : 'text-white/90 hover:text-white hover:bg-white/10'
                       }`}
                     >
@@ -186,7 +186,7 @@ export default function Header({ solid = true }) {
                     <a
                       key={link.href}
                       href={link.href}
-                      className={`relative px-3 py-2 rounded-lg text-[12px] lg:px-4 lg:py-2.5 lg:text-[13px] xl:px-5 xl:py-3 xl:text-[15px] font-medium transition-all duration-200 group ${isLight ? 'text-dark/60 hover:text-dark hover:bg-dark/5' : 'text-white/90 hover:text-white hover:bg-white/10'}`}
+                      className={`relative px-3 py-2 rounded-lg text-[12px] lg:px-4 lg:py-2.5 lg:text-[13px] xl:px-5 xl:py-3 xl:text-[15px] font-medium transition-all duration-200 group ${isLight ? 'text-dark hover:bg-dark/10' : 'text-white/90 hover:text-white hover:bg-white/10'}`}
                     >
                       {link.label}
                       <span className={`absolute bottom-1.5 left-5 right-5 h-[1.5px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full ${isLight ? 'bg-primary/50' : 'bg-white/50'}`} />
@@ -201,7 +201,7 @@ export default function Header({ solid = true }) {
               {/* Dil seçici */}
               <button
                 onClick={() => setLang(lang === 'tr' ? 'en' : 'tr')}
-                className={`hidden md:flex items-center gap-2 px-3 py-2 rounded-lg text-[14px] font-bold tracking-wider uppercase transition-colors ${isLight ? 'text-dark/60 hover:text-dark hover:bg-dark/5' : 'text-white/90 hover:text-white hover:bg-white/10'}`}
+                className={`hidden md:flex items-center gap-2 px-3 py-2 rounded-lg text-[14px] font-bold tracking-wider uppercase transition-colors ${isLight ? 'text-dark hover:bg-dark/10' : 'text-white/90 hover:text-white hover:bg-white/10'}`}
                 aria-label="Dil değiştir"
               >
                 {lang === 'tr' ? <FlagTR size={22} /> : <FlagGB size={22} />}
@@ -219,7 +219,7 @@ export default function Header({ solid = true }) {
               {/* Mobil dil değiştirici */}
               <button
                 onClick={() => setLang(lang === 'tr' ? 'en' : 'tr')}
-                className={`md:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-bold tracking-wider uppercase transition-colors ${isLight ? 'text-dark/60 hover:text-dark hover:bg-dark/5' : 'text-white/90 hover:text-white hover:bg-white/10'}`}
+                className={`md:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-bold tracking-wider uppercase transition-colors ${isLight ? 'text-dark hover:bg-dark/10' : 'text-white/90 hover:text-white hover:bg-white/10'}`}
                 aria-label="Dil değiştir"
               >
                 {lang === 'tr' ? <FlagTR size={18} /> : <FlagGB size={18} />}
@@ -265,7 +265,7 @@ export default function Header({ solid = true }) {
               <img src={logo} alt="HC Dijital" className="h-10 w-auto object-contain" />
               <button
                 onClick={() => setMobileOpen(false)}
-                className="w-9 h-9 flex items-center justify-center rounded-xl text-dark/60 hover:text-dark hover:bg-dark/5 transition-colors"
+                className="w-9 h-9 flex items-center justify-center rounded-xl text-dark hover:bg-dark/10 transition-colors"
               >
                 <X size={20} />
               </button>

@@ -19,7 +19,7 @@ const slides = [
   {
     id: 'airx',
     category: { tr: 'İK & Zaman Yönetimi', en: 'HR & Time Management' },
-    title: 'AirX IKYS',
+    title: { tr: 'AiRX\nPersonel Devam Kontrol Sistemi', en: 'AiRX\nPersonnel Attendance Control System' },
     tagline: {
       tr: 'Zaman takibini düzene otur,\nekibini tek ekrandan yönet.',
       en: 'Organize time tracking,\nmanage your team from one screen.',
@@ -40,7 +40,7 @@ const slides = [
   {
     id: 'tercumed',
     category: { tr: 'Yapay Zekâ / Sağlık', en: 'AI / Healthcare' },
-    title: 'Tercümed',
+    title: { tr: 'Tercümed', en: 'Tercümed' },
     tagline: {
       tr: 'Tıbbi belgeleri saniyeler içinde\nanlaşılır dile çevir.',
       en: 'Translate medical documents\ninto clear language in seconds.',
@@ -55,26 +55,26 @@ const slides = [
     features: [
       { icon: Zap,         label: { tr: 'Anında Çeviri',        en: 'Instant Translation'  }, desc: { tr: '30+ dil desteği',        en: '30+ languages'       } },
       { icon: ShieldCheck, label: { tr: 'Klinik Doğruluk',      en: 'Clinical Accuracy'    }, desc: { tr: '%95+ terminoloji isabeti', en: '95%+ term accuracy'  } },
-      { icon: FileText,    label: { tr: 'PDF & Word Çıktı',     en: 'PDF & Word Output'    }, desc: { tr: 'Hazır belgeler, 3 adımda', en: 'Ready files, 3 steps' } },
+      { icon: FileText,    label: { tr: 'PDF & Word Çıktı',     en: 'PDF & Word Output'    }, desc: { tr: '3 adımda belgeleriniz hazır', en: 'Ready files, 3 steps' } },
     ],
   },
   {
     id: 'butce',
     category: { tr: 'Finans / Sağlık', en: 'Finance / Healthcare' },
-    title: 'Hastane Bütçe\nYönetim Sistemi',
+    title: { tr: 'Hastane Bütçe\nYönetim Sistemi', en: 'Hospital Budget\nManagement System' },
     tagline: {
       tr: 'Bütçe yönetiminde\nyeni nesil.',
       en: 'Next generation\nin budget management.',
     },
     description: {
-      tr: 'Otomatik gider–gelir takibi, gerçek zamanlı öngörüler ve AI destekli raporlarla stratejik kararlar.',
+      tr: 'Otomatik gider-gelir takibi, gerçek zamanlı öngörüler ve AI destekli raporlarla stratejik kararlar.',
       en: 'Strategic decisions with automated tracking, real-time insights and AI-powered reports.',
     },
     image: butceHero,
     href: '/urunler/butce-yonetim',
     cta: { tr: 'Ürünü İncele', en: 'Explore Product' },
     features: [
-      { icon: TrendingUp,  label: { tr: 'AI Öngörü Motoru',     en: 'AI Forecast Engine'  }, desc: { tr: 'Sapmalar önceden tespit',  en: 'Detect deviations early' } },
+      { icon: TrendingUp,  label: { tr: 'AI Öngörü Motoru',     en: 'AI Forecast Engine'  }, desc: { tr: 'Sapmalar önceden yapay zekayla tespit edilir',  en: 'Detect deviations early with AI' } },
       { icon: Brain,       label: { tr: 'Akıllı Raporlama',     en: 'Smart Reporting'     }, desc: { tr: '1 tıkla yönetim kurulu',   en: '1-click board report'    } },
       { icon: Users,       label: { tr: 'Birim Bazlı Analiz',   en: 'Unit-Based Analysis' }, desc: { tr: 'ERP & HBYS entegrasyonu',  en: 'ERP & HIS integration'   } },
     ],
@@ -244,29 +244,41 @@ export default function Hero() {
             </AnimatePresence>
 
             {/* Sağ: özellik kartları */}
-            <AnimatePresence initial={false} mode="wait">
+            <AnimatePresence initial={false} mode="sync">
               <motion.div
                 key={slide.id + '-features'}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="hidden lg:flex flex-col gap-2 lg:gap-2.5 w-56 xl:w-72 shrink-0"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="hidden lg:flex flex-col gap-3 lg:gap-4 w-56 xl:w-72 shrink-0"
               >
                 {slide.features.map((f, i) => {
                   const Icon = f.icon
                   return (
                     <div
                       key={i}
-                      className="flex items-center gap-3 px-4 py-3 xl:px-5 xl:py-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg shadow-black/20"
+                      className="flex items-center gap-3 px-4 py-3 xl:px-5 xl:py-4 rounded-2xl backdrop-blur-xl border shadow-lg"
+                      style={{
+                        background: 'rgba(78,168,255,0.10)',
+                        borderColor: 'rgba(78,168,255,0.30)',
+                        boxShadow: '0 0 16px 2px rgba(78,168,255,0.15), 0 4px 24px rgba(0,0,0,0.25)',
+                      }}
                     >
-                      <div className="shrink-0 w-9 h-9 xl:w-11 xl:h-11 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center shadow-inner">
-                        <Icon size={16} className="text-white xl:hidden" />
-                        <Icon size={20} className="text-white hidden xl:block" />
+                      <div
+                        className="shrink-0 w-9 h-9 xl:w-11 xl:h-11 rounded-xl flex items-center justify-center"
+                        style={{
+                          background: 'rgba(78,168,255,0.18)',
+                          border: '1px solid rgba(78,168,255,0.40)',
+                          boxShadow: '0 0 10px 1px rgba(78,168,255,0.25)',
+                        }}
+                      >
+                        <Icon size={16} className="xl:hidden" style={{ color: '#4EA8FF' }} />
+                        <Icon size={20} className="hidden xl:block" style={{ color: '#4EA8FF' }} />
                       </div>
                       <div>
-                        <p className="text-[12px] xl:text-[13px] font-bold text-white leading-tight tracking-wide">{f.label[lang]}</p>
-                        <p className="text-[11px] xl:text-[12px] text-white/60 leading-snug mt-0.5 xl:mt-1">{f.desc[lang]}</p>
+                        <p className="text-[12px] xl:text-[13px] font-bold leading-tight tracking-wide text-white">{f.label[lang]}</p>
+                        <p className="text-[11px] xl:text-[12px] leading-snug mt-0.5 xl:mt-1 text-white/60">{f.desc[lang]}</p>
                       </div>
                     </div>
                   )

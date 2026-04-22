@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/ekibimiz/page": "/ekibimiz",
+  "/haberler/page": "/haberler",
+  "/iletisim/page": "/iletisim",
+  "/cerez/page": "/cerez",
+  "/hakkimizda/page": "/hakkimizda",
+  "/gizlilik/page": "/gizlilik",
+  "/kvkk/page": "/kvkk",
+  "/referanslar/page": "/referanslar",
+  "/page": "/",
+  "/haberler/[slug]/page": "/haberler/[slug]",
+  "/urunler/page": "/urunler",
+  "/servisler/page": "/servisler",
+  "/servisler/[slug]/page": "/servisler/[slug]",
+  "/urunler/[slug]/page": "/urunler/[slug]"
+}
